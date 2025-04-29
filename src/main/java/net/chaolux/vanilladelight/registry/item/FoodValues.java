@@ -6,7 +6,7 @@ import net.minecraft.world.food.FoodProperties;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 public class FoodValues {
-    public static final FoodProperties APPLE_SALAD = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 2, false, false), 1.0F).build();
+    public static final FoodProperties APPLE_SALAD = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 700, 2, false, false), 1.0F).build();
     public static final FoodProperties BERRIES_SALAD = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.5F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, false, false), 1.0F).build();
     public static final FoodProperties CARAMELIZED_CHICKEN = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.7F).meat().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0, false, false), 1.0F).build();
     public static final FoodProperties CARROT_SALAD = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 400, 0, false, false), 1.0F).build();
