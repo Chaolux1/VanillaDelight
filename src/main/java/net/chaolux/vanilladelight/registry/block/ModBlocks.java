@@ -2,6 +2,7 @@ package net.chaolux.vanilladelight.registry.block;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,8 +24,8 @@ public class ModBlocks {
     static {
         BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "vanilladelight");
 
-        CARROT_CAKE = BLOCKS.register("carrot_cake", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.CARROT_CAKE_SLICE));
-        HONEY_CAKE = BLOCKS.register("honey_cake", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.HONEY_CAKE_SLICE));
+        CARROT_CAKE = BLOCKS.register("carrot_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+        HONEY_CAKE = BLOCKS.register("honey_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
         MELON_PIE = BLOCKS.register("melon_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.MELON_PIE_SLICE));
         CHORUS_PIE = BLOCKS.register("chorus_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.CHORUS_PIE_SLICE));
 
