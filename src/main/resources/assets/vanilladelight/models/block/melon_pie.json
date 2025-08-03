@@ -3,7 +3,7 @@
   "textures": {
     "particle": "vanilladelight:block/melon_pie_top",
     "bottom": "farmersdelight:block/pie_bottom",
-    "side": "farmersdelight:block/pie_side",
+    "side": "vanilladelight:block/melon_pie_side",
     "top": "vanilladelight:block/melon_pie_top"
   }
 }

@@ -1,22 +1,20 @@
 {
   "type": "farmersdelight:cooking",
-  "container": {
-    "item": "minecraft:glass_bottle"
-  },
   "cookingtime": 200,
   "experience": 1.0,
   "ingredients": [
     {
-      "tag": "forge:golden_apple"
+      "tag": "forge:apple"
     },
     {
-      "tag": "forge:golden_apple"
+      "tag": "forge:apple"
     },
     {
       "item": "minecraft:sugar"
     }
   ],
+  "recipe_book_tab": "drinks",
   "result": {
-    "item": "vanilladelight:golden_apple_cider"
+    "item": "farmersdelight:apple_cider"
   }
 }

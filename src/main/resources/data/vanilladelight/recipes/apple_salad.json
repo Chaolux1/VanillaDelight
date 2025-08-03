@@ -7,13 +7,13 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "minecraft:apple"
+      "tag": "forge:apple"
     },
     {
-      "item": "minecraft:golden_apple"
+      "tag": "forge:golden_apple"
     },
     {
-      "item": "minecraft:enchanted_golden_apple"
+      "tag": "forge:enchanted_golden_apple"
     }
   ],
   "result": {

@@ -50,6 +50,19 @@ public class ModItems {
     public static final RegistryObject<Item> HONEY_CAKE_SLICE;
     public static final RegistryObject<Item> MILKY_PUMPKIN_BLOCK;
 
+    public static final RegistryObject<Item> CHARRED_PUMPKIN_SLICE;
+    public static final RegistryObject<Item> COOKED_BROWN_MUSHROOM;
+    public static final RegistryObject<Item> COOKED_RED_MUSHROOM;
+    public static final RegistryObject<Item> COOKED_BROWN_MUSHROOM_COLONY;
+    public static final RegistryObject<Item> COOKED_RED_MUSHROOM_COLONY;
+    public static final RegistryObject<Item> COOKED_TROPICAL_FISH;
+    public static final RegistryObject<Item> PUFFERFISH_STEW;
+    public static final RegistryObject<Item> ROASTED_BEETS;
+    public static final RegistryObject<Item> SWEET_FISH_SOUP;
+    public static final RegistryObject<Item> ENCHANTED_GOLDEN_APPLE_SLICE;
+    public static final RegistryObject<Item> ENCHANTED_GOLDEN_CARROT;
+
+
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
         return block;
@@ -67,6 +80,10 @@ public class ModItems {
         return (new Item.Properties()).food(food).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
     }
 
+    public static Item.Properties potItem(FoodProperties food) {
+        return (new Item.Properties()).food(food).craftRemainder(vectorwing.farmersdelight.common.registry.ModItems.COOKING_POT.get()).stacksTo(1);
+    }
+
     public static Item.Properties foodItem(FoodProperties food) {
         return (new Item.Properties()).food(food);
     }
@@ -74,20 +91,22 @@ public class ModItems {
     static {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "vanilladelight");
 
-        APPLE_SALAD = registerWithTab("apple_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.APPLE_SALAD), true));
-        BERRIES_SALAD = registerWithTab("berries_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.BERRIES_SALAD), true));
-        CARAMELIZED_CHICKEN = registerWithTab("caramelized_chicken", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARAMELIZED_CHICKEN), true));
-        CARROT_SALAD = registerWithTab("carrot_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARROT_SALAD), true));
-        COD_STEW = registerWithTab("cod_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.COD_STEW)));
-        GLOW_TROPICAL_FISH_STEW = registerWithTab("glow_tropical_fish_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.GLOW_TROPICAL_FISH_STEW)));
-        GRILLED_BEETROOT = registerWithTab("grilled_beetroot", () -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_BEETROOT)));
-        MILKY_PUMPKIN = registerWithTab("milky_pumpkin", () -> new ConsumableItem(bowlFoodItem(FoodValues.MILKY_PUMPKIN), true));
+        APPLE_SALAD = registerWithTab("apple_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.APPLE_SALAD).stacksTo(16), true));
+        BERRIES_SALAD = registerWithTab("berries_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.BERRIES_SALAD).stacksTo(16), true));
+        CARAMELIZED_CHICKEN = registerWithTab("caramelized_chicken", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARAMELIZED_CHICKEN).stacksTo(16), true));
+        CARROT_SALAD = registerWithTab("carrot_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARROT_SALAD).stacksTo(16), true));
+        COD_STEW = registerWithTab("cod_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.COD_STEW).stacksTo(16)));
+        GLOW_TROPICAL_FISH_STEW = registerWithTab("glow_tropical_fish_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.GLOW_TROPICAL_FISH_STEW).stacksTo(16)));
+        GRILLED_BEETROOT = registerWithTab("grilled_beetroot", () -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_BEETROOT).stacksTo(16)));
+        MILKY_PUMPKIN = registerWithTab("milky_pumpkin", () -> new ConsumableItem(bowlFoodItem(FoodValues.MILKY_PUMPKIN).stacksTo(16), true));
+        PUFFERFISH_STEW = registerWithTab("pufferfish_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.PUFFERFISH_STEW).stacksTo(16), true));
+        SWEET_FISH_SOUP = registerWithTab("sweet_fish_soup", () -> new ConsumableItem(potItem(FoodValues.SWEET_FISH_SOUP).stacksTo(1), true));
 
-        CARAMEL_BOTTLE = registerWithTab("caramel_bottle", () -> new ConsumableItem(drinkItem(FoodValues.CARAMEL_BOTTLE)));
-        GLOW_BERRIES_JAM = registerWithTab("glow_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.GLOW_BERRIES_JAM)));
-        GOLDEN_APPLE_CIDER = registerWithTab("golden_apple_cider", () -> new ConsumableItem(drinkItem(FoodValues.GOLDEN_APPLE_CIDER), true));
-        SWEET_BERRIES_JAM = registerWithTab("sweet_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRIES_JAM)));
-        SWEET_BERRY_CUSTARD = registerWithTab("sweet_berry_custard", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRY_CUSTARD), true));
+        CARAMEL_BOTTLE = registerWithTab("caramel_bottle", () -> new ConsumableItem(drinkItem(FoodValues.CARAMEL_BOTTLE).stacksTo(16)));
+        GLOW_BERRIES_JAM = registerWithTab("glow_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.GLOW_BERRIES_JAM).stacksTo(16)));
+        GOLDEN_APPLE_CIDER = registerWithTab("golden_apple_cider", () -> new ConsumableItem(drinkItem(FoodValues.GOLDEN_APPLE_CIDER).stacksTo(16), true));
+        SWEET_BERRIES_JAM = registerWithTab("sweet_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRIES_JAM).stacksTo(16)));
+        SWEET_BERRY_CUSTARD = registerWithTab("sweet_berry_custard", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRY_CUSTARD).stacksTo(16), true));
 
         APPLE_SLICE = registerWithTab("apple_slice", () -> new Item(foodItem(FoodValues.APPLE_SLICE)));
         BUTTER = registerWithTab("butter", () -> new Item(foodItem(FoodValues.BUTTER)));
@@ -104,6 +123,16 @@ public class ModItems {
         HONEY_CAKE_SLICE = registerWithTab("honey_cake_slice", () -> new Item(foodItem(FoodValues.HONEY_CAKE_SLICE)));
         PUFFERFISH_SLICE = registerWithTab("pufferfish_slice", () -> new Item(foodItem(FoodValues.PUFFERFISH_SLICE)));
         PUMPKIN_PIE_SLICE = registerWithTab("pumpkin_pie_slice", () -> new Item(foodItem(FoodValues.PUMPKIN_PIE_SLICE)));
+
+        CHARRED_PUMPKIN_SLICE = registerWithTab("charred_pumpkin_slice", () -> new Item(foodItem(FoodValues.CHARRED_PUMPKIN_SLICE)));
+        COOKED_BROWN_MUSHROOM = registerWithTab("cooked_brown_mushroom", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM)));
+        COOKED_RED_MUSHROOM = registerWithTab("cooked_red_mushroom", () -> new Item(foodItem(FoodValues.COOKED_RED_MUSHROOM)));
+        COOKED_BROWN_MUSHROOM_COLONY = registerWithTab("cooked_brown_mushroom_colony", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM_COLONY)));
+        COOKED_RED_MUSHROOM_COLONY = registerWithTab("cooked_red_mushroom_colony", () -> new Item(foodItem(FoodValues.COOKED_RED_MUSHROOM_COLONY)));
+        COOKED_TROPICAL_FISH = registerWithTab("cooked_tropical_fish", () -> new Item(foodItem(FoodValues.COOKED_TROPICAL_FISH)));
+        ROASTED_BEETS = registerWithTab("roasted_beets", () -> new Item(foodItem(FoodValues.ROASTED_BEETS)));
+        ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new Item(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
+        ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new Item(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
 
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));
