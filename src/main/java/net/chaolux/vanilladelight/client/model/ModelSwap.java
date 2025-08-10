@@ -21,6 +21,7 @@ public class ModelSwap {
             event.register(new ResourceLocation("vanilladelight", "block/cooking_pot_" + color + "_tray"));
             event.register(new ResourceLocation("vanilladelight", "block/cooking_pot_" + color + "_handle"));
         }
+        event.register(new ResourceLocation("vanilladelight","item/cooking_pot_default"));
     }
     @SubscribeEvent
     public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
@@ -33,5 +34,13 @@ public class ModelSwap {
             }
             return model;
         });
+
+        var models=event.getModels();
+        var vdKey=new ResourceLocation("vanilladelight","item/cooking_pot_default");
+        var vdItemModel=models.get(vdKey);
+        var fdKey=new ModelResourceLocation(new ResourceLocation("farmersdelight","cooking_pot"),"inventory");
+        if(vdItemModel !=null) {
+            models.put(fdKey,vdItemModel);
+        }
     }
 }

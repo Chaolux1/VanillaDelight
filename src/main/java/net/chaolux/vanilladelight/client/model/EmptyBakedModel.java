@@ -9,7 +9,10 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.TextureAtlasHolder;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.ChunkRenderTypeSet;
 import net.minecraftforge.client.model.data.ModelData;
@@ -22,6 +25,7 @@ import java.util.List;
 
 public enum EmptyBakedModel implements BakedModel {
     INSTANCE;
+    private static final ResourceLocation PARTICLE=new ResourceLocation("farmersdelight","block/cooking_pot_side");
 
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction direction, @NotNull RandomSource randomSource) {
@@ -50,7 +54,12 @@ public enum EmptyBakedModel implements BakedModel {
 
     @Override
     public @NotNull TextureAtlasSprite getParticleIcon() {
-        return Minecraft.getInstance().getModelManager().getMissingModel().getParticleIcon();
+        return Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(PARTICLE);
+    }
+
+    @Override
+    public TextureAtlasSprite getParticleIcon(@NotNull ModelData data) {
+        return getParticleIcon();
     }
 
     @Override
