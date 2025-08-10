@@ -44,5 +44,19 @@
 
   "block.vanilladelight.melon_pie": "Melon Pie",
   "block.vanilladelight.chorus_pie": "Chorus Pie",
-  "block.vanilladelight.milky_pumpkin_block": "Milky Pumpkin"
+  "block.vanilladelight.milky_pumpkin_block": "Milky Pumpkin",
+
+  "block.vanilladelight.deepslate_bricks_stove": "Deepslate Bricks Stove",
+  "block.vanilladelight.end_stone_bricks_stove": "End Stone Bricks Stove",
+  "block.vanilladelight.mud_bricks_stove": "Mud Bricks Stove",
+  "block.vanilladelight.nether_bricks_stove": "Nether Bricks Stove",
+  "block.vanilladelight.stone_bricks_stove": "Stone Bricks Stove",
+  "block.vanilladelight.polished_andesite_stove": "Polished Andesite Stove",
+  "block.vanilladelight.polished_basalt_stove": "Polished Basalt Stove",
+  "block.vanilladelight.polished_deepslate_stove": "Polished Deepslate Stove",
+  "block.vanilladelight.polished_diorite_stove": "Polished Diorite Stove",
+  "block.vanilladelight.polished_granite_stove": "Polished Granite Stove",
+  "block.vanilladelight.purpur_stove": "Purpur Stove",
+  "block.vanilladelight.red_sandstone_stove": "Red Sandstone Stove",
+  "block.vanilladelight.sandstone_stove": "Sandstone Stove"
 }

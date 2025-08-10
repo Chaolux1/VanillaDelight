@@ -63,6 +63,21 @@ public class ModItems {
     public static final RegistryObject<Item> ENCHANTED_GOLDEN_APPLE_SLICE;
     public static final RegistryObject<Item> ENCHANTED_GOLDEN_CARROT;
 
+    public static final RegistryObject<Item> DEEPSLATE_BRICKS_STOVE;
+    public static final RegistryObject<Item> END_STONE_BRICKS_STOVE;
+    public static final RegistryObject<Item> MUD_BRICKS_STOVE;
+    public static final RegistryObject<Item> NETHER_BRICKS_STOVE;
+    public static final RegistryObject<Item> STONE_BRICKS_STOVE;
+    public static final RegistryObject<Item> POLISHED_ANDESITE_STOVE;
+    public static final RegistryObject<Item> POLISHED_BASALT_STOVE;
+    public static final RegistryObject<Item> POLISHED_DEEPSLATE_STOVE;
+    public static final RegistryObject<Item> POLISHED_DIORITE_STOVE;
+    public static final RegistryObject<Item> POLISHED_GRANITE_STOVE;
+    public static final RegistryObject<Item> PURPUR_BLOCK_STOVE;
+    public static final RegistryObject<Item> RED_SANDSTONE_STOVE;
+    public static final RegistryObject<Item> SANDSTONE_STOVE;
+
+
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -141,5 +156,18 @@ public class ModItems {
         CHORUS_PIE = registerWithTab("chorus_pie", () -> new BlockItem((Block)ModBlocks.CHORUS_PIE.get(), basicItem()));
         MILKY_PUMPKIN_BLOCK = registerWithTab("milky_pumpkin_block", () -> new BlockItem((Block) ModBlocks.MILKY_PUMPKIN_BLOCK.get(), basicItem().stacksTo(1)));
 
+        DEEPSLATE_BRICKS_STOVE = registerWithTab("deepslate_bricks_stove", () -> new BlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_STOVE.get(), basicItem()));
+        END_STONE_BRICKS_STOVE = registerWithTab("end_stone_bricks_stove", () -> new BlockItem((Block) ModBlocks.END_STONE_BRICKS_STOVE.get(), basicItem()));
+        MUD_BRICKS_STOVE = registerWithTab("mud_bricks_stove", () -> new BlockItem((Block) ModBlocks.MUD_BRICKS_STOVE.get(), basicItem()));
+        NETHER_BRICKS_STOVE = registerWithTab("nether_bricks_stove", () -> new BlockItem((Block) ModBlocks.NETHER_BRICKS_STOVE.get(), basicItem()));
+        STONE_BRICKS_STOVE = registerWithTab("stone_bricks_stove", () -> new BlockItem((Block) ModBlocks.STONE_BRICKS_STOVE.get(), basicItem()));
+        POLISHED_ANDESITE_STOVE = registerWithTab("polished_andesite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_ANDESITE_STOVE.get(), basicItem()));
+        POLISHED_BASALT_STOVE = registerWithTab("polished_basalt_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_BASALT_STOVE.get(), basicItem()));
+        POLISHED_DEEPSLATE_STOVE = registerWithTab("polished_deepslate_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_DEEPSLATE_STOVE.get(), basicItem()));
+        POLISHED_DIORITE_STOVE = registerWithTab("polished_diorite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_DIORITE_STOVE.get(), basicItem()));
+        POLISHED_GRANITE_STOVE = registerWithTab("polished_granite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_GRANITE_STOVE.get(), basicItem()));
+        PURPUR_BLOCK_STOVE = registerWithTab("purpur_stove", () -> new BlockItem((Block) ModBlocks.PURPUR_BLOCK_STOVE.get(), basicItem()));
+        RED_SANDSTONE_STOVE = registerWithTab("red_sandstone_stove", () -> new BlockItem((Block) ModBlocks.RED_SANDSTONE_STOVE.get(), basicItem()));
+        SANDSTONE_STOVE = registerWithTab("sandstone_stove", () -> new BlockItem((Block) ModBlocks.SANDSTONE_STOVE.get(), basicItem()));
     }
 }

@@ -96,6 +96,22 @@ public class VanillaDelight
             event.accept(ModItems.CHORUS_PIE);
             event.accept(ModItems.MILKY_PUMPKIN_BLOCK);
         }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModItems.DEEPSLATE_BRICKS_STOVE);
+            event.accept(ModItems.END_STONE_BRICKS_STOVE);
+            event.accept(ModItems.MUD_BRICKS_STOVE);
+            event.accept(ModItems.NETHER_BRICKS_STOVE);
+            event.accept(ModItems.STONE_BRICKS_STOVE);
+            event.accept(ModItems.POLISHED_ANDESITE_STOVE);
+            event.accept(ModItems.POLISHED_BASALT_STOVE);
+            event.accept(ModItems.POLISHED_DEEPSLATE_STOVE);
+            event.accept(ModItems.POLISHED_DIORITE_STOVE);
+            event.accept(ModItems.POLISHED_GRANITE_STOVE);
+            event.accept(ModItems.PURPUR_BLOCK_STOVE);
+            event.accept(ModItems.RED_SANDSTONE_STOVE);
+            event.accept(ModItems.SANDSTONE_STOVE);
+        }
     }
 
     @SubscribeEvent
