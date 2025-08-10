@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
+import vectorwing.farmersdelight.common.item.CookingPotItem;
 
 import java.util.function.Supplier;
 

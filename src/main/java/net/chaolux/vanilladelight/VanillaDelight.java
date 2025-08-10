@@ -1,9 +1,14 @@
 package net.chaolux.vanilladelight;
 
 import com.mojang.logging.LogUtils;
+import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import net.chaolux.vanilladelight.registry.item.ModItems;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -17,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes;
 
 @Mod(VanillaDelight.MOD_ID)
 public class VanillaDelight
@@ -90,7 +96,6 @@ public class VanillaDelight
             event.accept(ModItems.CHORUS_PIE);
             event.accept(ModItems.MILKY_PUMPKIN_BLOCK);
         }
-
     }
 
     @SubscribeEvent
@@ -105,7 +110,9 @@ public class VanillaDelight
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            event.enqueueWork(() -> {
+                BlockEntityRenderers.register(vectorwing.farmersdelight.common.registry.ModBlockEntityTypes.COOKING_POT.get(), CookingPotRenderer::new);
+            });
         }
     }
 }
