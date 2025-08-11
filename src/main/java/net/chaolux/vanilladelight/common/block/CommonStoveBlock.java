@@ -20,6 +20,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ToolActions;
 import vectorwing.farmersdelight.common.block.StoveBlock;
+import vectorwing.farmersdelight.common.block.entity.StoveBlockEntity;
+import vectorwing.farmersdelight.common.utility.ItemUtils;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import java.util.Optional;
@@ -99,5 +101,18 @@ public class CommonStoveBlock extends StoveBlock {
         }
 
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity tileEntity = level.getBlockEntity(pos);
+            if (tileEntity instanceof CommonStoveBlockEntity stoveBlockEntity) {
+                ItemUtils.dropItems(level, pos, stoveBlockEntity.getInventory());
+            }
+
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
+
     }
 }
