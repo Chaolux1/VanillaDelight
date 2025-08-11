@@ -1,5 +1,6 @@
 package net.chaolux.vanilladelight.registry.item;
 
+import net.chaolux.vanilladelight.common.item.EnchantedConsumableItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -142,13 +143,13 @@ public class ModItems {
 
         CHARRED_PUMPKIN_SLICE = registerWithTab("charred_pumpkin_slice", () -> new Item(foodItem(FoodValues.CHARRED_PUMPKIN_SLICE)));
         COOKED_BROWN_MUSHROOM = registerWithTab("cooked_brown_mushroom", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM)));
-        COOKED_RED_MUSHROOM = registerWithTab("cooked_red_mushroom", () -> new Item(foodItem(FoodValues.COOKED_RED_MUSHROOM)));
+        COOKED_RED_MUSHROOM = registerWithTab("cooked_red_mushroom", () -> new ConsumableItem(foodItem(FoodValues.COOKED_RED_MUSHROOM),true));
         COOKED_BROWN_MUSHROOM_COLONY = registerWithTab("cooked_brown_mushroom_colony", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM_COLONY)));
-        COOKED_RED_MUSHROOM_COLONY = registerWithTab("cooked_red_mushroom_colony", () -> new Item(foodItem(FoodValues.COOKED_RED_MUSHROOM_COLONY)));
+        COOKED_RED_MUSHROOM_COLONY = registerWithTab("cooked_red_mushroom_colony", () -> new ConsumableItem(foodItem(FoodValues.COOKED_RED_MUSHROOM_COLONY),true));
         COOKED_TROPICAL_FISH = registerWithTab("cooked_tropical_fish", () -> new Item(foodItem(FoodValues.COOKED_TROPICAL_FISH)));
         ROASTED_BEETS = registerWithTab("roasted_beets", () -> new Item(foodItem(FoodValues.ROASTED_BEETS)));
-        ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new Item(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
-        ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new Item(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
+        ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
+        ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
 
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));

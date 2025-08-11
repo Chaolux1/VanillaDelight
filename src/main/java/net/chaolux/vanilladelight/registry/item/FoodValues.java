@@ -35,14 +35,14 @@ public class FoodValues {
     public static final FoodProperties PUMPKIN_PIE_SLICE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1, false, false), 1.0F).build();
     public static final FoodProperties MILKY_PUMPKIN = (new FoodProperties.Builder()).nutrition(8).saturationMod(1.4F).effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 1, false, false), 1.0F).build();
     public static final FoodProperties PUFFERFISH_STEW = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.1F).build();
-    public static final FoodProperties SWEET_FISH_SOUP = (new FoodProperties.Builder()).nutrition(14).saturationMod(0.9F).build();
+    public static final FoodProperties SWEET_FISH_SOUP = (new FoodProperties.Builder()).nutrition(14).saturationMod(0.9F).effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 1200, 0, false, false), 1.0F).build();
     public static final FoodProperties CHARRED_PUMPKIN_SLICE = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.5F).build();
     public static final FoodProperties COOKED_BROWN_MUSHROOM = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_RED_MUSHROOM = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
+    public static final FoodProperties COOKED_RED_MUSHROOM = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).effect(() -> new MobEffectInstance(MobEffects.POISON, 60, 0, false, false), 1.0F).build();
     public static final FoodProperties COOKED_BROWN_MUSHROOM_COLONY = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.4F).build();
-    public static final FoodProperties COOKED_RED_MUSHROOM_COLONY = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.4F).build();
+    public static final FoodProperties COOKED_RED_MUSHROOM_COLONY = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.4F).effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0, false, false), 1.0F).build();
     public static final FoodProperties COOKED_TROPICAL_FISH = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.9F).build();
     public static final FoodProperties ROASTED_BEETS = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.7F).build();
-    public static final FoodProperties ENCHANTED_GOLDEN_APPLE_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).fast().build();
-    public static final FoodProperties ENCHANTED_GOLDEN_CARROT = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).build();
+    public static final FoodProperties ENCHANTED_GOLDEN_APPLE_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 3, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3000, 0, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3000, 0, false, false), 1.0F).build();
+    public static final FoodProperties ENCHANTED_GOLDEN_CARROT = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 1200, 0, false, false), 1.0F).build();
 }
