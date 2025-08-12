@@ -58,5 +58,14 @@
   "block.vanilladelight.polished_granite_stove": "Polished Granite Stove",
   "block.vanilladelight.purpur_stove": "Purpur Stove",
   "block.vanilladelight.red_sandstone_stove": "Red Sandstone Stove",
-  "block.vanilladelight.sandstone_stove": "Sandstone Stove"
+  "block.vanilladelight.sandstone_stove": "Sandstone Stove",
+
+  "vanilladelight.tooltip.or": "or",
+  "vanilladelight.tooltip.caramel_bottle": "Pulls Nearby Items",
+  "vanilladelight.tooltip.cooked_red_mushroom": "Removes Wither",
+  "vanilladelight.tooltip.cooked_red_mushroom_colony": "Removes Wither",
+  "vanilladelight.tooltip.glow_berries_jam": "Highlights All Nearby Mobs",
+  "vanilladelight.tooltip.sweet_berries_jam": "Highlights All Monster",
+  "vanilladelight.tooltip.golden_apple_cider": "Heal and Absorption",
+  "vanilladelight.tooltip.sweet_berry_custard": "Damage and Knocks Back Nearby"
 }
