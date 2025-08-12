@@ -14,9 +14,9 @@ public class FoodValues {
     public static final FoodProperties GLOW_TROPICAL_FISH_STEW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.7F).meat().build();
     public static final FoodProperties GRILLED_BEETROOT = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.4F).build();
     public static final FoodProperties CARAMEL_BOTTLE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.2F).build();
-    public static final FoodProperties GLOW_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).build();
+    public static final FoodProperties GLOW_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0, false, false), 1.0F).build();
     public static final FoodProperties GOLDEN_APPLE_CIDER = (new FoodProperties.Builder()).nutrition(5).saturationMod(1.2F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1400, 1, false, false), 1.0F).build();
-    public static final FoodProperties SWEET_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).build();
+    public static final FoodProperties SWEET_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, false), 1.0F).build();
     public static final FoodProperties SWEET_BERRY_CUSTARD = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.7F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 0, false, false), 1.0F).build();
     public static final FoodProperties APPLE_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).fast().build();
     public static final FoodProperties BUTTER = (new FoodProperties.Builder()).nutrition(2).saturationMod(1.0F).fast().build();
