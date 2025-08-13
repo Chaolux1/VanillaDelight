@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "farmersdelight:cooking_pot"
+  },
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "vanilladelight:sweet_berries_jam"
+    },
+    {
+      "tag": "c:foods/raw_fishes"
+    },
+    {
+      "tag": "c:foods/raw_fishes"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "vanilladelight:sweet_fish_soup"
+  }
+}

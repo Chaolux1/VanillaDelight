@@ -1,7 +1,11 @@
 package net.chaolux.vanilladelight;
 
+import net.chaolux.vanilladelight.client.renderer.CommonStoveRenderer;
+import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
+import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import net.chaolux.vanilladelight.registry.item.ModItems;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -47,6 +51,7 @@ public class VanillaDelight
         modEventBus.addListener(this::commonSetup);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModBlockEntityTypes.TILES.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -67,6 +72,8 @@ public class VanillaDelight
             event.accept(ModItems.CARROT_SALAD.get());
             event.accept(ModItems.COD_STEW.get());
             event.accept(ModItems.GLOW_TROPICAL_FISH_STEW.get());
+            event.accept(ModItems.PUFFERFISH_STEW.get());
+            event.accept(ModItems.SWEET_FISH_SOUP.get());
             event.accept(ModItems.GRILLED_BEETROOT.get());
             event.accept(ModItems.CARAMEL_BOTTLE.get());
             event.accept(ModItems.GLOW_BERRIES_JAM.get());
@@ -82,11 +89,20 @@ public class VanillaDelight
             event.accept(ModItems.GOLDEN_APPLE_SLICE.get());
             event.accept(ModItems.HONEY_CANDY.get());
             event.accept(ModItems.HONEY_PUDDING.get());
+            event.accept(ModItems.PUFFERFISH_SLICE.get());
+            event.accept(ModItems.CHARRED_PUMPKIN_SLICE.get());
+            event.accept(ModItems.COOKED_BROWN_MUSHROOM.get());
+            event.accept(ModItems.COOKED_RED_MUSHROOM.get());
+            event.accept(ModItems.COOKED_BROWN_MUSHROOM_COLONY.get());
+            event.accept(ModItems.COOKED_RED_MUSHROOM_COLONY.get());
+            event.accept(ModItems.COOKED_TROPICAL_FISH.get());
+            event.accept(ModItems.ROASTED_BEETS.get());
+            event.accept(ModItems.ENCHANTED_GOLDEN_APPLE_SLICE.get());
+            event.accept(ModItems.ENCHANTED_GOLDEN_CARROT.get());
             event.accept(ModItems.CHORUS_PIE_SLICE.get());
             event.accept(ModItems.MELON_PIE_SLICE.get());
             event.accept(ModItems.CARROT_CAKE_SLICE.get());
             event.accept(ModItems.HONEY_CAKE_SLICE.get());
-            event.accept(ModItems.PUFFERFISH_SLICE.get());
             event.accept(ModItems.PUMPKIN_PIE_SLICE.get());
             event.accept(ModItems.MILKY_PUMPKIN.get());
             event.accept(ModItems.CARROT_CAKE.get());
@@ -94,6 +110,22 @@ public class VanillaDelight
             event.accept(ModItems.MELON_PIE.get());
             event.accept(ModItems.CHORUS_PIE.get());
             event.accept(ModItems.MILKY_PUMPKIN_BLOCK.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModItems.DEEPSLATE_BRICKS_STOVE.get());
+            event.accept(ModItems.END_STONE_BRICKS_STOVE.get());
+            event.accept(ModItems.MUD_BRICKS_STOVE.get());
+            event.accept(ModItems.NETHER_BRICKS_STOVE.get());
+            event.accept(ModItems.STONE_BRICKS_STOVE.get());
+            event.accept(ModItems.POLISHED_ANDESITE_STOVE.get());
+            event.accept(ModItems.POLISHED_BASALT_STOVE.get());
+            event.accept(ModItems.POLISHED_DEEPSLATE_STOVE.get());
+            event.accept(ModItems.POLISHED_DIORITE_STOVE.get());
+            event.accept(ModItems.POLISHED_GRANITE_STOVE.get());
+            event.accept(ModItems.PURPUR_BLOCK_STOVE.get());
+            event.accept(ModItems.RED_SANDSTONE_STOVE.get());
+            event.accept(ModItems.SANDSTONE_STOVE.get());
         }
     }
 
@@ -109,7 +141,10 @@ public class VanillaDelight
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            event.enqueueWork(() -> {
+                BlockEntityRenderers.register(vectorwing.farmersdelight.common.registry.ModBlockEntityTypes.COOKING_POT.get(), CookingPotRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveRenderer::new);
+            });
         }
     }
 }

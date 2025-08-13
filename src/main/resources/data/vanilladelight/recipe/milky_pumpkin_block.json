@@ -7,10 +7,10 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "vanilladelight:butter"
+      "tag": "c:foods/butter"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "c:foods/milk"
     },
     {
       "item": "minecraft:sugar"

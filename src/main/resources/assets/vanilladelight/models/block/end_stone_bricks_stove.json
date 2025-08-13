@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "vanilladelight:block/end_stone_bricks/stove_bottom",
+    "front": "vanilladelight:block/end_stone_bricks/stove_front",
+    "side": "vanilladelight:block/end_stone_bricks/stove_side",
+    "top": "farmersdelight:block/stove_top"
+  }
+}

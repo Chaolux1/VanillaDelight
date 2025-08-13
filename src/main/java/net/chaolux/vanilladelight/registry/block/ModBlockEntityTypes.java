@@ -1,0 +1,19 @@
+package net.chaolux.vanilladelight.registry.block;
+
+import net.chaolux.vanilladelight.common.block.entity.CommonStoveBlockEntity;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+
+public class ModBlockEntityTypes {
+    public static final DeferredRegister<BlockEntityType<?>> TILES;
+    public static final Supplier<BlockEntityType<CommonStoveBlockEntity>> COMMON_STOVE;
+
+    static {
+        TILES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, "vanilladelight");
+        COMMON_STOVE = TILES.register("common_stove", () -> BlockEntityType.Builder.of(net.chaolux.vanilladelight.common.block.entity.CommonStoveBlockEntity::new, ModBlocks.DEEPSLATE_BRICKS_STOVE.get(), ModBlocks.END_STONE_BRICKS_STOVE.get(), ModBlocks.MUD_BRICKS_STOVE.get(), ModBlocks.NETHER_BRICKS_STOVE.get(), ModBlocks.STONE_BRICKS_STOVE.get(),ModBlocks.POLISHED_ANDESITE_STOVE.get(),ModBlocks.POLISHED_BASALT_STOVE.get(),ModBlocks.POLISHED_DEEPSLATE_STOVE.get(),ModBlocks.POLISHED_DIORITE_STOVE.get(),ModBlocks.POLISHED_GRANITE_STOVE.get(),ModBlocks.PURPUR_BLOCK_STOVE.get(),ModBlocks.RED_SANDSTONE_STOVE.get(),ModBlocks.SANDSTONE_STOVE.get()).build(null));
+    }
+}

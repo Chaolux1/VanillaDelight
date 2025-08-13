@@ -1,5 +1,6 @@
 package net.chaolux.vanilladelight.registry.item;
 
+import net.chaolux.vanilladelight.common.item.*;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -49,6 +50,31 @@ public class ModItems {
     public static final Supplier<Item> HONEY_CAKE_SLICE;
     public static final Supplier<Item> MILKY_PUMPKIN_BLOCK;
 
+    public static final Supplier<Item> CHARRED_PUMPKIN_SLICE;
+    public static final Supplier<Item> COOKED_BROWN_MUSHROOM;
+    public static final Supplier<Item> COOKED_RED_MUSHROOM;
+    public static final Supplier<Item> COOKED_BROWN_MUSHROOM_COLONY;
+    public static final Supplier<Item> COOKED_RED_MUSHROOM_COLONY;
+    public static final Supplier<Item> COOKED_TROPICAL_FISH;
+    public static final Supplier<Item> PUFFERFISH_STEW;
+    public static final Supplier<Item> ROASTED_BEETS;
+    public static final Supplier<Item> SWEET_FISH_SOUP;
+    public static final Supplier<Item> ENCHANTED_GOLDEN_APPLE_SLICE;
+    public static final Supplier<Item> ENCHANTED_GOLDEN_CARROT;
+    public static final Supplier<Item> DEEPSLATE_BRICKS_STOVE;
+    public static final Supplier<Item> END_STONE_BRICKS_STOVE;
+    public static final Supplier<Item> MUD_BRICKS_STOVE;
+    public static final Supplier<Item> NETHER_BRICKS_STOVE;
+    public static final Supplier<Item> STONE_BRICKS_STOVE;
+    public static final Supplier<Item> POLISHED_ANDESITE_STOVE;
+    public static final Supplier<Item> POLISHED_BASALT_STOVE;
+    public static final Supplier<Item> POLISHED_DEEPSLATE_STOVE;
+    public static final Supplier<Item> POLISHED_DIORITE_STOVE;
+    public static final Supplier<Item> POLISHED_GRANITE_STOVE;
+    public static final Supplier<Item> PURPUR_BLOCK_STOVE;
+    public static final Supplier<Item> RED_SANDSTONE_STOVE;
+    public static final Supplier<Item> SANDSTONE_STOVE;
+
     public static Supplier<Item> registerWithTab(String name, Supplier<Item> supplier) {
         Supplier<Item> block = ITEMS.register(name, supplier);
         return block;
@@ -66,6 +92,10 @@ public class ModItems {
         return (new Item.Properties()).food(food).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
     }
 
+    public static Item.Properties potItem(FoodProperties food) {
+        return (new Item.Properties()).food(food).craftRemainder(vectorwing.farmersdelight.common.registry.ModItems.COOKING_POT.get()).stacksTo(1);
+    }
+
     public static Item.Properties foodItem(FoodProperties food) {
         return (new Item.Properties()).food(food);
     }
@@ -81,12 +111,14 @@ public class ModItems {
         GLOW_TROPICAL_FISH_STEW = registerWithTab("glow_tropical_fish_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.GLOW_TROPICAL_FISH_STEW)));
         GRILLED_BEETROOT = registerWithTab("grilled_beetroot", () -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_BEETROOT)));
         MILKY_PUMPKIN = registerWithTab("milky_pumpkin", () -> new ConsumableItem(bowlFoodItem(FoodValues.MILKY_PUMPKIN), true));
+        PUFFERFISH_STEW = registerWithTab("pufferfish_stew", () -> new PufferfishStewItem(bowlFoodItem(FoodValues.PUFFERFISH_STEW).stacksTo(16)));
+        SWEET_FISH_SOUP = registerWithTab("sweet_fish_soup", () -> new ConsumableItem(potItem(FoodValues.SWEET_FISH_SOUP).stacksTo(1), true));
 
-        CARAMEL_BOTTLE = registerWithTab("caramel_bottle", () -> new ConsumableItem(drinkItem(FoodValues.CARAMEL_BOTTLE)));
-        GLOW_BERRIES_JAM = registerWithTab("glow_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.GLOW_BERRIES_JAM)));
-        GOLDEN_APPLE_CIDER = registerWithTab("golden_apple_cider", () -> new ConsumableItem(drinkItem(FoodValues.GOLDEN_APPLE_CIDER), true));
-        SWEET_BERRIES_JAM = registerWithTab("sweet_berries_jam", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRIES_JAM)));
-        SWEET_BERRY_CUSTARD = registerWithTab("sweet_berry_custard", () -> new ConsumableItem(drinkItem(FoodValues.SWEET_BERRY_CUSTARD), true));
+        CARAMEL_BOTTLE = registerWithTab("caramel_bottle", () -> new CaramelBottleItem(drinkItem(FoodValues.CARAMEL_BOTTLE)));
+        GLOW_BERRIES_JAM = registerWithTab("glow_berries_jam", () -> new GlowBerriesJamItem(drinkItem(FoodValues.GLOW_BERRIES_JAM)));
+        GOLDEN_APPLE_CIDER = registerWithTab("golden_apple_cider", () -> new GoldenAppleCiderItem(drinkItem(FoodValues.GOLDEN_APPLE_CIDER)));
+        SWEET_BERRIES_JAM = registerWithTab("sweet_berries_jam", () -> new SweetBerriesJamItem(drinkItem(FoodValues.SWEET_BERRIES_JAM)));
+        SWEET_BERRY_CUSTARD = registerWithTab("sweet_berry_custard", () -> new SweetBerryCustard(drinkItem(FoodValues.SWEET_BERRY_CUSTARD)));
 
         APPLE_SLICE = registerWithTab("apple_slice", () -> new Item(foodItem(FoodValues.APPLE_SLICE)));
         BUTTER = registerWithTab("butter", () -> new Item(foodItem(FoodValues.BUTTER)));
@@ -104,11 +136,34 @@ public class ModItems {
         PUFFERFISH_SLICE = registerWithTab("pufferfish_slice", () -> new Item(foodItem(FoodValues.PUFFERFISH_SLICE)));
         PUMPKIN_PIE_SLICE = registerWithTab("pumpkin_pie_slice", () -> new Item(foodItem(FoodValues.PUMPKIN_PIE_SLICE)));
 
+        CHARRED_PUMPKIN_SLICE = registerWithTab("charred_pumpkin_slice", () -> new Item(foodItem(FoodValues.CHARRED_PUMPKIN_SLICE)));
+        COOKED_BROWN_MUSHROOM = registerWithTab("cooked_brown_mushroom", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM)));
+        COOKED_RED_MUSHROOM = registerWithTab("cooked_red_mushroom", () -> new CookedRedMushroomItem(foodItem(FoodValues.COOKED_RED_MUSHROOM)));
+        COOKED_BROWN_MUSHROOM_COLONY = registerWithTab("cooked_brown_mushroom_colony", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM_COLONY)));
+        COOKED_RED_MUSHROOM_COLONY = registerWithTab("cooked_red_mushroom_colony", () -> new CookedRedMushroomItem(foodItem(FoodValues.COOKED_RED_MUSHROOM_COLONY)));
+        COOKED_TROPICAL_FISH = registerWithTab("cooked_tropical_fish", () -> new Item(foodItem(FoodValues.COOKED_TROPICAL_FISH)));
+        ROASTED_BEETS = registerWithTab("roasted_beets", () -> new Item(foodItem(FoodValues.ROASTED_BEETS)));
+        ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
+        ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
+
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));
         MELON_PIE = registerWithTab("melon_pie", () -> new BlockItem((Block)ModBlocks.MELON_PIE.get(), basicItem()));
         CHORUS_PIE = registerWithTab("chorus_pie", () -> new BlockItem((Block)ModBlocks.CHORUS_PIE.get(), basicItem()));
         MILKY_PUMPKIN_BLOCK = registerWithTab("milky_pumpkin_block", () -> new BlockItem((Block) ModBlocks.MILKY_PUMPKIN_BLOCK.get(), basicItem().stacksTo(1)));
 
+        DEEPSLATE_BRICKS_STOVE = registerWithTab("deepslate_bricks_stove", () -> new BlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_STOVE.get(), basicItem()));
+        END_STONE_BRICKS_STOVE = registerWithTab("end_stone_bricks_stove", () -> new BlockItem((Block) ModBlocks.END_STONE_BRICKS_STOVE.get(), basicItem()));
+        MUD_BRICKS_STOVE = registerWithTab("mud_bricks_stove", () -> new BlockItem((Block) ModBlocks.MUD_BRICKS_STOVE.get(), basicItem()));
+        NETHER_BRICKS_STOVE = registerWithTab("nether_bricks_stove", () -> new BlockItem((Block) ModBlocks.NETHER_BRICKS_STOVE.get(), basicItem()));
+        STONE_BRICKS_STOVE = registerWithTab("stone_bricks_stove", () -> new BlockItem((Block) ModBlocks.STONE_BRICKS_STOVE.get(), basicItem()));
+        POLISHED_ANDESITE_STOVE = registerWithTab("polished_andesite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_ANDESITE_STOVE.get(), basicItem()));
+        POLISHED_BASALT_STOVE = registerWithTab("polished_basalt_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_BASALT_STOVE.get(), basicItem()));
+        POLISHED_DEEPSLATE_STOVE = registerWithTab("polished_deepslate_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_DEEPSLATE_STOVE.get(), basicItem()));
+        POLISHED_DIORITE_STOVE = registerWithTab("polished_diorite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_DIORITE_STOVE.get(), basicItem()));
+        POLISHED_GRANITE_STOVE = registerWithTab("polished_granite_stove", () -> new BlockItem((Block) ModBlocks.POLISHED_GRANITE_STOVE.get(), basicItem()));
+        PURPUR_BLOCK_STOVE = registerWithTab("purpur_stove", () -> new BlockItem((Block) ModBlocks.PURPUR_BLOCK_STOVE.get(), basicItem()));
+        RED_SANDSTONE_STOVE = registerWithTab("red_sandstone_stove", () -> new BlockItem((Block) ModBlocks.RED_SANDSTONE_STOVE.get(), basicItem()));
+        SANDSTONE_STOVE = registerWithTab("sandstone_stove", () -> new BlockItem((Block) ModBlocks.SANDSTONE_STOVE.get(), basicItem()));
     }
 }

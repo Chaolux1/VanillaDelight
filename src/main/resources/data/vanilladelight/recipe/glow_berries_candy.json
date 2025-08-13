@@ -10,7 +10,7 @@
       "item": "minecraft:glow_berries"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "c:foods/milk"
     }
   ],
   "recipe_book_tab": "meals",

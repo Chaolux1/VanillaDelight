@@ -7,13 +7,13 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "minecraft:apple"
+      "tag": "c:foods/apple"
     },
     {
-      "item": "minecraft:golden_apple"
+      "tag": "c:foods/golden_apple"
     },
     {
-      "item": "minecraft:enchanted_golden_apple"
+      "tag": "c:foods/enchanted_golden_apple"
     }
   ],
   "recipe_book_tab": "meals",

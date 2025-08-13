@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "minecraft:red_mushroom"
+  },
+  "result": {
+    "count": 1,
+    "id": "vanilladelight:cooked_red_mushroom"
+  }
+}

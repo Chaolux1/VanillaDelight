@@ -10,10 +10,10 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:egg"
+      "tag": "c:eggs"
     },
     {
-      "item": "minecraft:milk_bucket"
+      "tag": "c:foods/milk"
     }
   ],
   "recipe_book_tab": "meals",

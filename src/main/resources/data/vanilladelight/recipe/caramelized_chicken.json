@@ -10,7 +10,7 @@
       "item": "vanilladelight:caramel_bottle"
     },
     {
-      "item": "minecraft:cooked_chicken"
+      "tag": "c:foods/cooked_chicken"
     }
   ],
   "recipe_book_tab": "meals",

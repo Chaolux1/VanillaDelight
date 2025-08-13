@@ -14,9 +14,9 @@ public class FoodValues {
     public static final FoodProperties GLOW_TROPICAL_FISH_STEW = (new FoodProperties.Builder()).nutrition(8).saturationModifier(0.7F).build();
     public static final FoodProperties GRILLED_BEETROOT = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.4F).build();
     public static final FoodProperties CARAMEL_BOTTLE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.2F).build();
-    public static final FoodProperties GLOW_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.8F).build();
+    public static final FoodProperties GLOW_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.8F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0, false, false), 1.0F).build();
     public static final FoodProperties GOLDEN_APPLE_CIDER = (new FoodProperties.Builder()).nutrition(5).saturationModifier(1.2F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1400, 1, false, false), 1.0F).build();
-    public static final FoodProperties SWEET_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.8F).build();
+    public static final FoodProperties SWEET_BERRIES_JAM = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.8F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0, false, false), 1.0F).build();
     public static final FoodProperties SWEET_BERRY_CUSTARD = (new FoodProperties.Builder()).nutrition(5).saturationModifier(0.7F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 0, false, false), 1.0F).build();
     public static final FoodProperties APPLE_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).fast().build();
     public static final FoodProperties BUTTER = (new FoodProperties.Builder()).nutrition(2).saturationModifier(1.0F).fast().build();
@@ -34,4 +34,16 @@ public class FoodValues {
     public static final FoodProperties PUFFERFISH_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.7F).fast().effect(() -> new MobEffectInstance(MobEffects.POISON, 100, 1, false, false), 1.0F).build();
     public static final FoodProperties PUMPKIN_PIE_SLICE = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1, false, false), 1.0F).build();
     public static final FoodProperties MILKY_PUMPKIN = (new FoodProperties.Builder()).nutrition(8).saturationModifier(1.4F).effect(() -> new MobEffectInstance(ModEffects.COMFORT, 1200, 1, false, false), 1.0F).build();
+
+    public static final FoodProperties PUFFERFISH_STEW = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.1F).build();
+    public static final FoodProperties SWEET_FISH_SOUP = (new FoodProperties.Builder()).nutrition(14).saturationModifier(0.9F).effect(() -> new MobEffectInstance(ModEffects.COMFORT, 1200, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 1200, 0, false, false), 1.0F).build();
+    public static final FoodProperties CHARRED_PUMPKIN_SLICE = (new FoodProperties.Builder()).nutrition(5).saturationModifier(0.5F).build();
+    public static final FoodProperties COOKED_BROWN_MUSHROOM = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.6F).build();
+    public static final FoodProperties COOKED_RED_MUSHROOM = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.6F).effect(() -> new MobEffectInstance(MobEffects.POISON, 60, 0, false, false), 1.0F).build();
+    public static final FoodProperties COOKED_BROWN_MUSHROOM_COLONY = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.4F).build();
+    public static final FoodProperties COOKED_RED_MUSHROOM_COLONY = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.4F).effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0, false, false), 1.0F).build();
+    public static final FoodProperties COOKED_TROPICAL_FISH = (new FoodProperties.Builder()).nutrition(6).saturationModifier(0.9F).build();
+    public static final FoodProperties ROASTED_BEETS = (new FoodProperties.Builder()).nutrition(5).saturationModifier(0.7F).build();
+    public static final FoodProperties ENCHANTED_GOLDEN_APPLE_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 3, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3000, 0, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3000, 0, false, false), 1.0F).build();
+    public static final FoodProperties ENCHANTED_GOLDEN_CARROT = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.8F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1, false, false), 1.0F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 1200, 0, false, false), 1.0F).build();
 }

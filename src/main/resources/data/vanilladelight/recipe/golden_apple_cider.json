@@ -7,10 +7,10 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "minecraft:golden_apple"
+      "tag": "c:foods/golden_apple"
     },
     {
-      "item": "minecraft:golden_apple"
+      "tag": "c:foods/golden_apple"
     },
     {
       "item": "minecraft:sugar"
