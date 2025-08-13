@@ -25,20 +25,17 @@ public class ModelSwap {
     @SubscribeEvent
     public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
         event.getModels().replaceAll((id, model) -> {
-            if("farmersdelight".equals(id.id().getNamespace())) {
-                String path=id.id().getPath();
-                if((path.equals("cooking_pot") || path.startsWith("cooking_pot#")) && !path.endsWith("#inventory")) {
+            if("farmersdelight".equals(id.id().getNamespace()) && "cooking_pot".equals(id.id().getPath()) && !"inventory".equals(id.variant())) {
                     return EmptyBakedModel.INSTANCE;
                 }
-            }
             return model;
         });
 
         var models=event.getModels();
-        var vdKey= ResourceLocation.fromNamespaceAndPath("vanilladelight", "item/cooking_pot_default");
+        var vdKey= ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath("vanilladelight", "item/cooking_pot_default"));
         var vdItemModel=models.get(vdKey);
-        var fdKey=new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath("farmersdelight","cooking_pot"),"inventory");
         if(vdItemModel !=null) {
+            var fdKey=new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath("farmersdelight","cooking_pot"),"inventory");
             models.put(fdKey,vdItemModel);
         }
     }
