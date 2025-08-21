@@ -2,7 +2,9 @@ package net.chaolux.vanilladelight.registry.item;
 
 import net.chaolux.vanilladelight.common.item.*;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -93,7 +95,7 @@ public class ModItems {
     }
 
     public static Item.Properties potItem(FoodProperties food) {
-        return (new Item.Properties()).food(food).craftRemainder(vectorwing.farmersdelight.common.registry.ModItems.COOKING_POT.get()).stacksTo(1);
+        return (new Item.Properties()).food(food).craftRemainder(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("farmersdelight","cooking_pot"))).stacksTo(1);
     }
 
     public static Item.Properties foodItem(FoodProperties food) {
