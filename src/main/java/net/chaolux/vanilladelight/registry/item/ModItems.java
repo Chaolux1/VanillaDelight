@@ -114,11 +114,11 @@ public class ModItems {
         CARAMELIZED_CHICKEN = registerWithTab("caramelized_chicken", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARAMELIZED_CHICKEN).stacksTo(16), true));
         CARROT_SALAD = registerWithTab("carrot_salad", () -> new ConsumableItem(bowlFoodItem(FoodValues.CARROT_SALAD).stacksTo(16), true));
         COD_STEW = registerWithTab("cod_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.COD_STEW).stacksTo(16)));
-        GLOW_TROPICAL_FISH_STEW = registerWithTab("glow_tropical_fish_stew", () -> new ConsumableItem(bowlFoodItem(FoodValues.GLOW_TROPICAL_FISH_STEW).stacksTo(16)));
-        GRILLED_BEETROOT = registerWithTab("grilled_beetroot", () -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_BEETROOT).stacksTo(16)));
+        GLOW_TROPICAL_FISH_STEW = registerWithTab("glow_tropical_fish_stew", () -> new GlowTropicalFishStewItem(bowlFoodItem(FoodValues.GLOW_TROPICAL_FISH_STEW).stacksTo(16)));
+        GRILLED_BEETROOT = registerWithTab("grilled_beetroot", () -> new GrilledBeetrootItem(bowlFoodItem(FoodValues.GRILLED_BEETROOT).stacksTo(16)));
         MILKY_PUMPKIN = registerWithTab("milky_pumpkin", () -> new ConsumableItem(bowlFoodItem(FoodValues.MILKY_PUMPKIN).stacksTo(16), true));
         PUFFERFISH_STEW = registerWithTab("pufferfish_stew", () -> new PufferfishStewItem(bowlFoodItem(FoodValues.PUFFERFISH_STEW).stacksTo(16)));
-        SWEET_FISH_SOUP = registerWithTab("sweet_fish_soup", () -> new ConsumableItem(potItem(FoodValues.SWEET_FISH_SOUP).stacksTo(1), true));
+        SWEET_FISH_SOUP = registerWithTab("sweet_fish_soup", () -> new SweetFishSoupItem(potItem(FoodValues.SWEET_FISH_SOUP).stacksTo(1)));
 
         CARAMEL_BOTTLE = registerWithTab("caramel_bottle", () -> new CaramelBottleItem(drinkItem(FoodValues.CARAMEL_BOTTLE).stacksTo(16)));
         GLOW_BERRIES_JAM = registerWithTab("glow_berries_jam", () -> new GlowBerriesJamItem(drinkItem(FoodValues.GLOW_BERRIES_JAM).stacksTo(16)));
@@ -128,19 +128,19 @@ public class ModItems {
 
         APPLE_SLICE = registerWithTab("apple_slice", () -> new Item(foodItem(FoodValues.APPLE_SLICE)));
         BUTTER = registerWithTab("butter", () -> new Item(foodItem(FoodValues.BUTTER)));
-        CARAMEL_CANDY = registerWithTab("caramel_candy", () -> new Item(foodItem(FoodValues.CARAMEL_CANDY)));
+        CARAMEL_CANDY = registerWithTab("caramel_candy", () -> new ConsumableItem(foodItem(FoodValues.CARAMEL_CANDY),true));
         COOKED_APPLE = registerWithTab("cooked_apple", () -> new Item(foodItem(FoodValues.COOKED_APPLE)));
         COOKED_CARROT = registerWithTab("cooked_carrot", () -> new Item(foodItem(FoodValues.COOKED_CARROT)));
-        GLOW_BERRIES_CANDY = registerWithTab("glow_berries_candy", () -> new Item(foodItem(FoodValues.GLOW_BERRIES_CANDY)));
-        GOLDEN_APPLE_SLICE = registerWithTab("golden_apple_slice", () -> new Item(foodItem(FoodValues.GOLDEN_APPLE_SLICE)));
-        HONEY_CANDY = registerWithTab("honey_candy", () -> new Item(foodItem(FoodValues.HONEY_CANDY)));
-        HONEY_PUDDING = registerWithTab("honey_pudding", () -> new Item(foodItem(FoodValues.HONEY_PUDDING)));
-        CHORUS_PIE_SLICE = registerWithTab("chorus_pie_slice", () -> new Item(foodItem(FoodValues.CHORUS_PIE_SLICE)));
-        MELON_PIE_SLICE = registerWithTab("melon_pie_slice", () -> new Item(foodItem(FoodValues.MELON_PIE_SLICE)));
-        CARROT_CAKE_SLICE = registerWithTab("carrot_cake_slice", () -> new Item(foodItem(FoodValues.CARROT_CAKE_SLICE)));
-        HONEY_CAKE_SLICE = registerWithTab("honey_cake_slice", () -> new Item(foodItem(FoodValues.HONEY_CAKE_SLICE)));
-        PUFFERFISH_SLICE = registerWithTab("pufferfish_slice", () -> new Item(foodItem(FoodValues.PUFFERFISH_SLICE)));
-        PUMPKIN_PIE_SLICE = registerWithTab("pumpkin_pie_slice", () -> new Item(foodItem(FoodValues.PUMPKIN_PIE_SLICE)));
+        GLOW_BERRIES_CANDY = registerWithTab("glow_berries_candy", () -> new ConsumableItem(foodItem(FoodValues.GLOW_BERRIES_CANDY),true));
+        GOLDEN_APPLE_SLICE = registerWithTab("golden_apple_slice", () -> new ConsumableItem(foodItem(FoodValues.GOLDEN_APPLE_SLICE),true));
+        HONEY_CANDY = registerWithTab("honey_candy", () -> new ConsumableItem(foodItem(FoodValues.HONEY_CANDY),true));
+        HONEY_PUDDING = registerWithTab("honey_pudding", () -> new ConsumableItem(foodItem(FoodValues.HONEY_PUDDING),true));
+        CHORUS_PIE_SLICE = registerWithTab("chorus_pie_slice", () -> new ConsumableItem(foodItem(FoodValues.CHORUS_PIE_SLICE),true));
+        MELON_PIE_SLICE = registerWithTab("melon_pie_slice", () -> new ConsumableItem(foodItem(FoodValues.MELON_PIE_SLICE),true));
+        CARROT_CAKE_SLICE = registerWithTab("carrot_cake_slice", () -> new ConsumableItem(foodItem(FoodValues.CARROT_CAKE_SLICE),true));
+        HONEY_CAKE_SLICE = registerWithTab("honey_cake_slice", () -> new ConsumableItem(foodItem(FoodValues.HONEY_CAKE_SLICE),true));
+        PUFFERFISH_SLICE = registerWithTab("pufferfish_slice", () -> new ConsumableItem(foodItem(FoodValues.PUFFERFISH_SLICE),true));
+        PUMPKIN_PIE_SLICE = registerWithTab("pumpkin_pie_slice", () -> new ConsumableItem(foodItem(FoodValues.PUMPKIN_PIE_SLICE),true));
 
         CHARRED_PUMPKIN_SLICE = registerWithTab("charred_pumpkin_slice", () -> new Item(foodItem(FoodValues.CHARRED_PUMPKIN_SLICE)));
         COOKED_BROWN_MUSHROOM = registerWithTab("cooked_brown_mushroom", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM)));
