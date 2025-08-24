@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
+import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
 import net.chaolux.vanilladelight.registry.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
@@ -56,10 +57,10 @@ public class ModBlocks {
         DEEPSLATE_BRICKS_STOVE = BLOCKS.register("deepslate_bricks_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS).lightLevel(litBlockEmission(13))));
         END_STONE_BRICKS_STOVE = BLOCKS.register("end_stone_bricks_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS).lightLevel(litBlockEmission(13))));
         MUD_BRICKS_STOVE = BLOCKS.register("mud_bricks_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS).lightLevel(litBlockEmission(13))));
-        NETHER_BRICKS_STOVE = BLOCKS.register("nether_bricks_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS).lightLevel(litBlockEmission(13))));
+        NETHER_BRICKS_STOVE = BLOCKS.register("nether_bricks_stove", () -> new SoulCommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS).lightLevel(litBlockEmission(13))));
         STONE_BRICKS_STOVE = BLOCKS.register("stone_bricks_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).lightLevel(litBlockEmission(13))));
         POLISHED_ANDESITE_STOVE = BLOCKS.register("polished_andesite_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE).lightLevel(litBlockEmission(13))));
-        POLISHED_BASALT_STOVE = BLOCKS.register("polished_basalt_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_BASALT).lightLevel(litBlockEmission(13))));
+        POLISHED_BASALT_STOVE = BLOCKS.register("polished_basalt_stove", () -> new SoulCommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_BASALT).lightLevel(litBlockEmission(13))));
         POLISHED_DEEPSLATE_STOVE = BLOCKS.register("polished_deepslate_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_DEEPSLATE).lightLevel(litBlockEmission(13))));
         POLISHED_DIORITE_STOVE = BLOCKS.register("polished_diorite_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_DIORITE).lightLevel(litBlockEmission(13))));
         POLISHED_GRANITE_STOVE = BLOCKS.register("polished_granite_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_GRANITE).lightLevel(litBlockEmission(13))));

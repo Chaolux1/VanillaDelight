@@ -2,6 +2,7 @@ package net.chaolux.vanilladelight.common.item;
 
 import net.chaolux.vanilladelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -43,7 +44,7 @@ public class CookedRedMushroomItem extends ConsumableItem {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
         if ((Boolean) Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this, new Object[0]);
+                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + BuiltInRegistries.ITEM.getKey(this).getPath(), new Object[0]);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
 

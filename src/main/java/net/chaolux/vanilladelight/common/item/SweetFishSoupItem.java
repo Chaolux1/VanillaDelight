@@ -8,47 +8,45 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class CaramelBottleItem extends DrinkableItem {
+public class SweetFishSoupItem extends ConsumableItem {
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
-    public CaramelBottleItem(Properties properties) {
+    public SweetFishSoupItem(Properties properties) {
         super(properties);
-        this.hasFoodEffectTooltip = false;
+        this.hasFoodEffectTooltip = true;
         this.hasCustomTooltip = true;
     }
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
         if(level.isClientSide || !(consumer instanceof Player player)) return;
-        double radius=4.0;
-        AABB box=new AABB(player.getX()-radius,player.getY()-radius,player.getZ()-radius,player.getX()+radius,player.getY()+radius,player.getZ()+radius);
-        List<ItemEntity> items=level.getEntitiesOfClass(ItemEntity.class,box,event -> !event.hasPickUpDelay());
-        for(ItemEntity entity : items) {
-            ItemStack itemStack=entity.getItem();
-            if(itemStack.isEmpty()) continue;
-            if(player.getInventory().add(itemStack.copy())) {
-                entity.discard();
-            } else {
-                Vec3 direction=player.position().subtract(entity.position()).normalize().scale(0.5);
-                entity.setDeltaMovement(entity.getDeltaMovement().add(direction));
+        double radius=8.0;
+        List<Cat> cats=level.getEntitiesOfClass(Cat.class,consumer.getBoundingBox().inflate(radius), cat -> true);
+        for(Cat cat : cats) {
+            if(cat.isOrderedToSit()) {
+                cat.setInSittingPose(false);
+            }
+            cat.getLookControl().setLookAt(player,30.0f,30.0f);
+            PathNavigation navigation=cat.getNavigation();
+            if(navigation !=null) {
+                navigation.moveTo(player,2.0);
             }
         }
-        level.playSound(null,player.blockPosition(), SoundEvents.HONEY_BLOCK_STEP, SoundSource.PLAYERS,0.8f,1.2f);
+        level.playSound(null,player.blockPosition(), SoundEvents.CAT_PURR, SoundSource.PLAYERS,0.9f,1.0f);
     }
 
     @Override

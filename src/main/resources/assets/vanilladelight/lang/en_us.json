@@ -61,11 +61,13 @@
   "block.vanilladelight.sandstone_stove": "Sandstone Stove",
 
   "vanilladelight.tooltip.or": "or",
-  "vanilladelight.tooltip.vanilladelight:caramel_bottle": "Pulls Nearby Items",
-  "vanilladelight.tooltip.vanilladelight:cooked_red_mushroom": "Removes Wither",
-  "vanilladelight.tooltip.vanilladelight:cooked_red_mushroom_colony": "Removes Wither",
-  "vanilladelight.tooltip.vanilladelight:glow_berries_jam": "Highlights All Nearby Mobs",
-  "vanilladelight.tooltip.vanilladelight:sweet_berries_jam": "Highlights All Monster",
-  "vanilladelight.tooltip.vanilladelight:golden_apple_cider": "Heal and Absorption",
-  "vanilladelight.tooltip.vanilladelight:sweet_berry_custard": "Damage and Knocks Back Nearby"
+  "vanilladelight.tooltip.caramel_bottle": "Pulls Nearby Items",
+  "vanilladelight.tooltip.cooked_red_mushroom": "Removes Wither",
+  "vanilladelight.tooltip.cooked_red_mushroom_colony": "Removes Wither",
+  "vanilladelight.tooltip.glow_berries_jam": "Highlights All Nearby Mobs",
+  "vanilladelight.tooltip.sweet_berries_jam": "Highlights All Monster",
+  "vanilladelight.tooltip.golden_apple_cider": "Heal and Absorption",
+  "vanilladelight.tooltip.sweet_berry_custard": "Damage and Knocks Back Nearby",
+  "vanilladelight.tooltip.glow_tropical_fish_stew": "Restores Air Underwater",
+  "vanilladelight.tooltip.sweet_fish_soup": "Attracts Nearby Cats"
 }
