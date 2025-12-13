@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/polished_basalt_front_open",
+    "side": "vanilladelight:block/polished_basalt_side",
+    "top": "farmersdelight:block/polished_basalt"
+  }
+}

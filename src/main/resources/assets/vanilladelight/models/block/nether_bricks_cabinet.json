@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/nether_bricks_front",
+    "side": "vanilladelight:block/nether_bricks_side",
+    "top": "minecraft:block/nether_bricks"
+  }
+}

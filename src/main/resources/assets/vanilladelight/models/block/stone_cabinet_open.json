@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/stone_front_open",
+    "side": "vanilladelight:block/stone_side",
+    "top": "farmersdelight:block/stone_bricks"
+  }
+}
