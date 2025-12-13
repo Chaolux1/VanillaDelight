@@ -7,6 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,6 +16,7 @@ import vectorwing.farmersdelight.common.item.ConsumableItem;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import vectorwing.farmersdelight.common.item.CookingPotItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
+import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.function.Supplier;
 
@@ -78,6 +80,7 @@ public class ModItems {
     public static final RegistryObject<Item> PURPUR_BLOCK_STOVE;
     public static final RegistryObject<Item> RED_SANDSTONE_STOVE;
     public static final RegistryObject<Item> SANDSTONE_STOVE;
+    public static final RegistryObject<Item> COPPER_KNIFE;
 
 
 
@@ -151,6 +154,8 @@ public class ModItems {
         ROASTED_BEETS = registerWithTab("roasted_beets", () -> new Item(foodItem(FoodValues.ROASTED_BEETS)));
         ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
         ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
+
+        COPPER_KNIFE = registerWithTab("copper_knife", () -> new KnifeItem(Tiers.IRON, 0.5F, -2.0F, basicItem()));
 
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));

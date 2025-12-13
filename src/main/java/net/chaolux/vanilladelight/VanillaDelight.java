@@ -111,6 +111,9 @@ public class VanillaDelight
             event.accept(ModItems.RED_SANDSTONE_STOVE);
             event.accept(ModItems.SANDSTONE_STOVE);
         }
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.COPPER_KNIFE);
+        }
     }
 
     @SubscribeEvent
