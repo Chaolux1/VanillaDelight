@@ -12,11 +12,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vectorwing.farmersdelight.common.item.ConsumableItem;
+import vectorwing.farmersdelight.common.item.*;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
-import vectorwing.farmersdelight.common.item.CookingPotItem;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
-import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.function.Supplier;
 
@@ -81,8 +78,16 @@ public class ModItems {
     public static final RegistryObject<Item> RED_SANDSTONE_STOVE;
     public static final RegistryObject<Item> SANDSTONE_STOVE;
     public static final RegistryObject<Item> COPPER_KNIFE;
-
-
+    public static final RegistryObject<Item> ACACIA_CUTTING_BOARD;
+    public static final RegistryObject<Item> BAMBOO_CUTTING_BOARD;
+    public static final RegistryObject<Item> BIRCH_CUTTING_BOARD;
+    public static final RegistryObject<Item> CHERRY_CUTTING_BOARD;
+    public static final RegistryObject<Item> CRIMSON_CUTTING_BOARD;
+    public static final RegistryObject<Item> DARK_OAK_CUTTING_BOARD;
+    public static final RegistryObject<Item> JUNGLE_CUTTING_BOARD;
+    public static final RegistryObject<Item> MANGROVE_CUTTING_BOARD;
+    public static final RegistryObject<Item> OAK_CUTTING_BOARD;
+    public static final RegistryObject<Item> WARPED_CUTTING_BOARD;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -176,5 +181,16 @@ public class ModItems {
         PURPUR_BLOCK_STOVE = registerWithTab("purpur_stove", () -> new BlockItem((Block) ModBlocks.PURPUR_BLOCK_STOVE.get(), basicItem()));
         RED_SANDSTONE_STOVE = registerWithTab("red_sandstone_stove", () -> new BlockItem((Block) ModBlocks.RED_SANDSTONE_STOVE.get(), basicItem()));
         SANDSTONE_STOVE = registerWithTab("sandstone_stove", () -> new BlockItem((Block) ModBlocks.SANDSTONE_STOVE.get(), basicItem()));
+
+        ACACIA_CUTTING_BOARD = registerWithTab("acacia_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.ACACIA_CUTTING_BOARD.get(), basicItem(), 200));
+        BAMBOO_CUTTING_BOARD = registerWithTab("bamboo_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.BAMBOO_CUTTING_BOARD.get(), basicItem(), 200));
+        BIRCH_CUTTING_BOARD = registerWithTab("birch_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.BIRCH_CUTTING_BOARD.get(), basicItem(), 200));
+        CHERRY_CUTTING_BOARD = registerWithTab("cherry_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.CHERRY_CUTTING_BOARD.get(), basicItem(), 200));
+        CRIMSON_CUTTING_BOARD = registerWithTab("crimson_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.CRIMSON_CUTTING_BOARD.get(), basicItem(), 200));
+        DARK_OAK_CUTTING_BOARD = registerWithTab("dark_oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.DARK_OAK_CUTTING_BOARD.get(), basicItem(), 200));
+        JUNGLE_CUTTING_BOARD = registerWithTab("jungle_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.JUNGLE_CUTTING_BOARD.get(), basicItem(), 200));
+        MANGROVE_CUTTING_BOARD = registerWithTab("mangrove_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.MANGROVE_CUTTING_BOARD.get(), basicItem(), 200));
+        OAK_CUTTING_BOARD = registerWithTab("oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.OAK_CUTTING_BOARD.get(), basicItem(), 200));
+        WARPED_CUTTING_BOARD = registerWithTab("warped_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.WARPED_CUTTING_BOARD.get(), basicItem(), 200));
     }
 }

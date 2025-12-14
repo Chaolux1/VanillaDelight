@@ -4,6 +4,6 @@
     "bottom": "vanilladelight:block/polished_basalt/stove_bottom",
     "front": "vanilladelight:block/polished_basalt/stove_front_on",
     "side": "vanilladelight:block/polished_basalt/stove_side",
-    "top": "farmersdelight:block/stove_top_on"
+    "top": "vanilladelight:block/polished_basalt/stove_top_on"
   }
 }

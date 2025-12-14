@@ -4,6 +4,6 @@
     "bottom": "vanilladelight:block/nether_bricks/stove_bottom",
     "front": "vanilladelight:block/nether_bricks/stove_front_on",
     "side": "vanilladelight:block/nether_bricks/stove_side",
-    "top": "farmersdelight:block/stove_top_on"
+    "top": "vanilladelight:block/nether_bricks/stove_top_on"
   }
 }

@@ -1,16 +1,19 @@
 package net.chaolux.vanilladelight.registry.block;
 
+import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
 import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
 import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.block.CuttingBoardBlock;
 import vectorwing.farmersdelight.common.block.FeastBlock;
 import vectorwing.farmersdelight.common.block.PieBlock;
 import net.chaolux.vanilladelight.registry.item.ModItems;
@@ -41,6 +44,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_SANDSTONE_STOVE;
     public static final RegistryObject<Block> SANDSTONE_STOVE;
 
+    public static final RegistryObject<Block> ACACIA_CUTTING_BOARD;
+    public static final RegistryObject<Block> BAMBOO_CUTTING_BOARD;
+    public static final RegistryObject<Block> BIRCH_CUTTING_BOARD;
+    public static final RegistryObject<Block> CHERRY_CUTTING_BOARD;
+    public static final RegistryObject<Block> CRIMSON_CUTTING_BOARD;
+    public static final RegistryObject<Block> DARK_OAK_CUTTING_BOARD;
+    public static final RegistryObject<Block> JUNGLE_CUTTING_BOARD;
+    public static final RegistryObject<Block> MANGROVE_CUTTING_BOARD;
+    public static final RegistryObject<Block> OAK_CUTTING_BOARD;
+    public static final RegistryObject<Block> WARPED_CUTTING_BOARD;
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
@@ -68,5 +82,16 @@ public class ModBlocks {
         PURPUR_BLOCK_STOVE = BLOCKS.register("purpur_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK).lightLevel(litBlockEmission(13))));
         RED_SANDSTONE_STOVE = BLOCKS.register("red_sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.copy(Blocks.RED_SANDSTONE).lightLevel(litBlockEmission(13))));
         SANDSTONE_STOVE = BLOCKS.register("sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE).lightLevel(litBlockEmission(13))));
+
+        ACACIA_CUTTING_BOARD = BLOCKS.register("acacia_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
     }
 }

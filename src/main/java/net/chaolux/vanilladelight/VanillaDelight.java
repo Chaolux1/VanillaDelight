@@ -21,7 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
+import net.chaolux.vanilladelight.client.renderer.CommonCuttingBoardRenderer;
 @Mod(VanillaDelight.MOD_ID)
 public class VanillaDelight
 {
@@ -110,6 +110,17 @@ public class VanillaDelight
             event.accept(ModItems.PURPUR_BLOCK_STOVE);
             event.accept(ModItems.RED_SANDSTONE_STOVE);
             event.accept(ModItems.SANDSTONE_STOVE);
+
+            event.accept(ModItems.ACACIA_CUTTING_BOARD);
+            event.accept(ModItems.BAMBOO_CUTTING_BOARD);
+            event.accept(ModItems.BIRCH_CUTTING_BOARD);
+            event.accept(ModItems.CHERRY_CUTTING_BOARD);
+            event.accept(ModItems.CRIMSON_CUTTING_BOARD);
+            event.accept(ModItems.DARK_OAK_CUTTING_BOARD);
+            event.accept(ModItems.JUNGLE_CUTTING_BOARD);
+            event.accept(ModItems.MANGROVE_CUTTING_BOARD);
+            event.accept(ModItems.OAK_CUTTING_BOARD);
+            event.accept(ModItems.WARPED_CUTTING_BOARD);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE);
@@ -131,6 +142,7 @@ public class VanillaDelight
             event.enqueueWork(() -> {
                 BlockEntityRenderers.register(vectorwing.farmersdelight.common.registry.ModBlockEntityTypes.COOKING_POT.get(), CookingPotRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
             });
         }
     }
