@@ -88,6 +88,18 @@ public class ModItems {
     public static final RegistryObject<Item> MANGROVE_CUTTING_BOARD;
     public static final RegistryObject<Item> OAK_CUTTING_BOARD;
     public static final RegistryObject<Item> WARPED_CUTTING_BOARD;
+    public static final RegistryObject<Item> DEEPSLATE_BRICKS_CABINET;
+    public static final RegistryObject<Item> END_STONE_BRICKS_CABINET;
+    public static final RegistryObject<Item> NETHER_BRICKS_CABINET;
+    public static final RegistryObject<Item> POLISHED_ANDESITE_CABINET;
+    public static final RegistryObject<Item> POLISHED_BASALT_CABINET;
+    public static final RegistryObject<Item> POLISHED_DEEPSLATE_CABINET;
+    public static final RegistryObject<Item> POLISHED_DIORITE_CABINET;
+    public static final RegistryObject<Item> POLISHED_GRANITE_CABINET;
+    public static final RegistryObject<Item> PURPUR_BLOCK_CABINET;
+    public static final RegistryObject<Item> RED_SANDSTONE_CABINET;
+    public static final RegistryObject<Item> SANDSTONE_CABINET;
+    public static final RegistryObject<Item> STONE_CABINET;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -192,5 +204,18 @@ public class ModItems {
         MANGROVE_CUTTING_BOARD = registerWithTab("mangrove_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.MANGROVE_CUTTING_BOARD.get(), basicItem(), 200));
         OAK_CUTTING_BOARD = registerWithTab("oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.OAK_CUTTING_BOARD.get(), basicItem(), 200));
         WARPED_CUTTING_BOARD = registerWithTab("warped_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.WARPED_CUTTING_BOARD.get(), basicItem(), 200));
+
+        DEEPSLATE_BRICKS_CABINET = registerWithTab("deepslate_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_CABINET.get(), basicItem(), 300));
+        END_STONE_BRICKS_CABINET = registerWithTab("end_stone_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.END_STONE_BRICKS_CABINET.get(), basicItem(), 300));
+        NETHER_BRICKS_CABINET = registerWithTab("nether_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.NETHER_BRICKS_CABINET.get(), basicItem(), 300));
+        POLISHED_ANDESITE_CABINET = registerWithTab("polished_andesite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_ANDESITE_CABINET.get(), basicItem(), 300));
+        POLISHED_BASALT_CABINET = registerWithTab("polished_basalt_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_BASALT_CABINET.get(), basicItem(), 300));
+        POLISHED_DEEPSLATE_CABINET = registerWithTab("polished_deepslate_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_DEEPSLATE_CABINET.get(), basicItem(), 300));
+        POLISHED_DIORITE_CABINET = registerWithTab("polished_diorite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_DIORITE_CABINET.get(), basicItem(), 300));
+        POLISHED_GRANITE_CABINET = registerWithTab("polished_granite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_GRANITE_CABINET.get(), basicItem(), 300));
+        PURPUR_BLOCK_CABINET = registerWithTab("purpur_block_cabinet", () -> new FuelBlockItem((Block) ModBlocks.PURPUR_BLOCK_CABINET.get(), basicItem(), 300));
+        RED_SANDSTONE_CABINET = registerWithTab("red_sandstone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.RED_SANDSTONE_CABINET.get(), basicItem(), 300));
+        SANDSTONE_CABINET = registerWithTab("sandstone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.SANDSTONE_CABINET.get(), basicItem(), 300));
+        STONE_CABINET = registerWithTab("stone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.STONE_CABINET.get(), basicItem(), 300));
     }
 }

@@ -13,11 +13,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vectorwing.farmersdelight.common.block.CuttingBoardBlock;
-import vectorwing.farmersdelight.common.block.FeastBlock;
-import vectorwing.farmersdelight.common.block.PieBlock;
+import vectorwing.farmersdelight.common.block.*;
 import net.chaolux.vanilladelight.registry.item.ModItems;
-import vectorwing.farmersdelight.common.block.StoveBlock;
 
 import java.util.function.ToIntFunction;
 
@@ -54,6 +51,19 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANGROVE_CUTTING_BOARD;
     public static final RegistryObject<Block> OAK_CUTTING_BOARD;
     public static final RegistryObject<Block> WARPED_CUTTING_BOARD;
+
+    public static final RegistryObject<Block> DEEPSLATE_BRICKS_CABINET;
+    public static final RegistryObject<Block> END_STONE_BRICKS_CABINET;
+    public static final RegistryObject<Block> NETHER_BRICKS_CABINET;
+    public static final RegistryObject<Block> POLISHED_ANDESITE_CABINET;
+    public static final RegistryObject<Block> POLISHED_BASALT_CABINET;
+    public static final RegistryObject<Block> POLISHED_DEEPSLATE_CABINET;
+    public static final RegistryObject<Block> POLISHED_DIORITE_CABINET;
+    public static final RegistryObject<Block> POLISHED_GRANITE_CABINET;
+    public static final RegistryObject<Block> PURPUR_BLOCK_CABINET;
+    public static final RegistryObject<Block> RED_SANDSTONE_CABINET;
+    public static final RegistryObject<Block> SANDSTONE_CABINET;
+    public static final RegistryObject<Block> STONE_CABINET;
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
@@ -93,5 +103,18 @@ public class ModBlocks {
         MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
         OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
         WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+
+        DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        NETHER_BRICKS_CABINET = BLOCKS.register("nether_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_ANDESITE_CABINET = BLOCKS.register("polished_andesite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_BASALT_CABINET = BLOCKS.register("polished_basalt_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_DEEPSLATE_CABINET = BLOCKS.register("polished_deepslate_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_DIORITE_CABINET = BLOCKS.register("polished_diorite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_GRANITE_CABINET = BLOCKS.register("polished_granite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        PURPUR_BLOCK_CABINET = BLOCKS.register("purpur_block_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        RED_SANDSTONE_CABINET = BLOCKS.register("red_sandstone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
     }
 }

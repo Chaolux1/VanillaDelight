@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "front": "vanilladelight:block/polished_granite_front_open",
-    "side": "vanilladelight:block/polished_granite_side",
-    "top": "farmersdelight:block/polished_granite"
+    "front": "vanilladelight:block/stone_cabinet/polished_granite/polished_granite_front_open",
+    "side": "vanilladelight:block/stone_cabinet/polished_granite/polished_granite_side",
+    "top": "minecraft:block/polished_diorite"
   }
 }

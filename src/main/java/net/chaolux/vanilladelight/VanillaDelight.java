@@ -121,6 +121,19 @@ public class VanillaDelight
             event.accept(ModItems.MANGROVE_CUTTING_BOARD);
             event.accept(ModItems.OAK_CUTTING_BOARD);
             event.accept(ModItems.WARPED_CUTTING_BOARD);
+
+            event.accept(ModItems.DEEPSLATE_BRICKS_CABINET);
+            event.accept(ModItems.END_STONE_BRICKS_CABINET);
+            event.accept(ModItems.NETHER_BRICKS_CABINET);
+            event.accept(ModItems.POLISHED_ANDESITE_CABINET);
+            event.accept(ModItems.POLISHED_BASALT_CABINET);
+            event.accept(ModItems.POLISHED_DEEPSLATE_CABINET);
+            event.accept(ModItems.POLISHED_DIORITE_CABINET);
+            event.accept(ModItems.POLISHED_GRANITE_CABINET);
+            event.accept(ModItems.PURPUR_BLOCK_CABINET);
+            event.accept(ModItems.RED_SANDSTONE_CABINET);
+            event.accept(ModItems.SANDSTONE_CABINET);
+            event.accept(ModItems.STONE_CABINET);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE);
