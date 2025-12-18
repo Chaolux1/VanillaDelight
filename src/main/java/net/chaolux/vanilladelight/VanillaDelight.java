@@ -1,5 +1,6 @@
 package net.chaolux.vanilladelight;
 
+import net.chaolux.vanilladelight.client.renderer.CommonCuttingBoardRenderer;
 import net.chaolux.vanilladelight.client.renderer.CommonStoveRenderer;
 import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
@@ -126,6 +127,33 @@ public class VanillaDelight
             event.accept(ModItems.PURPUR_BLOCK_STOVE.get());
             event.accept(ModItems.RED_SANDSTONE_STOVE.get());
             event.accept(ModItems.SANDSTONE_STOVE.get());
+
+            event.accept(ModItems.ACACIA_CUTTING_BOARD.get());
+            event.accept(ModItems.BAMBOO_CUTTING_BOARD.get());
+            event.accept(ModItems.BIRCH_CUTTING_BOARD.get());
+            event.accept(ModItems.CHERRY_CUTTING_BOARD.get());
+            event.accept(ModItems.CRIMSON_CUTTING_BOARD.get());
+            event.accept(ModItems.DARK_OAK_CUTTING_BOARD.get());
+            event.accept(ModItems.JUNGLE_CUTTING_BOARD.get());
+            event.accept(ModItems.MANGROVE_CUTTING_BOARD.get());
+            event.accept(ModItems.OAK_CUTTING_BOARD.get());
+            event.accept(ModItems.WARPED_CUTTING_BOARD.get());
+
+            event.accept(ModItems.DEEPSLATE_BRICKS_CABINET.get());
+            event.accept(ModItems.END_STONE_BRICKS_CABINET.get());
+            event.accept(ModItems.NETHER_BRICKS_CABINET.get());
+            event.accept(ModItems.POLISHED_ANDESITE_CABINET.get());
+            event.accept(ModItems.POLISHED_BASALT_CABINET.get());
+            event.accept(ModItems.POLISHED_DEEPSLATE_CABINET.get());
+            event.accept(ModItems.POLISHED_DIORITE_CABINET.get());
+            event.accept(ModItems.POLISHED_GRANITE_CABINET.get());
+            event.accept(ModItems.PURPUR_BLOCK_CABINET.get());
+            event.accept(ModItems.RED_SANDSTONE_CABINET.get());
+            event.accept(ModItems.SANDSTONE_CABINET.get());
+            event.accept(ModItems.STONE_CABINET.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.COPPER_KNIFE.get());
         }
     }
 
@@ -144,6 +172,7 @@ public class VanillaDelight
             event.enqueueWork(() -> {
                 BlockEntityRenderers.register(vectorwing.farmersdelight.common.registry.ModBlockEntityTypes.COOKING_POT.get(), CookingPotRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
             });
         }
     }

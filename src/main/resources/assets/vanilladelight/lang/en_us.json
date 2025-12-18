@@ -39,12 +39,15 @@
   "item.vanilladelight.enchanted_golden_apple_slice": "Enchanted Golden Apple Slice",
   "item.vanilladelight.enchanted_golden_carrot": "Enchanted Golden Carrot",
 
+  "item.vanilladelight.copper_knife": "Copper Knife",
+
   "block.vanilladelight.carrot_cake": "Carrot Cake",
   "block.vanilladelight.honey_cake": "Honey Cake",
 
   "block.vanilladelight.melon_pie": "Melon Pie",
   "block.vanilladelight.chorus_pie": "Chorus Pie",
   "block.vanilladelight.milky_pumpkin_block": "Milky Pumpkin",
+  "block.vanilladelight.pumpkin_pie": "Pumpkin Pie",
 
   "block.vanilladelight.deepslate_bricks_stove": "Deepslate Bricks Stove",
   "block.vanilladelight.end_stone_bricks_stove": "End Stone Bricks Stove",
@@ -60,6 +63,30 @@
   "block.vanilladelight.red_sandstone_stove": "Red Sandstone Stove",
   "block.vanilladelight.sandstone_stove": "Sandstone Stove",
 
+  "block.vanilladelight.deepslate_bricks_cabinet": "Deepslate Bricks Cabinet",
+  "block.vanilladelight.end_stone_bricks_cabinet": "End Stone Bricks Cabinet",
+  "block.vanilladelight.nether_bricks_cabinet": "Nether Bricks Cabinet",
+  "block.vanilladelight.polished_andesite_cabinet": "Polished Andesite Cabinet",
+  "block.vanilladelight.polished_basalt_cabinet": "Polished Basalt Cabinet",
+  "block.vanilladelight.polished_deepslate_cabinet": "Polished Deepslate Cabinet",
+  "block.vanilladelight.polished_diorite_cabinet": "Polished Diorite Cabinet",
+  "block.vanilladelight.polished_granite_cabinet": "Polished Granite Cabinet",
+  "block.vanilladelight.purpur_block_cabinet": "Purpur Block Cabinet",
+  "block.vanilladelight.red_sandstone_cabinet": "Red Sandstone Cabinet",
+  "block.vanilladelight.sandstone_cabinet": "Sandstone Cabinet",
+  "block.vanilladelight.stone_cabinet": "Stone Cabinet",
+
+  "block.vanilladelight.acacia_cutting_board": "Acacia Cutting Board",
+  "block.vanilladelight.bamboo_cutting_board": "Bamboo Cutting Board",
+  "block.vanilladelight.birch_cutting_board": "Birch Cutting Board",
+  "block.vanilladelight.cherry_cutting_board": "Cherry Cutting Board",
+  "block.vanilladelight.crimson_cutting_board": "Crimson Cutting Board",
+  "block.vanilladelight.dark_oak_cutting_board": "Dark Oak Cutting Board",
+  "block.vanilladelight.jungle_cutting_board": "Jungle Cutting Board",
+  "block.vanilladelight.mangrove_cutting_board": "Mangrove Cutting Board",
+  "block.vanilladelight.oak_cutting_board": "Oak Cutting Board",
+  "block.vanilladelight.warped_cutting_board": "Warped Cutting Board",
+
   "vanilladelight.tooltip.or": "or",
   "vanilladelight.tooltip.caramel_bottle": "Pulls Nearby Items",
   "vanilladelight.tooltip.cooked_red_mushroom": "Removes Wither",
@@ -70,4 +97,5 @@
   "vanilladelight.tooltip.sweet_berry_custard": "Damage and Knocks Back Nearby",
   "vanilladelight.tooltip.glow_tropical_fish_stew": "Restores Air Underwater",
   "vanilladelight.tooltip.sweet_fish_soup": "Attracts Nearby Cats"
+
 }

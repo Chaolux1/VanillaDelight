@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/stone_cabinet/polished_deepslate/polished_deepslate_front_open",
+    "side": "vanilladelight:block/stone_cabinet/polished_deepslate/polished_deepslate_side",
+    "top": "minecraft:block/deepslate_bricks"
+  }
+}

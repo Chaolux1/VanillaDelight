@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/stone_cabinet/red_sandstone/red_sandstone_front_open",
+    "side": "vanilladelight:block/stone_cabinet/red_sandstone/red_sandstone_side",
+    "top": "minecraft:block/sandstone_bottom"
+  }
+}

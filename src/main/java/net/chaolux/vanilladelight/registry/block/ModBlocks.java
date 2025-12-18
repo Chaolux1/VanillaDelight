@@ -3,17 +3,28 @@ package net.chaolux.vanilladelight.registry.block;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
+import net.chaolux.vanilladelight.common.block.CommonCabinetBlock;
+import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
 import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
 import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
 import net.chaolux.vanilladelight.registry.item.ModItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import vectorwing.farmersdelight.common.block.CabinetBlock;
 import vectorwing.farmersdelight.common.block.FeastBlock;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
@@ -25,6 +36,7 @@ public class ModBlocks {
     public static final Supplier<Block> MELON_PIE;
     public static final Supplier<Block> CHORUS_PIE;
     public static final Supplier<Block> MILKY_PUMPKIN_BLOCK;
+    public static final Supplier<Block> PUMPKIN_PIE;
 
     public static final Supplier<Block> DEEPSLATE_BRICKS_STOVE;
     public static final Supplier<Block> END_STONE_BRICKS_STOVE;
@@ -40,6 +52,30 @@ public class ModBlocks {
     public static final Supplier<Block> RED_SANDSTONE_STOVE;
     public static final Supplier<Block> SANDSTONE_STOVE;
 
+    public static final Supplier<Block> ACACIA_CUTTING_BOARD;
+    public static final Supplier<Block> BAMBOO_CUTTING_BOARD;
+    public static final Supplier<Block> BIRCH_CUTTING_BOARD;
+    public static final Supplier<Block> CHERRY_CUTTING_BOARD;
+    public static final Supplier<Block> CRIMSON_CUTTING_BOARD;
+    public static final Supplier<Block> DARK_OAK_CUTTING_BOARD;
+    public static final Supplier<Block> JUNGLE_CUTTING_BOARD;
+    public static final Supplier<Block> MANGROVE_CUTTING_BOARD;
+    public static final Supplier<Block> OAK_CUTTING_BOARD;
+    public static final Supplier<Block> WARPED_CUTTING_BOARD;
+
+    public static final Supplier<Block> DEEPSLATE_BRICKS_CABINET;
+    public static final Supplier<Block> END_STONE_BRICKS_CABINET;
+    public static final Supplier<Block> NETHER_BRICKS_CABINET;
+    public static final Supplier<Block> POLISHED_ANDESITE_CABINET;
+    public static final Supplier<Block> POLISHED_BASALT_CABINET;
+    public static final Supplier<Block> POLISHED_DEEPSLATE_CABINET;
+    public static final Supplier<Block> POLISHED_DIORITE_CABINET;
+    public static final Supplier<Block> POLISHED_GRANITE_CABINET;
+    public static final Supplier<Block> PURPUR_BLOCK_CABINET;
+    public static final Supplier<Block> RED_SANDSTONE_CABINET;
+    public static final Supplier<Block> SANDSTONE_CABINET;
+    public static final Supplier<Block> STONE_CABINET;
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
@@ -51,6 +87,12 @@ public class ModBlocks {
         HONEY_CAKE = BLOCKS.register("honey_cake", () -> new CakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
         MELON_PIE = BLOCKS.register("melon_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.MELON_PIE_SLICE));
         CHORUS_PIE = BLOCKS.register("chorus_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHORUS_PIE_SLICE));
+        PUMPKIN_PIE = BLOCKS.register("pumpkin_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.PUMPKIN_PIE_SLICE) {
+            @Override
+            public ItemStack getCloneItemStack(BlockState state, HitResult result, LevelReader level, BlockPos pos, Player player) {
+                return new ItemStack(Items.PUMPKIN_PIE);
+            }
+        });
 
         MILKY_PUMPKIN_BLOCK = BLOCKS.register("milky_pumpkin_block", () -> new FeastBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN), ModItems.MILKY_PUMPKIN, false));
 
@@ -67,5 +109,30 @@ public class ModBlocks {
         PURPUR_BLOCK_STOVE = BLOCKS.register("purpur_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PURPUR_BLOCK).lightLevel(litBlockEmission(13))));
         RED_SANDSTONE_STOVE = BLOCKS.register("red_sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_SANDSTONE).lightLevel(litBlockEmission(13))));
         SANDSTONE_STOVE = BLOCKS.register("sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).lightLevel(litBlockEmission(13))));
+
+        ACACIA_CUTTING_BOARD = BLOCKS.register("acacia_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+
+        DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        NETHER_BRICKS_CABINET = BLOCKS.register("nether_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        POLISHED_ANDESITE_CABINET = BLOCKS.register("polished_andesite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        POLISHED_BASALT_CABINET = BLOCKS.register("polished_basalt_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        POLISHED_DEEPSLATE_CABINET = BLOCKS.register("polished_deepslate_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        POLISHED_DIORITE_CABINET = BLOCKS.register("polished_diorite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        POLISHED_GRANITE_CABINET = BLOCKS.register("polished_granite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        PURPUR_BLOCK_CABINET = BLOCKS.register("purpur_block_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        RED_SANDSTONE_CABINET = BLOCKS.register("red_sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+        STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
+
     }
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "fd_cabinet",
+  "key": {
+    "D": {
+      "item": "minecraft:purpur_block"
+    },
+    "_": {
+      "item": "minecraft:end_stone_brick_slab"
+    }
+  },
+  "pattern": [
+    "___",
+    "D D",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vanilladelight:purpur_block_cabinet"
+  }
+}

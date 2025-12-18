@@ -4,7 +4,7 @@
     "particle": "vanilladelight:block/chorus_pie_top",
     "bottom": "farmersdelight:block/pie_bottom",
     "inner": "vanilladelight:block/chorus_pie_inner",
-    "side": "farmersdelight:block/pie_side",
+    "side": "vanilladelight:block/chorus_pie_side",
     "top": "vanilladelight:block/chorus_pie_top"
   }
 }

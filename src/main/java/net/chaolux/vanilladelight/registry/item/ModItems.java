@@ -9,11 +9,16 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
+import vectorwing.farmersdelight.common.item.FuelBlockItem;
+import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.function.Supplier;
+
+import static vectorwing.farmersdelight.common.registry.ModItems.knifeItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS;
@@ -76,6 +81,29 @@ public class ModItems {
     public static final Supplier<Item> PURPUR_BLOCK_STOVE;
     public static final Supplier<Item> RED_SANDSTONE_STOVE;
     public static final Supplier<Item> SANDSTONE_STOVE;
+    public static final Supplier<Item> COPPER_KNIFE;
+    public static final Supplier<Item> ACACIA_CUTTING_BOARD;
+    public static final Supplier<Item> BAMBOO_CUTTING_BOARD;
+    public static final Supplier<Item> BIRCH_CUTTING_BOARD;
+    public static final Supplier<Item> CHERRY_CUTTING_BOARD;
+    public static final Supplier<Item> CRIMSON_CUTTING_BOARD;
+    public static final Supplier<Item> DARK_OAK_CUTTING_BOARD;
+    public static final Supplier<Item> JUNGLE_CUTTING_BOARD;
+    public static final Supplier<Item> MANGROVE_CUTTING_BOARD;
+    public static final Supplier<Item> OAK_CUTTING_BOARD;
+    public static final Supplier<Item> WARPED_CUTTING_BOARD;
+    public static final Supplier<Item> DEEPSLATE_BRICKS_CABINET;
+    public static final Supplier<Item> END_STONE_BRICKS_CABINET;
+    public static final Supplier<Item> NETHER_BRICKS_CABINET;
+    public static final Supplier<Item> POLISHED_ANDESITE_CABINET;
+    public static final Supplier<Item> POLISHED_BASALT_CABINET;
+    public static final Supplier<Item> POLISHED_DEEPSLATE_CABINET;
+    public static final Supplier<Item> POLISHED_DIORITE_CABINET;
+    public static final Supplier<Item> POLISHED_GRANITE_CABINET;
+    public static final Supplier<Item> PURPUR_BLOCK_CABINET;
+    public static final Supplier<Item> RED_SANDSTONE_CABINET;
+    public static final Supplier<Item> SANDSTONE_CABINET;
+    public static final Supplier<Item> STONE_CABINET;
 
     public static Supplier<Item> registerWithTab(String name, Supplier<Item> supplier) {
         Supplier<Item> block = ITEMS.register(name, supplier);
@@ -148,6 +176,8 @@ public class ModItems {
         ENCHANTED_GOLDEN_APPLE_SLICE = registerWithTab("enchanted_golden_apple_slice", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_APPLE_SLICE)));
         ENCHANTED_GOLDEN_CARROT = registerWithTab("enchanted_golden_carrot", () -> new EnchantedConsumableItem(foodItem(FoodValues.ENCHANTED_GOLDEN_CARROT)));
 
+        COPPER_KNIFE = registerWithTab("copper_knife", () -> new KnifeItem(Tiers.IRON, knifeItem(Tiers.IRON)));
+
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));
         MELON_PIE = registerWithTab("melon_pie", () -> new BlockItem((Block)ModBlocks.MELON_PIE.get(), basicItem()));
@@ -167,5 +197,29 @@ public class ModItems {
         PURPUR_BLOCK_STOVE = registerWithTab("purpur_stove", () -> new BlockItem((Block) ModBlocks.PURPUR_BLOCK_STOVE.get(), basicItem()));
         RED_SANDSTONE_STOVE = registerWithTab("red_sandstone_stove", () -> new BlockItem((Block) ModBlocks.RED_SANDSTONE_STOVE.get(), basicItem()));
         SANDSTONE_STOVE = registerWithTab("sandstone_stove", () -> new BlockItem((Block) ModBlocks.SANDSTONE_STOVE.get(), basicItem()));
+
+        ACACIA_CUTTING_BOARD = registerWithTab("acacia_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.ACACIA_CUTTING_BOARD.get(), basicItem(), 200));
+        BAMBOO_CUTTING_BOARD = registerWithTab("bamboo_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.BAMBOO_CUTTING_BOARD.get(), basicItem(), 200));
+        BIRCH_CUTTING_BOARD = registerWithTab("birch_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.BIRCH_CUTTING_BOARD.get(), basicItem(), 200));
+        CHERRY_CUTTING_BOARD = registerWithTab("cherry_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.CHERRY_CUTTING_BOARD.get(), basicItem(), 200));
+        CRIMSON_CUTTING_BOARD = registerWithTab("crimson_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.CRIMSON_CUTTING_BOARD.get(), basicItem(), 200));
+        DARK_OAK_CUTTING_BOARD = registerWithTab("dark_oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.DARK_OAK_CUTTING_BOARD.get(), basicItem(), 200));
+        JUNGLE_CUTTING_BOARD = registerWithTab("jungle_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.JUNGLE_CUTTING_BOARD.get(), basicItem(), 200));
+        MANGROVE_CUTTING_BOARD = registerWithTab("mangrove_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.MANGROVE_CUTTING_BOARD.get(), basicItem(), 200));
+        OAK_CUTTING_BOARD = registerWithTab("oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.OAK_CUTTING_BOARD.get(), basicItem(), 200));
+        WARPED_CUTTING_BOARD = registerWithTab("warped_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.WARPED_CUTTING_BOARD.get(), basicItem(), 200));
+
+        DEEPSLATE_BRICKS_CABINET = registerWithTab("deepslate_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_CABINET.get(), basicItem(), 300));
+        END_STONE_BRICKS_CABINET = registerWithTab("end_stone_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.END_STONE_BRICKS_CABINET.get(), basicItem(), 300));
+        NETHER_BRICKS_CABINET = registerWithTab("nether_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.NETHER_BRICKS_CABINET.get(), basicItem(), 300));
+        POLISHED_ANDESITE_CABINET = registerWithTab("polished_andesite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_ANDESITE_CABINET.get(), basicItem(), 300));
+        POLISHED_BASALT_CABINET = registerWithTab("polished_basalt_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_BASALT_CABINET.get(), basicItem(), 300));
+        POLISHED_DEEPSLATE_CABINET = registerWithTab("polished_deepslate_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_DEEPSLATE_CABINET.get(), basicItem(), 300));
+        POLISHED_DIORITE_CABINET = registerWithTab("polished_diorite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_DIORITE_CABINET.get(), basicItem(), 300));
+        POLISHED_GRANITE_CABINET = registerWithTab("polished_granite_cabinet", () -> new FuelBlockItem((Block) ModBlocks.POLISHED_GRANITE_CABINET.get(), basicItem(), 300));
+        PURPUR_BLOCK_CABINET = registerWithTab("purpur_block_cabinet", () -> new FuelBlockItem((Block) ModBlocks.PURPUR_BLOCK_CABINET.get(), basicItem(), 300));
+        RED_SANDSTONE_CABINET = registerWithTab("red_sandstone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.RED_SANDSTONE_CABINET.get(), basicItem(), 300));
+        SANDSTONE_CABINET = registerWithTab("sandstone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.SANDSTONE_CABINET.get(), basicItem(), 300));
+        STONE_CABINET = registerWithTab("stone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.STONE_CABINET.get(), basicItem(), 300));
     }
 }

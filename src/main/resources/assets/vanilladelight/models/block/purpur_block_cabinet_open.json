@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vanilladelight:block/stone_cabinet/purpur_block/purpur_block_front_open",
+    "side": "vanilladelight:block/stone_cabinet/purpur_block/purpur_block_side",
+    "top": "minecraft:block/end_stone_bricks"
+  }
+}
