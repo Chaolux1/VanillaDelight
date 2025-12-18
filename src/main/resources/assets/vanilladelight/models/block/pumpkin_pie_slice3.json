@@ -4,7 +4,7 @@
     "particle": "vanilladelight:block/pumpkin_pie_top",
     "bottom": "farmersdelight:block/pie_bottom",
     "inner": "vanilladelight:block/pumpkin_pie_inner",
-    "side": "farmersdelight:block/pie_side",
+    "side": "vanilladelight:block/pumpkin_pie_side",
     "top": "vanilladelight:block/pumpkin_pie_top"
   }
 }

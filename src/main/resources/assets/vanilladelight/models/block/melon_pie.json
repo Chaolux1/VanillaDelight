@@ -2,7 +2,7 @@
   "parent": "farmersdelight:block/pie",
   "textures": {
     "particle": "vanilladelight:block/melon_pie_top",
-    "bottom": "farmersdelight:block/pie_bottom",
+    "bottom": "vanilladelight:block/melon_pie_bottom",
     "side": "vanilladelight:block/melon_pie_side",
     "top": "vanilladelight:block/melon_pie_top"
   }

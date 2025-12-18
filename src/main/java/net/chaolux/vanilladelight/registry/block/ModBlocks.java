@@ -3,6 +3,11 @@ package net.chaolux.vanilladelight.registry.block;
 import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
 import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
 import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
@@ -10,6 +15,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +32,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MELON_PIE;
     public static final RegistryObject<Block> CHORUS_PIE;
     public static final RegistryObject<Block> MILKY_PUMPKIN_BLOCK;
+    public static final RegistryObject<Block> PUMPKIN_PIE;
 
     public static final RegistryObject<Block> DEEPSLATE_BRICKS_STOVE;
     public static final RegistryObject<Block> END_STONE_BRICKS_STOVE;
@@ -76,6 +83,12 @@ public class ModBlocks {
         HONEY_CAKE = BLOCKS.register("honey_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
         MELON_PIE = BLOCKS.register("melon_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.MELON_PIE_SLICE));
         CHORUS_PIE = BLOCKS.register("chorus_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.CHORUS_PIE_SLICE));
+        PUMPKIN_PIE = BLOCKS.register("pumpkin_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.PUMPKIN_PIE_SLICE) {
+            @Override
+            public ItemStack getCloneItemStack(BlockState state, HitResult result, BlockGetter blockGetter, BlockPos pos, Player player) {
+                return new ItemStack(Items.PUMPKIN_PIE);
+            }
+        });
 
         MILKY_PUMPKIN_BLOCK = BLOCKS.register("milky_pumpkin_block", () -> new FeastBlock(BlockBehaviour.Properties.copy(Blocks.PUMPKIN), ModItems.MILKY_PUMPKIN, false));
 
