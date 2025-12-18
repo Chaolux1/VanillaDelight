@@ -1,5 +1,6 @@
 package net.chaolux.vanilladelight.registry.block;
 
+import net.chaolux.vanilladelight.common.block.CommonCabinetBlock;
 import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
 import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
 import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
@@ -117,17 +118,17 @@ public class ModBlocks {
         OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
         WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
 
-        DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        NETHER_BRICKS_CABINET = BLOCKS.register("nether_bricks_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        POLISHED_ANDESITE_CABINET = BLOCKS.register("polished_andesite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        POLISHED_BASALT_CABINET = BLOCKS.register("polished_basalt_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        POLISHED_DEEPSLATE_CABINET = BLOCKS.register("polished_deepslate_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        POLISHED_DIORITE_CABINET = BLOCKS.register("polished_diorite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        POLISHED_GRANITE_CABINET = BLOCKS.register("polished_granite_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        PURPUR_BLOCK_CABINET = BLOCKS.register("purpur_block_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        RED_SANDSTONE_CABINET = BLOCKS.register("red_sandstone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
-        STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        NETHER_BRICKS_CABINET = BLOCKS.register("nether_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_ANDESITE_CABINET = BLOCKS.register("polished_andesite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_BASALT_CABINET = BLOCKS.register("polished_basalt_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_DEEPSLATE_CABINET = BLOCKS.register("polished_deepslate_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_DIORITE_CABINET = BLOCKS.register("polished_diorite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        POLISHED_GRANITE_CABINET = BLOCKS.register("polished_granite_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        PURPUR_BLOCK_CABINET = BLOCKS.register("purpur_block_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        RED_SANDSTONE_CABINET = BLOCKS.register("red_sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+        STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
     }
 }
