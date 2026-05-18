@@ -42,11 +42,11 @@ public class CommonStoveBlock extends StoveBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         Item heldItem = heldStack.getItem();
         if ((Boolean)state.getValue(LIT)) {
             if (heldStack.canPerformAction(ItemAbilities.SHOVEL_DIG)) {
-                this.extinguish(state, level, pos);
+                this.extinguish(player, level, pos, state);
                 heldStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 return ItemInteractionResult.SUCCESS;
             }
@@ -56,7 +56,7 @@ public class CommonStoveBlock extends StoveBlock {
                     level.playSound((Player)null, pos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
 
-                this.extinguish(state, level, pos);
+                this.extinguish(player, level, pos, state);
                 if (!player.isCreative()) {
                     player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 }
