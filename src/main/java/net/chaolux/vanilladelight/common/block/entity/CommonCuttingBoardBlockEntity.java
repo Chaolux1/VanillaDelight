@@ -33,6 +33,7 @@ import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.advancement.CuttingBoardTrigger;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
@@ -87,10 +88,11 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
         } else {
             Optional<RecipeHolder<CuttingBoardRecipe>> matchingRecipe = this.getMatchingRecipe(toolStack, player);
             matchingRecipe.ifPresent((recipe) -> {
-                for(ItemStack resultStack : ((CuttingBoardRecipe)recipe.value()).rollResults(this.level.random, EnchantmentHelper.getTagEnchantmentLevel((Holder)this.level.holder(Enchantments.FORTUNE).get(), toolStack))) {
-                    Direction direction = ((Direction)this.getBlockState().getValue(CommonCuttingBoard.FACING)).getCounterClockWise();
-                    ItemUtils.spawnItemEntity(this.level, resultStack.copy(), (double)this.worldPosition.getX() + (double)0.5F + (double)direction.getStepX() * 0.2, (double)this.worldPosition.getY() + 0.2, (double)this.worldPosition.getZ() + (double)0.5F + (double)direction.getStepZ() * 0.2, (double)((float)direction.getStepX() * 0.2F), (double)0.0F, (double)((float)direction.getStepZ() * 0.2F));
-                }
+                ((CuttingBoardRecipe)recipe.value()).rollResults(
+                        this.level.random,
+                        EnchantmentHelper.getTagEnchantmentLevel((Holder)this.level.holder(Enchantments.FORTUNE).get(), toolStack),
+                        new net.neoforged.neoforge.items.wrapper.RecipeWrapper(this.inventory)
+                );
 
                 if (!this.level.isClientSide) {
                     toolStack.hurtAndBreak(1, (ServerLevel)this.level, player, (item) -> {
