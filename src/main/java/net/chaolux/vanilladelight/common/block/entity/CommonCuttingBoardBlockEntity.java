@@ -3,7 +3,6 @@ package net.chaolux.vanilladelight.common.block.entity;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -33,6 +31,7 @@ import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.advancement.CuttingBoardTrigger;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
@@ -80,32 +79,33 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
     }
 
     public boolean processStoredItemUsingTool(ItemStack toolStack, @Nullable Player player) {
-        if (this.level == null) {
-            return false;
-        } else if (this.isItemCarvingBoard) {
-            return false;
-        } else {
-            Optional<RecipeHolder<CuttingBoardRecipe>> matchingRecipe = this.getMatchingRecipe(toolStack, player);
-            matchingRecipe.ifPresent((recipe) -> {
-                for(ItemStack resultStack : ((CuttingBoardRecipe)recipe.value()).rollResults(this.level.random, EnchantmentHelper.getTagEnchantmentLevel((Holder)this.level.holder(Enchantments.FORTUNE).get(), toolStack))) {
-                    Direction direction = ((Direction)this.getBlockState().getValue(CommonCuttingBoard.FACING)).getCounterClockWise();
-                    ItemUtils.spawnItemEntity(this.level, resultStack.copy(), (double)this.worldPosition.getX() + (double)0.5F + (double)direction.getStepX() * 0.2, (double)this.worldPosition.getY() + 0.2, (double)this.worldPosition.getZ() + (double)0.5F + (double)direction.getStepZ() * 0.2, (double)((float)direction.getStepX() * 0.2F), (double)0.0F, (double)((float)direction.getStepZ() * 0.2F));
-                }
+        if (this.level == null) return false;
+        if (this.isItemCarvingBoard) return false;
 
-                if (!this.level.isClientSide) {
-                    toolStack.hurtAndBreak(1, (ServerLevel)this.level, player, (item) -> {
-                    });
-                }
+        Optional<RecipeHolder<CuttingBoardRecipe>> matchingRecipe = this.getMatchingRecipe(toolStack, player);
+        matchingRecipe.ifPresent((recipe) -> {
+            int fortuneLevel = ItemUtils.getValidatedEnchantmentLevel(Enchantments.FORTUNE, this.level.registryAccess(), toolStack);
+            List<ItemStack> results = recipe.value().rollResults(this.level.random, fortuneLevel, new RecipeWrapper(this.inventory));
 
-                this.playProcessingSound((recipe.value()).getSoundEvent().orElse(null), toolStack, this.getStoredItem());
-                this.removeItem();
-                if (player instanceof ServerPlayer) {
-                    ((CuttingBoardTrigger)ModAdvancements.USE_CUTTING_BOARD.get()).trigger((ServerPlayer)player);
+            if (this.level instanceof ServerLevel serverLevel) {
+                Direction direction = this.getBlockState().getValue(CommonCuttingBoard.FACING).getCounterClockWise();
+                for (ItemStack result : results) {
+                    ItemUtils.spawnItemEntity(serverLevel, result.copy(),
+                            this.worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2),
+                            this.worldPosition.getY() + 0.2,
+                            this.worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2),
+                            direction.getStepX() * 0.2F, 0.0F, direction.getStepZ() * 0.2F);
                 }
+                toolStack.hurtAndBreak(1, serverLevel, player, (item) -> {});
+            }
 
-            });
-            return matchingRecipe.isPresent();
-        }
+            this.playProcessingSound(recipe.value().getSoundEvent().orElse(null), toolStack, this.getStoredItem());
+            this.removeItem();
+            if (player instanceof ServerPlayer serverPlayer) {
+                ((CuttingBoardTrigger) ModAdvancements.USE_CUTTING_BOARD.get()).trigger(serverPlayer);
+            }
+        });
+        return matchingRecipe.isPresent();
     }
 
     private Optional<RecipeHolder<CuttingBoardRecipe>> getMatchingRecipe(ItemStack toolStack, @Nullable Player player) {
@@ -119,10 +119,10 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
                 }
 
                 if (player != null) {
-                    player.displayClientMessage(TextUtils.getTranslation("block.cutting_board.invalid_tool", new Object[0]), true);
+                    player.displayClientMessage(TextUtils.block("cutting_board.invalid_item"), true);
                 }
             } else if (player != null) {
-                player.displayClientMessage(TextUtils.getTranslation("block.cutting_board.invalid_item", new Object[0]), true);
+                player.displayClientMessage(TextUtils.block("cutting_board.invalid_tool"), true);
             }
 
             return Optional.empty();
@@ -134,7 +134,7 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
             this.playSound(sound, 1.0F, 1.0F);
         } else if (tool.is(net.neoforged.neoforge.common.Tags.Items.TOOLS_SHEAR)) {
             this.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, 1.0F);
-        } else if (tool.is(CommonTags.TOOLS_KNIFE)) {
+        } else if (tool.is(CommonTags.Items.TOOLS_KNIFE)) {
             this.playSound((SoundEvent)ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);
         } else {
             Item item = boardItem.getItem();

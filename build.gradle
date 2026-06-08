@@ -94,7 +94,7 @@ configurations {
 }
 
 dependencies {
-    implementation "curse.maven:farmersdelight-398521:6154807"
+    implementation "curse.maven:farmersdelight-398521:8083481"
 
     // Specify the version of Minecraft to use.
     // Depending on the plugin applied there are several options. We will assume you applied the userdev plugin as shown above.
