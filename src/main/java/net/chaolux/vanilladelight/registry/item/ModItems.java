@@ -44,7 +44,6 @@ public class ModItems {
     public static final RegistryObject<Item> CHORUS_PIE_SLICE;
     public static final RegistryObject<Item> MELON_PIE_SLICE;
     public static final RegistryObject<Item> PUFFERFISH_SLICE;
-    public static final RegistryObject<Item> PUMPKIN_PIE_SLICE;
     public static final RegistryObject<Item> MILKY_PUMPKIN;
     public static final RegistryObject<Item> CARROT_CAKE;
     public static final RegistryObject<Item> HONEY_CAKE;
@@ -160,7 +159,6 @@ public class ModItems {
         CARROT_CAKE_SLICE = registerWithTab("carrot_cake_slice", () -> new ConsumableItem(foodItem(FoodValues.CARROT_CAKE_SLICE),true));
         HONEY_CAKE_SLICE = registerWithTab("honey_cake_slice", () -> new ConsumableItem(foodItem(FoodValues.HONEY_CAKE_SLICE),true));
         PUFFERFISH_SLICE = registerWithTab("pufferfish_slice", () -> new ConsumableItem(foodItem(FoodValues.PUFFERFISH_SLICE),true));
-        PUMPKIN_PIE_SLICE = registerWithTab("pumpkin_pie_slice", () -> new ConsumableItem(foodItem(FoodValues.PUMPKIN_PIE_SLICE),true));
 
         CHARRED_PUMPKIN_SLICE = registerWithTab("charred_pumpkin_slice", () -> new Item(foodItem(FoodValues.CHARRED_PUMPKIN_SLICE)));
         COOKED_BROWN_MUSHROOM = registerWithTab("cooked_brown_mushroom", () -> new Item(foodItem(FoodValues.COOKED_BROWN_MUSHROOM)));

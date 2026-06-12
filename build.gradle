@@ -121,7 +121,7 @@ repositories {
 }
 
 dependencies {
-    implementation fg.deobf("curse.maven:farmersdelight-398521:6154802")
+    implementation fg.deobf("curse.maven:farmersdelight-398521:8083474")
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings

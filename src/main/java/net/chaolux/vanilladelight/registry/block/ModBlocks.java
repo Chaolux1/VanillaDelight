@@ -33,7 +33,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> MELON_PIE;
     public static final RegistryObject<Block> CHORUS_PIE;
     public static final RegistryObject<Block> MILKY_PUMPKIN_BLOCK;
-    public static final RegistryObject<Block> PUMPKIN_PIE;
 
     public static final RegistryObject<Block> DEEPSLATE_BRICKS_STOVE;
     public static final RegistryObject<Block> END_STONE_BRICKS_STOVE;
@@ -84,12 +83,6 @@ public class ModBlocks {
         HONEY_CAKE = BLOCKS.register("honey_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
         MELON_PIE = BLOCKS.register("melon_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.MELON_PIE_SLICE));
         CHORUS_PIE = BLOCKS.register("chorus_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.CHORUS_PIE_SLICE));
-        PUMPKIN_PIE = BLOCKS.register("pumpkin_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ModItems.PUMPKIN_PIE_SLICE) {
-            @Override
-            public ItemStack getCloneItemStack(BlockState state, HitResult result, BlockGetter blockGetter, BlockPos pos, Player player) {
-                return new ItemStack(Items.PUMPKIN_PIE);
-            }
-        });
 
         MILKY_PUMPKIN_BLOCK = BLOCKS.register("milky_pumpkin_block", () -> new FeastBlock(BlockBehaviour.Properties.copy(Blocks.PUMPKIN), ModItems.MILKY_PUMPKIN, false));
 

@@ -45,7 +45,7 @@ public class GlowBerriesJamItem extends DrinkableItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if ((Boolean) Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if ((Boolean) Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this, new Object[0]);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));

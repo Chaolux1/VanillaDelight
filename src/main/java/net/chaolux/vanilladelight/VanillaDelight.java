@@ -87,7 +87,6 @@ public class VanillaDelight
             event.accept(ModItems.MELON_PIE_SLICE);
             event.accept(ModItems.CARROT_CAKE_SLICE);
             event.accept(ModItems.HONEY_CAKE_SLICE);
-            event.accept(ModItems.PUMPKIN_PIE_SLICE);
             event.accept(ModItems.MILKY_PUMPKIN);
             event.accept(ModItems.CARROT_CAKE);
             event.accept(ModItems.HONEY_CAKE);
