@@ -27,7 +27,7 @@ public class CommonStoveRenderer implements BlockEntityRenderer<CommonStoveBlock
     @Override
     public void render(CommonStoveBlockEntity stoveEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLightIn, int combinedOverlayIn) {
         Direction direction = ((Direction) stoveEntity.getBlockState().getValue(StoveBlock.FACING)).getOpposite();
-        net.neoforged.neoforge.items.ItemStackHandler inventory = stoveEntity.getInventory();
+        net.neoforged.neoforge.items.ItemStackHandler inventory = stoveEntity.getItems();
         int posLong = (int) stoveEntity.getBlockPos().asLong();
 
         for (int i = 0; i < inventory.getSlots(); ++i) {

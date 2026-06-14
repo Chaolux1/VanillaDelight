@@ -47,7 +47,7 @@ public class SweetBerriesJamItem extends DrinkableItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if ((Boolean) Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if ((Boolean) Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + BuiltInRegistries.ITEM.getKey(this).getPath(), new Object[0]);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));

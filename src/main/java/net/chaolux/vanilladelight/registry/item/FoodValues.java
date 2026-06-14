@@ -32,7 +32,6 @@ public class FoodValues {
     public static final FoodProperties CARROT_CAKE_SLICE = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.JUMP, 400, 1, false, false), 1.0F).build();
     public static final FoodProperties HONEY_CAKE_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 1, false, false), 1.0F).build();
     public static final FoodProperties PUFFERFISH_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.7F).fast().effect(() -> new MobEffectInstance(MobEffects.POISON, 100, 1, false, false), 1.0F).build();
-    public static final FoodProperties PUMPKIN_PIE_SLICE = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.8F).fast().effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1, false, false), 1.0F).build();
     public static final FoodProperties MILKY_PUMPKIN = (new FoodProperties.Builder()).nutrition(8).saturationModifier(1.4F).effect(() -> new MobEffectInstance(ModEffects.COMFORT, 1200, 1, false, false), 1.0F).build();
 
     public static final FoodProperties PUFFERFISH_STEW = (new FoodProperties.Builder()).nutrition(7).saturationModifier(0.1F).build();

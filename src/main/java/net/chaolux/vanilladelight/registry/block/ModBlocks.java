@@ -36,7 +36,6 @@ public class ModBlocks {
     public static final Supplier<Block> MELON_PIE;
     public static final Supplier<Block> CHORUS_PIE;
     public static final Supplier<Block> MILKY_PUMPKIN_BLOCK;
-    public static final Supplier<Block> PUMPKIN_PIE;
 
     public static final Supplier<Block> DEEPSLATE_BRICKS_STOVE;
     public static final Supplier<Block> END_STONE_BRICKS_STOVE;
@@ -62,6 +61,7 @@ public class ModBlocks {
     public static final Supplier<Block> MANGROVE_CUTTING_BOARD;
     public static final Supplier<Block> OAK_CUTTING_BOARD;
     public static final Supplier<Block> WARPED_CUTTING_BOARD;
+    public static final Supplier<Block> SPRUCE_CUTTING_BOARD;
 
     public static final Supplier<Block> DEEPSLATE_BRICKS_CABINET;
     public static final Supplier<Block> END_STONE_BRICKS_CABINET;
@@ -87,12 +87,6 @@ public class ModBlocks {
         HONEY_CAKE = BLOCKS.register("honey_cake", () -> new CakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
         MELON_PIE = BLOCKS.register("melon_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.MELON_PIE_SLICE));
         CHORUS_PIE = BLOCKS.register("chorus_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHORUS_PIE_SLICE));
-        PUMPKIN_PIE = BLOCKS.register("pumpkin_pie", () -> new PieBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), ModItems.PUMPKIN_PIE_SLICE) {
-            @Override
-            public ItemStack getCloneItemStack(BlockState state, HitResult result, LevelReader level, BlockPos pos, Player player) {
-                return new ItemStack(Items.PUMPKIN_PIE);
-            }
-        });
 
         MILKY_PUMPKIN_BLOCK = BLOCKS.register("milky_pumpkin_block", () -> new FeastBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN), ModItems.MILKY_PUMPKIN, false));
 
@@ -111,15 +105,16 @@ public class ModBlocks {
         SANDSTONE_STOVE = BLOCKS.register("sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).lightLevel(litBlockEmission(13))));
 
         ACACIA_CUTTING_BOARD = BLOCKS.register("acacia_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        SPRUCE_CUTTING_BOARD = BLOCKS.register("spruce_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
 
         DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
         END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));

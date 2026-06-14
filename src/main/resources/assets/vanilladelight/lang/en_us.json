@@ -25,7 +25,6 @@
   "item.vanilladelight.carrot_cake_slice": "Carrot Cake Slice",
   "item.vanilladelight.honey_cake_slice": "Honey Cake Slice",
   "item.vanilladelight.pufferfish_slice": "Pufferfish Slice",
-  "item.vanilladelight.pumpkin_pie_slice": "Pumpkin Pie Slice",
   "item.vanilladelight.milky_pumpkin": "Milky Pumpkin",
   "item.vanilladelight.pufferfish_stew": "Pufferfish Stew",
   "item.vanilladelight.sweet_fish_soup": "Sweet Fish Soup",
@@ -47,7 +46,6 @@
   "block.vanilladelight.melon_pie": "Melon Pie",
   "block.vanilladelight.chorus_pie": "Chorus Pie",
   "block.vanilladelight.milky_pumpkin_block": "Milky Pumpkin",
-  "block.vanilladelight.pumpkin_pie": "Pumpkin Pie",
 
   "block.vanilladelight.deepslate_bricks_stove": "Deepslate Bricks Stove",
   "block.vanilladelight.end_stone_bricks_stove": "End Stone Bricks Stove",
@@ -86,6 +84,7 @@
   "block.vanilladelight.mangrove_cutting_board": "Mangrove Cutting Board",
   "block.vanilladelight.oak_cutting_board": "Oak Cutting Board",
   "block.vanilladelight.warped_cutting_board": "Warped Cutting Board",
+  "block.vanilladelight.spruce_cutting_board": "Spruce Cutting Board",
 
   "vanilladelight.tooltip.or": "or",
   "vanilladelight.tooltip.caramel_bottle": "Pulls Nearby Items",

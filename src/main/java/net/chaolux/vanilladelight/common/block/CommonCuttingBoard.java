@@ -4,12 +4,15 @@ package net.chaolux.vanilladelight.common.block;
 import net.chaolux.vanilladelight.common.block.entity.CommonCuttingBoardBlockEntity;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -17,12 +20,14 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import vectorwing.farmersdelight.common.block.CuttingBoardBlock;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
+import vectorwing.farmersdelight.common.registry.ModSounds;
 
 public class CommonCuttingBoard extends CuttingBoardBlock {
     public CommonCuttingBoard(BlockBehaviour.Properties properties) {
@@ -36,48 +41,41 @@ public class CommonCuttingBoard extends CuttingBoardBlock {
 
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        BlockEntity tileEntity = level.getBlockEntity(pos);
-        if (!(tileEntity instanceof CommonCuttingBoardBlockEntity cuttingBoardEntity)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
-
-        ItemStack mainHandStack = player.getMainHandItem();
-
-        if (cuttingBoardEntity.isEmpty()) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CommonCuttingBoardBlockEntity cuttingBoard) {
+            ItemStack mainHandStack = player.getMainHandItem();
             if (mainHandStack.isEmpty()) {
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            }
-            if (cuttingBoardEntity.addItem(player.getAbilities().instabuild ? mainHandStack.copy() : mainHandStack)) {
-                level.playSound((Player)null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
-                return ItemInteractionResult.SUCCESS;
-            }
-        } else {
-            if (!stack.isEmpty()) {
-                Player msgTarget = (hand.equals(InteractionHand.MAIN_HAND) && !player.getOffhandItem().isEmpty()) ? null : player;
-                if (cuttingBoardEntity.processStoredItemUsingTool(stack, msgTarget)) {
+                if (!cuttingBoard.isEmpty() && !level.isClientSide) {
+                    ItemStack removedStack = cuttingBoard.removeItem();
+                    if (!player.isCreative()) {
+                        player.getInventory().add(removedStack);
+                    }
+
+                    Vec3 centerPos = pos.getCenter();
+                    level.playSound((Player)null, centerPos.x(), centerPos.y(), centerPos.z(), (SoundEvent) ModSounds.BLOCK_CUTTING_BOARD_REMOVE.get(), SoundSource.BLOCKS, 0.25F, 0.5F);
+                    return ItemInteractionResult.SUCCESS;
+                } else {
+                    return ItemInteractionResult.CONSUME;
+                }
+            } else if (cuttingBoard.canAddItem(mainHandStack)) {
+                if (level.isClientSide) {
+                    return ItemInteractionResult.CONSUME;
+                } else {
+                    ItemStack remainderStack = cuttingBoard.addItem(player.getAbilities().instabuild ? mainHandStack.copy() : mainHandStack);
+                    if (!player.isCreative()) {
+                        player.setItemSlot(EquipmentSlot.MAINHAND, remainderStack);
+                    }
+
+                    Vec3 centerPos = pos.getCenter();
+                    level.playSound((Player)null, centerPos.x(), centerPos.y(), centerPos.z(), (SoundEvent)ModSounds.BLOCK_CUTTING_BOARD_PLACE.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     return ItemInteractionResult.SUCCESS;
                 }
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            } else {
+                return cuttingBoard.processStoredItemUsingTool(mainHandStack, player) ? ItemInteractionResult.SUCCESS : ItemInteractionResult.CONSUME;
             }
-
-            if (hand.equals(InteractionHand.MAIN_HAND) && !player.getOffhandItem().isEmpty()) {
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            }
-
-            if (hand.equals(InteractionHand.MAIN_HAND)) {
-                if (!player.isCreative()) {
-                    if (!player.getInventory().add(cuttingBoardEntity.removeItem())) {
-                        Containers.dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), cuttingBoardEntity.removeItem());
-                    }
-                } else {
-                    cuttingBoardEntity.removeItem();
-                }
-                level.playSound((Player)null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.25F, 0.5F);
-                return ItemInteractionResult.SUCCESS;
-            }
+        } else {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
-
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
@@ -97,8 +95,14 @@ public class CommonCuttingBoard extends CuttingBoardBlock {
     @Override
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof CommonCuttingBoardBlockEntity) {
-            return !((CommonCuttingBoardBlockEntity)blockEntity).isEmpty() ? 15 : 0;
+        if (blockEntity instanceof CommonCuttingBoardBlockEntity cuttingBoard) {
+            ItemStack storedStack = cuttingBoard.getStoredItem();
+            if (!storedStack.isEmpty()) {
+                float proportions = (float)storedStack.getCount() / (float)Math.min(cuttingBoard.getMaxStackSize(), storedStack.getMaxStackSize());
+                return Mth.floor(proportions * 14.0F) + 1;
+            } else {
+                return 0;
+            }
         } else {
             return 0;
         }
@@ -110,21 +114,27 @@ public class CommonCuttingBoard extends CuttingBoardBlock {
         }
 
         @SubscribeEvent
-        public static void onSneakPlaceTool(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock event) {
+        public static void onSneakPlaceTool(PlayerInteractEvent.RightClickBlock event) {
             Level level = event.getLevel();
             BlockPos pos = event.getPos();
-            Player player = event.getEntity();
-            ItemStack heldStack = player.getMainHandItem();
-            BlockEntity tileEntity = level.getBlockEntity(event.getPos());
-            if (player.isSecondaryUseActive() && !heldStack.isEmpty() && tileEntity instanceof CommonCuttingBoardBlockEntity && (heldStack.getItem() instanceof TieredItem || heldStack.getItem() instanceof TridentItem || heldStack.getItem() instanceof ShearsItem)) {
-                boolean success = ((CommonCuttingBoardBlockEntity)tileEntity).carveToolOnBoard(player.getAbilities().instabuild ? heldStack.copy() : heldStack);
-                if (success) {
-                    level.playSound((Player)null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
-                    event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof CommonCuttingBoardBlockEntity cuttingBoard) {
+                Player player = event.getEntity();
+                ItemStack heldStack = player.getMainHandItem();
+                if (player.isSecondaryUseActive() && !heldStack.isEmpty()) {
+                    if (cuttingBoard.carveToolOnBoard(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
+                        if (!player.isCreative()) {
+                            player.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+                        }
+
+                        Vec3 centerPos = pos.getCenter();
+                        level.playSound((Player)null, centerPos.x(), centerPos.y(), centerPos.z(), (SoundEvent)ModSounds.BLOCK_CUTTING_BOARD_CARVE.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+                        event.setCanceled(true);
+                        event.setCancellationResult(InteractionResult.SUCCESS);
+                    }
+
                 }
             }
-
         }
     }
 }

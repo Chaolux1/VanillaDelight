@@ -8,8 +8,8 @@
     "side": "vanilladelight:block/blue/cooking_pot_side",
     "parts": "vanilladelight:block/blue/cooking_pot_parts",
     "bottom": "vanilladelight:block/blue/cooking_pot_bottom",
-    "tray_top": "farmersdelight:block/cooking_pot_tray_top",
-    "tray_side": "farmersdelight:block/cooking_pot_tray_side"
+    "tray_top": "farmersdelight:block/heating_tray_top",
+    "tray_side": "farmersdelight:block/heating_tray_side"
   },
   "elements": [
     {

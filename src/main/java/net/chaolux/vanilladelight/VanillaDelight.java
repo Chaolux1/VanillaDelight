@@ -104,7 +104,6 @@ public class VanillaDelight
             event.accept(ModItems.MELON_PIE_SLICE.get());
             event.accept(ModItems.CARROT_CAKE_SLICE.get());
             event.accept(ModItems.HONEY_CAKE_SLICE.get());
-            event.accept(ModItems.PUMPKIN_PIE_SLICE.get());
             event.accept(ModItems.MILKY_PUMPKIN.get());
             event.accept(ModItems.CARROT_CAKE.get());
             event.accept(ModItems.HONEY_CAKE.get());
@@ -138,6 +137,7 @@ public class VanillaDelight
             event.accept(ModItems.MANGROVE_CUTTING_BOARD.get());
             event.accept(ModItems.OAK_CUTTING_BOARD.get());
             event.accept(ModItems.WARPED_CUTTING_BOARD.get());
+            event.accept(ModItems.SPRUCE_CUTTING_BOARD.get());
 
             event.accept(ModItems.DEEPSLATE_BRICKS_CABINET.get());
             event.accept(ModItems.END_STONE_BRICKS_CABINET.get());

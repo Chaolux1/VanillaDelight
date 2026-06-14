@@ -39,7 +39,7 @@ public class PufferfishStewItem extends ConsumableItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if ((Boolean) Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if ((Boolean) Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get()) {
             MobEffectInstance regen=new MobEffectInstance(MobEffects.REGENERATION,200,3);
             MobEffectInstance poison=new MobEffectInstance(MobEffects.POISON,200,3);
             MutableComponent regenText=effectText(regen).withStyle(ChatFormatting.BLUE);

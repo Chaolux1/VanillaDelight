@@ -86,7 +86,7 @@ public class CommonCabinetBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     protected Component getDefaultName() {
-        return TextUtils.getTranslation("container.cabinet", new Object[0]);
+        return this.getBlockState().getBlock().getName();
     }
 
     protected AbstractContainerMenu createMenu(int id, Inventory player) {

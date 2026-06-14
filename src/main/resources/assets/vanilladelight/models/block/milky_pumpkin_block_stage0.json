@@ -5,7 +5,7 @@
     "particle": "farmersdelight:block/stuffed_pumpkin_bottom",
     "bottom": "farmersdelight:block/stuffed_pumpkin_bottom",
     "details": "vanilladelight:block/milky_pumpkin_details",
-    "side": "farmersdelight:block/stuffed_pumpkin_side",
+    "side": "vanilladelight:block/stuffed_pumpkin_side",
     "top": "farmersdelight:block/stuffed_pumpkin_top"
   },
   "elements": [

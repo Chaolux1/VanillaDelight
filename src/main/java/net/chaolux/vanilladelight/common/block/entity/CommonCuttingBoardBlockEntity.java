@@ -4,23 +4,26 @@ import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,9 +33,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import vectorwing.farmersdelight.common.advancement.CuttingBoardTrigger;
+import vectorwing.farmersdelight.common.block.CuttingBoardBlock;
+import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipe;
 import vectorwing.farmersdelight.common.crafting.CuttingBoardRecipeInput;
@@ -79,33 +85,45 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
     }
 
     public boolean processStoredItemUsingTool(ItemStack toolStack, @Nullable Player player) {
-        if (this.level == null) return false;
-        if (this.isItemCarvingBoard) return false;
-
-        Optional<RecipeHolder<CuttingBoardRecipe>> matchingRecipe = this.getMatchingRecipe(toolStack, player);
-        matchingRecipe.ifPresent((recipe) -> {
-            int fortuneLevel = ItemUtils.getValidatedEnchantmentLevel(Enchantments.FORTUNE, this.level.registryAccess(), toolStack);
-            List<ItemStack> results = recipe.value().rollResults(this.level.random, fortuneLevel, new RecipeWrapper(this.inventory));
-
-            if (this.level instanceof ServerLevel serverLevel) {
-                Direction direction = this.getBlockState().getValue(CommonCuttingBoard.FACING).getCounterClockWise();
-                for (ItemStack result : results) {
-                    ItemUtils.spawnItemEntity(serverLevel, result.copy(),
-                            this.worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2),
-                            this.worldPosition.getY() + 0.2,
-                            this.worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2),
-                            direction.getStepX() * 0.2F, 0.0F, direction.getStepZ() * 0.2F);
+        if (this.level == null) {
+            return false;
+        } else if (this.isItemCarvingBoard) {
+            return false;
+        } else {
+            Optional<RecipeHolder<CuttingBoardRecipe>> matchingRecipe = this.getMatchingRecipe(toolStack, player);
+            matchingRecipe.ifPresent((recipe) -> {
+                for(ItemStack resultStack : ((CuttingBoardRecipe)recipe.value()).rollResults(this.level.random, ItemUtils.getValidatedEnchantmentLevel(Enchantments.FORTUNE, this.level.registryAccess(), toolStack), new RecipeWrapper(this.inventory))) {
+                    Direction direction = ((Direction)this.getBlockState().getValue(CuttingBoardBlock.FACING)).getCounterClockWise();
+                    ItemUtils.spawnItemEntity(this.level, resultStack.copy(), (double)this.worldPosition.getX() + (double)0.5F + (double)direction.getStepX() * 0.2, (double)this.worldPosition.getY() + 0.2, (double)this.worldPosition.getZ() + (double)0.5F + (double)direction.getStepZ() * 0.2, (double)((float)direction.getStepX() * 0.2F), (double)0.0F, (double)((float)direction.getStepZ() * 0.2F));
                 }
-                toolStack.hurtAndBreak(1, serverLevel, player, (item) -> {});
-            }
 
-            this.playProcessingSound(recipe.value().getSoundEvent().orElse(null), toolStack, this.getStoredItem());
-            this.removeItem();
-            if (player instanceof ServerPlayer serverPlayer) {
-                ((CuttingBoardTrigger) ModAdvancements.USE_CUTTING_BOARD.get()).trigger(serverPlayer);
-            }
-        });
-        return matchingRecipe.isPresent();
+                if (!this.level.isClientSide) {
+                    toolStack.hurtAndBreak(1, (ServerLevel)this.level, player, (item) -> {
+                    });
+                    if (player != null) {
+                        player.awardStat(Stats.ITEM_USED.get(toolStack.getItem()));
+                    }
+                }
+
+                Level patt0$temp = this.level;
+                if (patt0$temp instanceof ServerLevel serverLevel) {
+                    this.spawnCuttingParticles(serverLevel, this.getBlockPos(), this.getStoredItem());
+                }
+
+                this.playProcessingSound((SoundEvent)((CuttingBoardRecipe)recipe.value()).getSoundEvent().orElse((SoundEvent) null), toolStack, this.getStoredItem());
+                this.inventory.extractItem(0, 1, false);
+                if (player instanceof ServerPlayer) {
+                    ((CuttingBoardTrigger)ModAdvancements.USE_CUTTING_BOARD.get()).trigger((ServerPlayer)player);
+                    if (!this.getStoredItem().isEmpty()) {
+                        player.displayClientMessage(TextUtils.block("cutting_board.remaining_items", new Object[]{this.getStoredItem().getCount()}), true);
+                    } else {
+                        player.displayClientMessage(Component.empty(), true);
+                    }
+                }
+
+            });
+            return matchingRecipe.isPresent();
+        }
     }
 
     private Optional<RecipeHolder<CuttingBoardRecipe>> getMatchingRecipe(ItemStack toolStack, @Nullable Player player) {
@@ -119,22 +137,26 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
                 }
 
                 if (player != null) {
-                    player.displayClientMessage(TextUtils.block("cutting_board.invalid_item"), true);
+                    player.displayClientMessage(TextUtils.block("cutting_board.invalid_item", new Object[0]), true);
                 }
             } else if (player != null) {
-                player.displayClientMessage(TextUtils.block("cutting_board.invalid_tool"), true);
+                player.displayClientMessage(TextUtils.block("cutting_board.invalid_tool", new Object[0]), true);
             }
 
             return Optional.empty();
         }
     }
 
+    public void spawnCuttingParticles(ServerLevel level, BlockPos pos, ItemStack stack) {
+        level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), (double)pos.getX() + (double)0.5F, (double)pos.getY() + 0.2, (double)pos.getZ() + (double)0.5F, 5, 0.1, 0.1, 0.1, 0.05);
+    }
+
     public void playProcessingSound(@Nullable SoundEvent sound, ItemStack tool, ItemStack boardItem) {
         if (sound != null) {
             this.playSound(sound, 1.0F, 1.0F);
-        } else if (tool.is(net.neoforged.neoforge.common.Tags.Items.TOOLS_SHEAR)) {
+        } else if (tool.is(Tags.Items.TOOLS_SHEAR)) {
             this.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, 1.0F);
-        } else if (tool.is(CommonTags.Items.TOOLS_KNIFE)) {
+        } else if (tool.is(vectorwing.farmersdelight.common.tag.CommonTags.Items.TOOLS_KNIFE)) {
             this.playSound((SoundEvent)ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);
         } else {
             Item item = boardItem.getItem();
@@ -157,19 +179,25 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
 
     }
 
-    public boolean addItem(ItemStack itemStack) {
-        if (this.isEmpty() && !itemStack.isEmpty()) {
-            this.inventory.setStackInSlot(0, itemStack.split(1));
-            this.isItemCarvingBoard = false;
-            this.inventoryChanged();
-            return true;
+    public boolean canAddItem(ItemStack addedStack) {
+        if (!this.isItemCarvingBoard && !addedStack.isEmpty()) {
+            return this.inventory.insertItem(0, addedStack.copy(), true).getCount() != addedStack.getCount();
         } else {
             return false;
         }
     }
 
-    public boolean carveToolOnBoard(ItemStack tool) {
-        if (this.addItem(tool)) {
+    public ItemStack addItem(ItemStack addedStack) {
+        return !this.isItemCarvingBoard ? this.inventory.insertItem(0, addedStack.copy(), false) : addedStack;
+    }
+
+    public ItemStack removeItem() {
+        this.isItemCarvingBoard = false;
+        return this.inventory.extractItem(0, this.getMaxStackSize(), false);
+    }
+
+    public boolean carveToolOnBoard(ItemStack toolStack) {
+        if ((toolStack.getItem() instanceof TieredItem || toolStack.getItem() instanceof TridentItem || toolStack.getItem() instanceof ShearsItem) && this.addItem(toolStack) == ItemStack.EMPTY) {
             this.isItemCarvingBoard = true;
             return true;
         } else {
@@ -177,16 +205,6 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
         }
     }
 
-    public ItemStack removeItem() {
-        if (!this.isEmpty()) {
-            this.isItemCarvingBoard = false;
-            ItemStack item = this.getStoredItem().split(1);
-            this.inventoryChanged();
-            return item;
-        } else {
-            return ItemStack.EMPTY;
-        }
-    }
 
     public net.neoforged.neoforge.items.IItemHandler getInventory() {
         return this.inventory;
@@ -194,6 +212,10 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
 
     public ItemStack getStoredItem() {
         return this.inventory.getStackInSlot(0);
+    }
+
+    public int getMaxStackSize() {
+        return this.inventory.getSlotLimit(0);
     }
 
     public boolean isEmpty() {
@@ -208,12 +230,8 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
         super.setRemoved();
     }
 
-    private net.neoforged.neoforge.items.ItemStackHandler createHandler() {
-        return new net.neoforged.neoforge.items.ItemStackHandler() {
-            public int getSlotLimit(int slot) {
-                return 1;
-            }
-
+    private ItemStackHandler createHandler() {
+        return new ItemStackHandler() {
             protected void onContentsChanged(int slot) {
                 CommonCuttingBoardBlockEntity.this.inventoryChanged();
             }
