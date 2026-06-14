@@ -120,6 +120,7 @@ public class VanillaDelight
             event.accept(ModItems.MANGROVE_CUTTING_BOARD);
             event.accept(ModItems.OAK_CUTTING_BOARD);
             event.accept(ModItems.WARPED_CUTTING_BOARD);
+            event.accept(ModItems.SPRUCE_CUTTING_BOARD);
 
             event.accept(ModItems.DEEPSLATE_BRICKS_CABINET);
             event.accept(ModItems.END_STONE_BRICKS_CABINET);

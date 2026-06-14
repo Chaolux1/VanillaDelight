@@ -87,6 +87,7 @@ public class ModItems {
     public static final RegistryObject<Item> MANGROVE_CUTTING_BOARD;
     public static final RegistryObject<Item> OAK_CUTTING_BOARD;
     public static final RegistryObject<Item> WARPED_CUTTING_BOARD;
+    public static final RegistryObject<Item> SPRUCE_CUTTING_BOARD;
     public static final RegistryObject<Item> DEEPSLATE_BRICKS_CABINET;
     public static final RegistryObject<Item> END_STONE_BRICKS_CABINET;
     public static final RegistryObject<Item> NETHER_BRICKS_CABINET;
@@ -202,6 +203,7 @@ public class ModItems {
         MANGROVE_CUTTING_BOARD = registerWithTab("mangrove_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.MANGROVE_CUTTING_BOARD.get(), basicItem(), 200));
         OAK_CUTTING_BOARD = registerWithTab("oak_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.OAK_CUTTING_BOARD.get(), basicItem(), 200));
         WARPED_CUTTING_BOARD = registerWithTab("warped_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.WARPED_CUTTING_BOARD.get(), basicItem(), 200));
+        SPRUCE_CUTTING_BOARD = registerWithTab("spruce_cutting_board", () -> new FuelBlockItem((Block) ModBlocks.SPRUCE_CUTTING_BOARD.get(), basicItem(), 200));
 
         DEEPSLATE_BRICKS_CABINET = registerWithTab("deepslate_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_CABINET.get(), basicItem(), 300));
         END_STONE_BRICKS_CABINET = registerWithTab("end_stone_bricks_cabinet", () -> new FuelBlockItem((Block) ModBlocks.END_STONE_BRICKS_CABINET.get(), basicItem(), 300));

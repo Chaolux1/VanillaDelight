@@ -58,6 +58,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANGROVE_CUTTING_BOARD;
     public static final RegistryObject<Block> OAK_CUTTING_BOARD;
     public static final RegistryObject<Block> WARPED_CUTTING_BOARD;
+    public static final RegistryObject<Block> SPRUCE_CUTTING_BOARD;
 
     public static final RegistryObject<Block> DEEPSLATE_BRICKS_CABINET;
     public static final RegistryObject<Block> END_STONE_BRICKS_CABINET;
@@ -101,15 +102,16 @@ public class ModBlocks {
         SANDSTONE_STOVE = BLOCKS.register("sandstone_stove", () -> new CommonStoveBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE).lightLevel(litBlockEmission(13))));
 
         ACACIA_CUTTING_BOARD = BLOCKS.register("acacia_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
-        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BAMBOO_CUTTING_BOARD = BLOCKS.register("bamboo_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        BIRCH_CUTTING_BOARD = BLOCKS.register("birch_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CHERRY_CUTTING_BOARD = BLOCKS.register("cherry_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        CRIMSON_CUTTING_BOARD = BLOCKS.register("crimson_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        DARK_OAK_CUTTING_BOARD = BLOCKS.register("dark_oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        JUNGLE_CUTTING_BOARD = BLOCKS.register("jungle_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        MANGROVE_CUTTING_BOARD = BLOCKS.register("mangrove_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        OAK_CUTTING_BOARD = BLOCKS.register("oak_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        WARPED_CUTTING_BOARD = BLOCKS.register("warped_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
+        SPRUCE_CUTTING_BOARD = BLOCKS.register("spruce_cutting_board", () -> new CommonCuttingBoard(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS).strength(2.0f).sound(SoundType.WOOD)));
 
         DEEPSLATE_BRICKS_CABINET = BLOCKS.register("deepslate_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
         END_STONE_BRICKS_CABINET = BLOCKS.register("end_stone_bricks_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
