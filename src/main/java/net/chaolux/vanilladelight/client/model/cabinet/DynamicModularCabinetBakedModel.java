@@ -2,10 +2,7 @@ package net.chaolux.vanilladelight.client.model.cabinet;
 
 import net.chaolux.vanilladelight.api.furniture.FurnitureDefintion;
 import net.chaolux.vanilladelight.api.furniture.FurnitureRegistry;
-import net.chaolux.vanilladelight.client.model.furniture.FurnitureMaterialResolverRegistry;
-import net.chaolux.vanilladelight.client.model.furniture.FurnitureModelCache;
-import net.chaolux.vanilladelight.client.model.furniture.FurnitureQuadBuilder;
-import net.chaolux.vanilladelight.client.model.furniture.ResolvedFurnitureMaterial;
+import net.chaolux.vanilladelight.client.model.furniture.*;
 import net.chaolux.vanilladelight.common.block.ModularFurnitureBlock;
 import net.chaolux.vanilladelight.common.block.entity.FurnitureBlockEntity;
 import net.chaolux.vanilladelight.common.furniture.FurnitureDefintions;
@@ -216,11 +213,6 @@ public class DynamicModularCabinetBakedModel implements IDynamicBakedModel {
 
     private void drawPanel(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,ResolvedFurnitureMaterial body,float minX,float minY,float maxX,float maxY,float shade,float offset) {
         this.addMaterialRect(bakedQuadList, renderType, body, Direction.NORTH, minX, minY, maxX, maxY, offset, shade, false);
-//        if (maxY - minY >= 2.0f) {
-//            this.addMaterialRect(bakedQuadList, renderType, body, Direction.NORTH, minX, minY - 1.0f, maxX, maxY, offset + LAYER, Math.min(shade + 0.035f, 1.04f), false);
-//            this.addMaterialRect(bakedQuadList, renderType, body, Direction.NORTH, minX, minY, maxX, minY + 1.0f, offset + LAYER * 2.0f,shade * 0.84f, false);
-//
-//        }
     }
 
     private void drawHandle(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,ResolvedFurnitureMaterial accent,float minX,float minY,float maxX,float maxY,float offset) {
@@ -229,13 +221,31 @@ public class DynamicModularCabinetBakedModel implements IDynamicBakedModel {
     }
 
     private void addMaterialRect(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,ResolvedFurnitureMaterial resolvedFurnitureMaterial,Direction direction,float minA,float minB,float maxA,float maxB,float offset,float shade,boolean stretch) {
-        if(resolvedFurnitureMaterial.gap() && resolvedFurnitureMaterial.underlaySprite() != null && this.matches(renderType,RenderType.solid())) bakedQuadList.add(CabinetQuadBuilder.create(direction,minA,minB,maxA,maxB,offset,resolvedFurnitureMaterial.underlaySprite(),resolvedFurnitureMaterial.tint(),shade,stretch));
-        RenderType type=resolvedFurnitureMaterial.gap() ? RenderType.cutout() : resolvedFurnitureMaterial.renderType();
+        if(resolvedFurnitureMaterial.fillPattern() != null && this.matches(renderType,RenderType.solid())) this.addTiledFill(bakedQuadList,resolvedFurnitureMaterial.fillPattern(),direction,minA,minB,maxA,maxB,offset,resolvedFurnitureMaterial.tint(),shade);
+        RenderType type=resolvedFurnitureMaterial.fillPattern() != null ? RenderType.cutout() : resolvedFurnitureMaterial.renderType();
         if(!this.matches(renderType,type)) return;
         bakedQuadList.add(CabinetQuadBuilder.create(direction,minA,minB,maxA,maxB,offset + (resolvedFurnitureMaterial.gap() ? LAYER * 0.25f : 0.0f),resolvedFurnitureMaterial.atlasSprite(),resolvedFurnitureMaterial.tint(),shade,stretch));
     }
 
     private boolean matches(@Nullable RenderType renderType,RenderType type) {
         return renderType == null || renderType == type;
+    }
+
+    private void addTiledFill(List<BakedQuad> bakedQuadList, TextureFillPattern textureFillPattern,Direction direction,float minA,float minB,float maxA,float maxB,float offset,int tint,float shade) {
+        float width=16.0f * textureFillPattern.sourceWidth() / textureFillPattern.spriteWidth();
+        float height=16.0f * textureFillPattern.sourceHeight() / textureFillPattern.spriteHeight();
+        float tileWidth=Math.max(1.0f,width);
+        float tileHeight=Math.max(1.0f,height);
+        for(float tileMinA=minA;tileMinA < maxA - 0.0001f;tileMinA += tileWidth) {
+            float tileMaxA=Math.min(tileMinA + tileWidth,maxA);
+            float destinationWidth=tileMaxA - tileMinA;
+            float sourceWidth=textureFillPattern.sourceWidth() * destinationWidth / tileWidth;
+            for(float tileMinB=minB;tileMinB < maxB - 0.0001f;tileMinB += tileHeight) {
+                float tileMaxB=Math.min(tileMinB + tileHeight,maxB);
+                float destinationHeight=tileMaxB - tileMinB;
+                float sourceHeight=textureFillPattern.sourceHeight() * destinationHeight / tileHeight;
+                bakedQuadList.add(CabinetQuadBuilder.createRegion(direction,tileMinA,tileMinB,tileMaxA,tileMaxB,offset,textureFillPattern,0.0f,0.0f,sourceWidth,sourceHeight,tint,shade));
+            }
+        }
     }
 }

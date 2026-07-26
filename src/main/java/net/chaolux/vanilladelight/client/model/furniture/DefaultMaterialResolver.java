@@ -38,7 +38,8 @@ public class DefaultMaterialResolver implements MaterialResolver {
 
     @Override
     public ResolvedFurnitureMaterial resolve(MaterialState materialState, Direction direction) {
-        return this.CACHE.computeIfAbsent(new Key(materialState,direction),this::resolveUncahed);
+        boolean fillTransparentGaps=Config.FILL_TRANSPARENT_MATERIAL_GAPS.get();
+        return this.CACHE.computeIfAbsent(new Key(materialState,direction,fillTransparentGaps),this::resolveUncahed);
     }
 
     @Override
@@ -63,10 +64,10 @@ public class DefaultMaterialResolver implements MaterialResolver {
         }
         RenderType renderType= ItemBlockRenderTypes.getChunkRenderType(blockState);
         boolean fullBlock= Block.isShapeFullBlock(blockState.getCollisionShape(EmptyBlockGetter.INSTANCE, BlockPos.ZERO));
-        boolean glass=blockState.getBlock() instanceof AbstractGlassBlock;
-        boolean gap= Config.FILL_TRANSPARENT_MATERIAL_GAPS.get() && !fullBlock && !glass;
-        TextureAtlasSprite underlaySprite=bakedModel.getParticleIcon();
-        return new ResolvedFurnitureMaterial(atlasSprite,underlaySprite,tint,renderType,gap);
+        boolean preserveTransparency=blockState.getBlock() instanceof AbstractGlassBlock || renderType == RenderType.translucent();
+        TextureFillPattern textureFillPattern=null;
+        if(key.fillTransparentGaps() && !fullBlock && !preserveTransparency) textureFillPattern=TextureGapFiller.textureFillPattern(atlasSprite);
+        return new ResolvedFurnitureMaterial(atlasSprite,textureFillPattern,tint,renderType);
     }
 
     private static BakedQuad dominant(BakedModel bakedModel,BlockState blockState,Direction direction) {
@@ -101,7 +102,7 @@ public class DefaultMaterialResolver implements MaterialResolver {
         };
     }
 
-    private record Key(MaterialState materialState,Direction direction) {
+    private record Key(MaterialState materialState,Direction direction,boolean fillTransparentGaps) {
         
     }
 }

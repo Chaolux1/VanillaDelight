@@ -19,7 +19,7 @@ public final class FurnitureQuadBuilder {
 
     public static List<BakedQuad> buildStatic(BakedQuad bakedQuad, ResolvedFurnitureMaterial furnitureMaterial, FurniturePart furniturePart, Map<ResourceLocation, TextureAtlasSprite> overlays) {
         List<BakedQuad> result=new ArrayList<>();
-        if(furnitureMaterial.gap() && furnitureMaterial.underlaySprite() != null) result.add(transform(bakedQuad,furnitureMaterial.underlaySprite(),furniturePart,furnitureMaterial.tint(),List.of(),0.0f,0.0f,1.0f,false));
+        if(furnitureMaterial.fillPattern() != null) result.add(transformFillPattern(bakedQuad,furnitureMaterial.fillPattern(),furnitureMaterial.tint()));
         result.add(transform(bakedQuad,furnitureMaterial.atlasSprite(),furniturePart,furnitureMaterial.tint(),furniturePart.effectRules(),0.0f,0.0f,1.0f,furnitureMaterial.gap()));
         for (EffectRule effectRule : furniturePart.effectRules()) {
             if (!effectRule.animated() && effectRule.overlay() != null) {
@@ -162,5 +162,35 @@ public final class FurnitureQuadBuilder {
         private static float clamp(float value) {
             return Math.max(0.0f,Math.min(1.0f,value));
         }
+    }
+
+    private static BakedQuad transformFillPattern(BakedQuad bakedQuad,TextureFillPattern textureFillPattern,int tint) {
+        int[] vertices=bakedQuad.getVertices().clone();
+        int stride=vertices.length / 4;
+        TextureAtlasSprite sourceSprite=bakedQuad.getSprite();
+        TextureAtlasSprite fillSprite=textureFillPattern.textureAtlasSprite();
+        ColorTransform colorTransform=ColorTransform.from(tint,List.of(),1.0f);
+        for(int vertex=0;vertex < 4;vertex++) {
+            int base=vertex * stride;
+            int color=vertices[base + 3];
+            vertices[base + 3]=colorTransform.apply(color);
+            float sourceU=Float.intBitsToFloat(vertices[base + 4]);
+            float sourceV=Float.intBitsToFloat(vertices[base + 5]);
+            float normalizedU=normalize(sourceU,sourceSprite.getU0(),sourceSprite.getU1());
+            float normalizedV=normalize(sourceV,sourceSprite.getV0(),sourceSprite.getV1());
+            float patternU=(textureFillPattern.sourceX() + normalizedU * textureFillPattern.sourceWidth()) / textureFillPattern.spriteWidth();
+            float patternV=(textureFillPattern.sourceY() + normalizedV * textureFillPattern.sourceHeight()) / textureFillPattern.spriteHeight();
+            float mappedU=fillSprite.getU0() + patternU * (fillSprite.getU1() - fillSprite.getU0());
+            float mappedV=fillSprite.getV0() + patternV * (fillSprite.getV1() - fillSprite.getV0());
+            vertices[base + 4]=Float.floatToRawIntBits(mappedU);
+            vertices[base + 5]=Float.floatToRawIntBits(mappedV);
+        }
+        return new BakedQuad(vertices,-1,bakedQuad.getDirection(),fillSprite,bakedQuad.isShade(),bakedQuad.hasAmbientOcclusion());
+    }
+
+    private static float normalize(float value,float min,float max) {
+        float size=max - min;
+        if(size == 0.0f) return 0.0f;
+        return Math.max(0.0f,Math.min(1.0f,(value - min) / size));
     }
 }
