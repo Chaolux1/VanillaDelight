@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,open=false": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=east,open=false": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=south,open=false": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=west,open=false": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=north,open=true": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=east,open=true": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=south,open=true": {
+      "model": "vanilladelight:block/modular_cabinet"
+    },
+    "facing=west,open=true": {
+      "model": "vanilladelight:block/modular_cabinet"
+    }
+  }
+}

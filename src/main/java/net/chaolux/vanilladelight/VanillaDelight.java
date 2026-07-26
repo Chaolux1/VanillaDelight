@@ -3,6 +3,9 @@ package net.chaolux.vanilladelight;
 import com.mojang.logging.LogUtils;
 import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
 import net.chaolux.vanilladelight.client.renderer.CommonStoveRenderer;
+import net.chaolux.vanilladelight.common.block.entity.FurnitureBlockEntity;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefintions;
+import net.chaolux.vanilladelight.common.furniture.FurnitureReloadEvents;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import net.chaolux.vanilladelight.registry.item.ModItems;
@@ -32,12 +35,14 @@ public class VanillaDelight
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        FurnitureDefintions.registered();
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntityTypes.TILES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(FurnitureReloadEvents::addReloadListener);
         modEventBus.addListener(this::addCreative);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -134,6 +139,7 @@ public class VanillaDelight
             event.accept(ModItems.RED_SANDSTONE_CABINET);
             event.accept(ModItems.SANDSTONE_CABINET);
             event.accept(ModItems.STONE_CABINET);
+            event.accept(ModItems.MODULAR_CABINET);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE);

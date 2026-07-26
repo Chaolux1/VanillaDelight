@@ -1,9 +1,7 @@
 package net.chaolux.vanilladelight.registry.block;
 
-import net.chaolux.vanilladelight.common.block.CommonCabinetBlock;
-import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
-import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
-import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
+import net.chaolux.vanilladelight.common.block.*;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefintions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -23,10 +21,15 @@ import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.block.*;
 import net.chaolux.vanilladelight.registry.item.ModItems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS;
+
+    private static final List<RegistryObject<Block>> FURNITURE_BLOCKS=new ArrayList<>();
 
     public static final RegistryObject<Block> CARROT_CAKE;
     public static final RegistryObject<Block> HONEY_CAKE;
@@ -72,6 +75,18 @@ public class ModBlocks {
     public static final RegistryObject<Block> RED_SANDSTONE_CABINET;
     public static final RegistryObject<Block> SANDSTONE_CABINET;
     public static final RegistryObject<Block> STONE_CABINET;
+
+    public static final RegistryObject<Block> MODULAR_CABINET;
+
+    public static Block[] getFurnitureBlocks() {
+        return FURNITURE_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new);
+    }
+
+    public static RegistryObject<Block> resisterFurniture(String string, Supplier<? extends Block> supplier) {
+        RegistryObject<Block> blockRegistryObject=BLOCKS.register(string,supplier);
+        FURNITURE_BLOCKS.add(blockRegistryObject);
+        return blockRegistryObject;
+    }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
@@ -125,5 +140,7 @@ public class ModBlocks {
         RED_SANDSTONE_CABINET = BLOCKS.register("red_sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
         SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
         STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
+
+        MODULAR_CABINET=resisterFurniture("modular_cabinet", () -> new ModularCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL), FurnitureDefintions.MODULAR_CABINET));
     }
 }

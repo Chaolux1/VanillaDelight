@@ -1,0 +1,164 @@
+{
+  "default_style": "single_door",
+  "container_size": 27,
+  "materials": {
+    "body": "minecraft:oak_planks",
+    "top": "minecraft:smooth_stone",
+    "accent": "minecraft:iron_block"
+  },
+  "styles": [
+    {
+      "id": "single_door",
+      "model": "vanilladelight:block/furniture/modular_cabinet_single_door",
+      "open_model": "vanilladelight:block/furniture/modular_cabinet_single_door_open"
+    },
+    {
+      "id": "double_door",
+      "model": "vanilladelight:block/furniture/modular_cabinet_double_door",
+      "open_model": "vanilladelight:block/furniture/modular_cabinet_double_door_open"
+    },
+    {
+      "id": "three_drawers",
+      "model": "vanilladelight:block/furniture/modular_cabinet_three_drawers",
+      "open_model": "vanilladelight:block/furniture/modular_cabinet_three_drawers_open"
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "placeholder": "minecraft:block/structure_block",
+      "material": "body",
+      "mapping": {
+        "mode": "preserve_source_faces"
+      }
+    },
+    {
+      "id": "top",
+      "placeholder": "minecraft:block/jigsaw_top",
+      "material": "top",
+      "mapping": {
+        "mode": "preserve_scale",
+        "scale_u": 1.0,
+        "scale_v": 1.0
+      },
+      "effects": [
+        {
+          "shade": 0.96
+        }
+      ]
+    },
+    {
+      "id": "accent",
+      "placeholder": "minecraft:block/command_block_front",
+      "material": "accent",
+      "mapping": {
+        "mode": "stretch"
+      },
+      "effects": [
+        {
+          "metallic": 0.35
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "accent",
+      "material": "accent",
+      "styles": [
+        "single_door"
+      ],
+      "from": [
+        10.5,
+        5.0,
+        0.0
+      ],
+      "to": [
+        13.5,
+        8.0,
+        1.0
+      ],
+      "priority": 40
+    },
+    {
+      "id": "accent",
+      "material": "accent",
+      "styles": [
+        "double_door"
+      ],
+      "from": [
+        5.5,
+        5.0,
+        0.0
+      ],
+      "to": [
+        10.5,
+        8.0,
+        1.0
+      ],
+      "priority": 40
+    },
+    {
+      "id": "accent",
+      "material": "accent",
+      "styles": [
+        "three_drawers"
+      ],
+      "from": [
+        5.5,
+        0.0,
+        0.0
+      ],
+      "to": [
+        10.5,
+        12.0,
+        1.0
+      ],
+      "priority": 40
+    },
+    {
+      "id": "top",
+      "material": "top",
+      "from": [
+        0.0,
+        12.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        16.01,
+        16.0
+      ],
+      "priority": 20
+    },
+    {
+      "id": "body",
+      "material": "body",
+      "from": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        12.0,
+        16.0
+      ],
+      "priority": 10
+    }
+  ],
+  "collision": [
+    {
+      "from": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        16.0,
+        16.0
+      ]
+    }
+  ]
+}
