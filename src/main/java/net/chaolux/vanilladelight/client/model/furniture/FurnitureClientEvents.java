@@ -1,6 +1,8 @@
 package net.chaolux.vanilladelight.client.model.furniture;
 
 import net.chaolux.vanilladelight.client.model.cabinet.ModularCabinetModelLoader;
+import net.chaolux.vanilladelight.client.model.patternedcabinet.PatternedCabinetControlMap;
+import net.chaolux.vanilladelight.client.model.patternedcabinet.PatternedCabinetModelLoader;
 import net.chaolux.vanilladelight.common.block.entity.FurnitureBlockEntity;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -23,6 +25,7 @@ public class FurnitureClientEvents {
     public static void registerGeometryLoaders(ModelEvent.RegisterGeometryLoaders geometryLoaders) {
         geometryLoaders.register("furniture", FurnitureModelLoader.INSTANCE);
         geometryLoaders.register("modular_cabinet", ModularCabinetModelLoader.INSTANCE);
+        geometryLoaders.register("patterned_cabinet", PatternedCabinetModelLoader.INSTANCE);
     }
 
     @SubscribeEvent

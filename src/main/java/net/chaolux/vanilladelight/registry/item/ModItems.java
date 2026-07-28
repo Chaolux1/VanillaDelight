@@ -101,6 +101,7 @@ public class ModItems {
     public static final RegistryObject<Item> SANDSTONE_CABINET;
     public static final RegistryObject<Item> STONE_CABINET;
     public static final RegistryObject<Item> MODULAR_CABINET;
+    public static final RegistryObject<Item> PATTERNED_CABINET;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -220,5 +221,6 @@ public class ModItems {
         STONE_CABINET = registerWithTab("stone_cabinet", () -> new FuelBlockItem((Block) ModBlocks.STONE_CABINET.get(), basicItem(), 300));
 
         MODULAR_CABINET=registerWithTab("modular_cabinet",() -> new FuelBlockItem(ModBlocks.MODULAR_CABINET.get(),basicItem(),300));
+        PATTERNED_CABINET=registerWithTab("patterned_cabinet",() -> new FuelBlockItem(ModBlocks.PATTERNED_CABINET.get(),basicItem(),300));
     }
 }

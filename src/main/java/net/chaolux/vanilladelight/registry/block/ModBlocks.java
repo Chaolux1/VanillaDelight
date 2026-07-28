@@ -1,12 +1,7 @@
 package net.chaolux.vanilladelight.registry.block;
 
 import net.chaolux.vanilladelight.common.block.*;
-import net.chaolux.vanilladelight.common.furniture.FurnitureDefintions;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefinitions;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
@@ -14,7 +9,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -77,6 +71,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> STONE_CABINET;
 
     public static final RegistryObject<Block> MODULAR_CABINET;
+    public static final RegistryObject<Block> PATTERNED_CABINET;
+
 
     public static Block[] getFurnitureBlocks() {
         return FURNITURE_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new);
@@ -141,6 +137,7 @@ public class ModBlocks {
         SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
         STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL)));
 
-        MODULAR_CABINET=resisterFurniture("modular_cabinet", () -> new ModularCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL), FurnitureDefintions.MODULAR_CABINET));
+        MODULAR_CABINET=resisterFurniture("modular_cabinet", () -> new ModularCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL), FurnitureDefinitions.MODULAR_CABINET));
+        PATTERNED_CABINET=resisterFurniture("patterned_cabinet", () -> new PatternedCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL),FurnitureDefinitions.PATTERNED_CABINET));
     }
 }

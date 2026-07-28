@@ -3,8 +3,7 @@ package net.chaolux.vanilladelight;
 import com.mojang.logging.LogUtils;
 import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
 import net.chaolux.vanilladelight.client.renderer.CommonStoveRenderer;
-import net.chaolux.vanilladelight.common.block.entity.FurnitureBlockEntity;
-import net.chaolux.vanilladelight.common.furniture.FurnitureDefintions;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefinitions;
 import net.chaolux.vanilladelight.common.furniture.FurnitureReloadEvents;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
@@ -35,7 +34,7 @@ public class VanillaDelight
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        FurnitureDefintions.registered();
+        FurnitureDefinitions.registered();
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntityTypes.TILES.register(modEventBus);
@@ -139,7 +138,9 @@ public class VanillaDelight
             event.accept(ModItems.RED_SANDSTONE_CABINET);
             event.accept(ModItems.SANDSTONE_CABINET);
             event.accept(ModItems.STONE_CABINET);
+
             event.accept(ModItems.MODULAR_CABINET);
+            event.accept(ModItems.PATTERNED_CABINET);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE);

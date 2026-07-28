@@ -1,0 +1,87 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "vanilladelight:patterned_cabinet",
+  "definition": "vanilladelight:patterned_cabinet",
+  "textures": {
+    "particle": "minecraft:block/oak_planks",
+
+    "acacia_closed": "vanilladelight:block/cabinet_patterns/closed/acacia_cabinet_closed_pattern",
+    "acacia_open": "vanilladelight:block/cabinet_patterns/open/acacia_cabinet_open_pattern",
+
+    "bamboo_closed": "vanilladelight:block/cabinet_patterns/closed/bamboo_cabinet_closed_pattern",
+    "bamboo_open": "vanilladelight:block/cabinet_patterns/open/bamboo_cabinet_open_pattern",
+
+    "birch_closed": "vanilladelight:block/cabinet_patterns/closed/birch_cabinet_closed_pattern",
+    "birch_open": "vanilladelight:block/cabinet_patterns/open/birch_cabinet_open_pattern",
+
+    "cherry_closed": "vanilladelight:block/cabinet_patterns/closed/cherry_cabinet_closed_pattern",
+    "cherry_open": "vanilladelight:block/cabinet_patterns/open/cherry_cabinet_open_pattern",
+
+    "crimson_closed": "vanilladelight:block/cabinet_patterns/closed/crimson_cabinet_closed_pattern",
+    "crimson_open": "vanilladelight:block/cabinet_patterns/open/crimson_cabinet_open_pattern",
+
+    "dark_oak_closed": "vanilladelight:block/cabinet_patterns/closed/dark_oak_cabinet_closed_pattern",
+    "dark_oak_open": "vanilladelight:block/cabinet_patterns/open/dark_oak_cabinet_open_pattern",
+
+    "jungle_closed": "vanilladelight:block/cabinet_patterns/closed/jungle_cabinet_closed_pattern",
+    "jungle_open": "vanilladelight:block/cabinet_patterns/open/jungle_cabinet_open_pattern",
+
+    "mangrove_closed": "vanilladelight:block/cabinet_patterns/closed/mangrove_cabinet_closed_pattern",
+    "mangrove_open": "vanilladelight:block/cabinet_patterns/open/mangrove_cabinet_open_pattern",
+
+    "oak_closed": "vanilladelight:block/cabinet_patterns/closed/oak_cabinet_closed_pattern",
+    "oak_open": "vanilladelight:block/cabinet_patterns/open/oak_cabinet_open_pattern",
+
+    "spruce_closed": "vanilladelight:block/cabinet_patterns/closed/spruce_cabinet_closed_pattern",
+    "spruce_open": "vanilladelight:block/cabinet_patterns/open/spruce_cabinet_open_pattern",
+
+    "warped_closed": "vanilladelight:block/cabinet_patterns/closed/warped_cabinet_closed_pattern",
+    "warped_open": "vanilladelight:block/cabinet_patterns/open/warped_cabinet_open_pattern"
+  },
+  "patterns": {
+    "acacia": {
+      "closed": "acacia_closed",
+      "open": "acacia_open"
+    },
+    "bamboo": {
+      "closed": "bamboo_closed",
+      "open": "bamboo_open"
+    },
+    "birch": {
+      "closed": "birch_closed",
+      "open": "birch_open"
+    },
+    "cherry": {
+      "closed": "cherry_closed",
+      "open": "cherry_open"
+    },
+    "crimson": {
+      "closed": "crimson_closed",
+      "open": "crimson_open"
+    },
+    "dark_oak": {
+      "closed": "dark_oak_closed",
+      "open": "dark_oak_open"
+    },
+    "jungle": {
+      "closed": "jungle_closed",
+      "open": "jungle_open"
+    },
+    "mangrove": {
+      "closed": "mangrove_closed",
+      "open": "mangrove_open"
+    },
+    "oak": {
+      "closed": "oak_closed",
+      "open": "oak_open"
+    },
+    "spruce": {
+      "closed": "spruce_closed",
+      "open": "spruce_open"
+    },
+    "warped": {
+      "closed": "warped_closed",
+      "open": "warped_open"
+    }
+  }
+}

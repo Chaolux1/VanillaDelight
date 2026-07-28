@@ -1,5 +1,7 @@
 {
   "values": [
-    "#vanilladelight:cabinets/stone"
+    "#vanilladelight:cabinets/stone",
+    "vanilladelight:modular_cabinet",
+    "vanilladelight:patterned_cabinet"
   ]
 }
