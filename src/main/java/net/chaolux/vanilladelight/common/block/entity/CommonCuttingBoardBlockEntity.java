@@ -70,6 +70,10 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
         super(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), pos, state);
     }
 
+    protected CommonCuttingBoardBlockEntity(BlockEntityType<?> blockEntityType,BlockPos blockPos,BlockState blockState) {
+        super(blockEntityType,blockPos,blockState);
+    }
+
     public void load(CompoundTag compound) {
         super.load(compound);
         this.isItemCarvingBoard = compound.getBoolean("IsItemCarved");

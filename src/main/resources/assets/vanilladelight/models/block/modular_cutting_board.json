@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "vanilladelight:modular_cutting_board",
+  "definition": "vanilladelight:modular_cutting_board",
+  "textures": {
+    "particle": "minecraft:block/oak_planks",
+    "surface_template": "vanilladelight:block/cutting_board/surface_template",
+    "surface_pixel": "vanilladelight:block/cutting_board/surface_pixel",
+
+    "spiral_pattern": "vanilladelight:block/cutting_board_patterns/spiral_pattern",
+    "frame_pattern": "vanilladelight:block/cutting_board_patterns/frame_pattern",
+    "tiles_pattern": "vanilladelight:block/cutting_board_patterns/tiles_pattern",
+    "lines_pattern": "vanilladelight:block/cutting_board_patterns/lines_pattern",
+    "diamond_pattern": "vanilladelight:block/cutting_board_patterns/diamond_pattern"
+  },
+  "patterns": {
+    "spiral": "spiral_pattern",
+    "frame": "frame_pattern",
+    "tiles": "tiles_pattern",
+    "lines": "lines_pattern",
+    "diamond": "diamond_pattern"
+  }
+}

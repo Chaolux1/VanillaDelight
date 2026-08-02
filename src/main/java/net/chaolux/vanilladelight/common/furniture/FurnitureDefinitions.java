@@ -12,6 +12,7 @@ import java.util.Set;
 public class FurnitureDefinitions {
     public static final ResourceLocation MODULAR_CABINET=new ResourceLocation(VanillaDelight.MOD_ID,"modular_cabinet");
     public static final ResourceLocation PATTERNED_CABINET=new ResourceLocation(VanillaDelight.MOD_ID,"patterned_cabinet");
+    public static final ResourceLocation MODULAR_CUTTING_BOARD=new ResourceLocation(VanillaDelight.MOD_ID,"modular_cutting_board");
     public static final ResourceLocation BODY_PLACEHOLDER=new ResourceLocation("minecraft","block/structure_block");
     public static final ResourceLocation TOP_PLACEHOLDER=new ResourceLocation("minecraft","block/jigsaw_top");
     public static final ResourceLocation ACCENT_PLACEHOLDER=new ResourceLocation("minecraft","block/command_block_front");
@@ -25,6 +26,7 @@ public class FurnitureDefinitions {
         registered=true;
         registerModularCabinet();
         registerPatternedCabinet();
+        registerModularCuttingBoard();
     }
 
     private static void registerModularCabinet() {
@@ -62,6 +64,11 @@ public class FurnitureDefinitions {
         defintionBuilder.section(new FurnitureSection("body","body",aabb(0.0,0.0,0.0,16.0,16.0,16.0),Set.of(),10));
         defintionBuilder.collision(aabb(0.0,0.0,0.0,16.0,16.0,16.0)).containerSize(27);
         FurnitureRegistry.register(defintionBuilder.build());
+    }
+
+    private static void registerModularCuttingBoard() {
+        FurnitureDefintion furnitureDefintion=FurnitureDefintion.builder(MODULAR_CUTTING_BOARD).material("body",Blocks.OAK_PLANKS).style(new StylePresent("plain",null,null)).style(new StylePresent("spiral",null,null)).style(new StylePresent("frame",null,null)).style(new StylePresent("tiles",null,null)).style(new StylePresent("lines",null,null)).style(new StylePresent("diamond",null,null)).defaultStyle("plain").containerSize(0).build();
+        FurnitureRegistry.register(furnitureDefintion);
     }
 
     private static AABB aabb(double minX,double minY,double minZ,double maxX,double maxY, double maxZ) {

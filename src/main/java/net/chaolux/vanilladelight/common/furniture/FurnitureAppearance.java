@@ -166,4 +166,12 @@ public class FurnitureAppearance {
         }
     }
 
+    public boolean setStyle(String style) {
+        if(this.locked) return false;
+        if(style == null || !this.definition().styles().containsKey(style)) return false;
+        if(this.style.equals(style)) return false;
+        this.style=style;
+        return true;
+    }
+
 }

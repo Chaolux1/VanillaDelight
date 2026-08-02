@@ -2,6 +2,7 @@ package net.chaolux.vanilladelight.registry.block;
 
 import net.chaolux.vanilladelight.common.block.CommonCabinetBlock;
 import net.chaolux.vanilladelight.common.block.ModularContainerFurnitureBlock;
+import net.chaolux.vanilladelight.common.block.ModularCuttingBoardBlock;
 import net.chaolux.vanilladelight.common.block.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -14,6 +15,7 @@ public class ModBlockEntityTypes {
     public static final RegistryObject<BlockEntityType<CommonCuttingBoardBlockEntity>> COMMON_CUTTING_BOARD;
     public static final RegistryObject<BlockEntityType<CommonCabinetBlockEntity>> COMMON_CABINET;
     public static final RegistryObject<BlockEntityType<FurnitureBlockEntity>> FURNITURE;
+    public static final RegistryObject<BlockEntityType<ModularCuttingBoardBlockEntity>> MODULAR_CUTTING_BOARD;
 
     static {
         TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, "vanilladelight");
@@ -24,5 +26,6 @@ public class ModBlockEntityTypes {
             if(blockState.getBlock() instanceof ModularContainerFurnitureBlock) return new FurnitureContainerBlockEntity(blockPos,blockState);
             return new FurnitureBlockEntity(blockPos,blockState);
         },ModBlocks.getFurnitureBlocks()).build(null));
+        MODULAR_CUTTING_BOARD=TILES.register("modular_cutting_board",() -> BlockEntityType.Builder.of(ModularCuttingBoardBlockEntity::new,ModBlocks.MODULAR_CUTTING_BOARD.get()).build(null));
     }
 }

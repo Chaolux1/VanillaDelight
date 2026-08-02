@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.model.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.ModelData;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class DefaultMaterialResolver implements MaterialResolver {
         BlockColors blockColors=Minecraft.getInstance().getBlockColors();
         BlockState blockState=key.materialState.state();
         BakedModel bakedModel=renderDispatcher.getBlockModel(blockState);
-        BakedQuad bakedQuad=blockState.getRenderShape() == RenderShape.MODEL ? dominant(bakedModel,blockState,key.direction) : null;
+        BakedQuad bakedQuad=blockState.getRenderShape() == RenderShape.MODEL && !(bakedModel instanceof IDynamicBakedModel) ? dominant(bakedModel,blockState,key.direction) : null;
         TextureAtlasSprite atlasSprite=bakedQuad == null ? bakedModel.getParticleIcon() : bakedQuad.getSprite();
         int tint= -1;
         if(bakedQuad != null && bakedQuad.isTinted()) {

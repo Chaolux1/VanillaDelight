@@ -148,6 +148,7 @@ public class FurnitureInteractionHandler {
 
     private static boolean isAllowMaterial(Level level,BlockPos blockPos,BlockState blockState) {
         if(blockState.isAir() || blockState.getRenderShape() == RenderShape.INVISIBLE) return false;
+        if(blockState.getBlock() instanceof FurnitureDefintionProvider) return false;
         if(Config.ALLOW_NON_FULL_BLOCK_MATERIAL.get()) return true;
         return Block.isShapeFullBlock(blockState.getCollisionShape(level,blockPos));
     }

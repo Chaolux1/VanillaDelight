@@ -1,5 +1,6 @@
 package net.chaolux.vanilladelight.registry.item;
 
+import net.chaolux.vanilladelight.common.block.CuttingBoardPattern;
 import net.chaolux.vanilladelight.common.item.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -102,6 +103,12 @@ public class ModItems {
     public static final RegistryObject<Item> STONE_CABINET;
     public static final RegistryObject<Item> MODULAR_CABINET;
     public static final RegistryObject<Item> PATTERNED_CABINET;
+    public static final RegistryObject<Item> MODULAR_CUTTING_BOARD;
+    public static final RegistryObject<Item> SPIRAL_CUTTING_BOARD_PATTERN;
+    public static final RegistryObject<Item> FRAME_CUTTING_BOARD_PATTERN;
+    public static final RegistryObject<Item> TILES_CUTTING_BOARD_PATTERN;
+    public static final RegistryObject<Item> LINES_CUTTING_BOARD_PATTERN;
+    public static final RegistryObject<Item> DIAMOND_CUTTING_BOARD_PATTERN;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -222,5 +229,12 @@ public class ModItems {
 
         MODULAR_CABINET=registerWithTab("modular_cabinet",() -> new FuelBlockItem(ModBlocks.MODULAR_CABINET.get(),basicItem(),300));
         PATTERNED_CABINET=registerWithTab("patterned_cabinet",() -> new FuelBlockItem(ModBlocks.PATTERNED_CABINET.get(),basicItem(),300));
+        MODULAR_CUTTING_BOARD=registerWithTab("modular_cutting_board",() -> new ModularCuttingBoardItem(ModBlocks.MODULAR_CUTTING_BOARD.get(),basicItem(),200));
+        SPIRAL_CUTTING_BOARD_PATTERN=registerWithTab("spiral_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.SPIRAL,basicItem()));
+        FRAME_CUTTING_BOARD_PATTERN=registerWithTab("frame_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.FRAME,basicItem()));
+        TILES_CUTTING_BOARD_PATTERN=registerWithTab("tiles_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.TILES,basicItem()));
+        LINES_CUTTING_BOARD_PATTERN=registerWithTab("lines_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.LINES,basicItem()));
+        DIAMOND_CUTTING_BOARD_PATTERN=registerWithTab("diamond_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.DIAMOND,basicItem()));
+
     }
 }
