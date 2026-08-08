@@ -144,6 +144,14 @@
   "tooltip.vanilladelight.cutting_board.applies_pattern": "Applies pattern: %s",
   "tooltip.vanilladelight.cutting_board.consume_pattern": "Consume when applied",
 
+  "block.vanilladelight.modular_stove": "Modular Stove",
+  "style.vanilladelight.modular_stove.orange": "Orange Flame",
+  "style.vanilladelight.modular_stove.blue": "Blue Flame",
+  "style.vanilladelight.modular_stove.purple": "Purple Flame",
+  "style.vanilladelight.modular_stove.green": "Green Flame",
+  "style.vanilladelight.modular_stove.rainbow": "Rainbow Flame",
+  "section.vanilladelight.modular_stove.body": "Body",
+
   "message.vanilladelight.modular_cabinet.material": "%1$s material: %2$s",
   "message.vanilladelight.modular_cabinet.style": "Style: %s",
   "message.vanilladelight.furniture.material": "%1$s material: %2$s",

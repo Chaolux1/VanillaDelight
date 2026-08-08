@@ -15,8 +15,12 @@ import vectorwing.farmersdelight.common.block.entity.AbstractStoveBlockEntity;
 
 
 public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
-    public CommonStoveBlockEntity(BlockPos pos, BlockState state) {
-        super((BlockEntityType) ModBlockEntityTypes.COMMON_STOVE.get(), pos, state, RecipeType.CAMPFIRE_COOKING);
+    protected CommonStoveBlockEntity(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState state) {
+        super((BlockEntityType) blockEntityType, pos, state, RecipeType.CAMPFIRE_COOKING);
+    }
+
+    public CommonStoveBlockEntity(BlockPos blockPos,BlockState blockState) {
+        this(ModBlockEntityTypes.COMMON_STOVE.get(),blockPos,blockState);
     }
 
     public static void particleTick(Level level, BlockPos pos, BlockState state, CommonStoveBlockEntity stoveEntity) {
@@ -26,7 +30,8 @@ public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
     }
 
     public void addSmokeParticles() {
-        assert this.level != null;
+//        assert this.level != null;
+        if(this.level == null) return;
 
         ItemStackHandler items = this.getItems();
 
@@ -50,6 +55,7 @@ public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
 
     }
 
+    @Override
     protected int getInventorySlotCount() {
         return 6;
     }

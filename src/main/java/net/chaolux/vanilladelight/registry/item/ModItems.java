@@ -109,6 +109,7 @@ public class ModItems {
     public static final RegistryObject<Item> TILES_CUTTING_BOARD_PATTERN;
     public static final RegistryObject<Item> LINES_CUTTING_BOARD_PATTERN;
     public static final RegistryObject<Item> DIAMOND_CUTTING_BOARD_PATTERN;
+    public static final RegistryObject<Item> MODULAR_STOVE;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -235,6 +236,7 @@ public class ModItems {
         TILES_CUTTING_BOARD_PATTERN=registerWithTab("tiles_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.TILES,basicItem()));
         LINES_CUTTING_BOARD_PATTERN=registerWithTab("lines_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.LINES,basicItem()));
         DIAMOND_CUTTING_BOARD_PATTERN=registerWithTab("diamond_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.DIAMOND,basicItem()));
+        MODULAR_STOVE=registerWithTab("modular_stove",() -> new BlockItem(ModBlocks.MODULAR_STOVE.get(),basicItem()));
 
     }
 }

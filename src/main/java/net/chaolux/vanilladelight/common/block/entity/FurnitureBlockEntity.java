@@ -10,8 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
-import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -24,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class FurnitureBlockEntity extends BlockEntity {
+public class FurnitureBlockEntity extends BlockEntity implements FurnitureAppearanceHolder {
     public static final ModelProperty<FurnitureRenderData> RENDER_DATA=new ModelProperty<>();
     private final FurnitureAppearance furnitureAppearance;
 

@@ -19,7 +19,6 @@ import vectorwing.farmersdelight.common.block.CookingPotBlock;
 import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @EventBusSubscriber(modid = "vanilladelight", bus = Bus.FORGE)

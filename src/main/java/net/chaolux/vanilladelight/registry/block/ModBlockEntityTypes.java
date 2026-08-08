@@ -16,6 +16,7 @@ public class ModBlockEntityTypes {
     public static final RegistryObject<BlockEntityType<CommonCabinetBlockEntity>> COMMON_CABINET;
     public static final RegistryObject<BlockEntityType<FurnitureBlockEntity>> FURNITURE;
     public static final RegistryObject<BlockEntityType<ModularCuttingBoardBlockEntity>> MODULAR_CUTTING_BOARD;
+    public static final RegistryObject<BlockEntityType<ModularStoveBlockEntity>> MODULAR_STOVE;
 
     static {
         TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, "vanilladelight");
@@ -27,5 +28,6 @@ public class ModBlockEntityTypes {
             return new FurnitureBlockEntity(blockPos,blockState);
         },ModBlocks.getFurnitureBlocks()).build(null));
         MODULAR_CUTTING_BOARD=TILES.register("modular_cutting_board",() -> BlockEntityType.Builder.of(ModularCuttingBoardBlockEntity::new,ModBlocks.MODULAR_CUTTING_BOARD.get()).build(null));
+        MODULAR_STOVE=TILES.register("modular_stove",() -> BlockEntityType.Builder.of(ModularStoveBlockEntity::new,ModBlocks.MODULAR_STOVE.get()).build(null));
     }
 }

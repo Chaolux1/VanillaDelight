@@ -73,6 +73,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MODULAR_CABINET;
     public static final RegistryObject<Block> PATTERNED_CABINET;
     public static final RegistryObject<Block> MODULAR_CUTTING_BOARD;
+    public static final RegistryObject<Block> MODULAR_STOVE;
 
 
     public static Block[] getFurnitureBlocks() {
@@ -141,5 +142,6 @@ public class ModBlocks {
         MODULAR_CABINET=resisterFurniture("modular_cabinet", () -> new ModularCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL), FurnitureDefinitions.MODULAR_CABINET));
         PATTERNED_CABINET=resisterFurniture("patterned_cabinet", () -> new PatternedCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BARREL),FurnitureDefinitions.PATTERNED_CABINET));
         MODULAR_CUTTING_BOARD=BLOCKS.register("modular_cutting_board",() -> new ModularCuttingBoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD).noOcclusion(),FurnitureDefinitions.MODULAR_CUTTING_BOARD));
+        MODULAR_STOVE=BLOCKS.register("modular_stove",() -> new ModularStoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(litBlockEmission(13)),FurnitureDefinitions.MODULAR_STOVE));
     }
 }

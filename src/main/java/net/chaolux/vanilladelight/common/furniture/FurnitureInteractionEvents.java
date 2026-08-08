@@ -3,6 +3,7 @@ package net.chaolux.vanilladelight.common.furniture;
 import net.chaolux.vanilladelight.common.block.ModularFurnitureBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ToolAction;
@@ -22,8 +23,8 @@ public class FurnitureInteractionEvents {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if(!event.getEntity().isShiftKeyDown()) return;
-        BlockState blockState=event.getLevel().getBlockState(event.getPos());
-        if(!(blockState.getBlock() instanceof ModularFurnitureBlock)) return;
+        BlockEntity blockEntity=event.getLevel().getBlockEntity(event.getPos());
+        if(!(blockEntity instanceof FurnitureAppearanceHolder)) return;
         ItemStack itemStack=event.getItemStack();
         boolean material=itemStack.getItem() instanceof BlockItem;
         boolean wax=itemStack.canPerformAction(ToolActions.AXE_WAX_OFF);

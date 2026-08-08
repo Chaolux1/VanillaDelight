@@ -34,11 +34,22 @@ public class CommonStoveBlock extends StoveBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return ModBlockEntityTypes.COMMON_STOVE.get().create(pos,state);
+        return this.getStoveBlockEntity().create(pos,state);
     }
 
+    @Override
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide && (Boolean)state.getValue(LIT) ? createTickerHelper(blockEntityType, (BlockEntityType) ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveBlockEntity::particleTick) : createStoveTicker(level, blockEntityType, (BlockEntityType) ModBlockEntityTypes.COMMON_STOVE.get());
+        BlockEntityType<CommonStoveBlockEntity> commonStoveBlockEntityBlockEntityType=extendStoveBlockEntity(this.getStoveBlockEntity());
+        return level.isClientSide && state.getValue(LIT) ? createTickerHelper(blockEntityType, commonStoveBlockEntityBlockEntityType, CommonStoveBlockEntity::particleTick) : createStoveTicker(level, blockEntityType, commonStoveBlockEntityBlockEntityType);
+    }
+
+    protected BlockEntityType<? extends CommonStoveBlockEntity> getStoveBlockEntity() {
+        return ModBlockEntityTypes.COMMON_STOVE.get();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static BlockEntityType<CommonStoveBlockEntity> extendStoveBlockEntity(BlockEntityType<? extends CommonStoveBlockEntity> blockEntityType) {
+        return (BlockEntityType<CommonStoveBlockEntity>) blockEntityType;
     }
 }

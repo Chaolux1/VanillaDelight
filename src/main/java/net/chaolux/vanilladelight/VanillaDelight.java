@@ -9,6 +9,7 @@ import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
 import net.chaolux.vanilladelight.registry.crafting.ModRecipeSerializers;
 import net.chaolux.vanilladelight.registry.item.ModItems;
+import net.chaolux.vanilladelight.registry.particle.ModParticleTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,6 +40,7 @@ public class VanillaDelight
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntityTypes.TILES.register(modEventBus);
+        ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
@@ -149,6 +151,7 @@ public class VanillaDelight
             event.accept(ModItems.TILES_CUTTING_BOARD_PATTERN);
             event.accept(ModItems.LINES_CUTTING_BOARD_PATTERN);
             event.accept(ModItems.DIAMOND_CUTTING_BOARD_PATTERN);
+            event.accept(ModItems.MODULAR_STOVE);
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE);
@@ -172,6 +175,7 @@ public class VanillaDelight
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.MODULAR_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.MODULAR_STOVE.get(),CommonStoveRenderer::new);
             });
         }
     }
