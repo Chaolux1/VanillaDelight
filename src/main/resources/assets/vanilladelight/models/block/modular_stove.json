@@ -3,7 +3,7 @@
   "loader": "vanilladelight:modular_stove",
   "definition": "vanilladelight:modular_stove",
   "particle": "minecraft:block/bricks",
-  "fixed_side": "vanilladelight:block/modular_stove/stove_fixed_side",
+  "fixed_side": "farmersdelight:block/stove_side",
   "top_off": "farmersdelight:block/stove_top",
   "arc": "vanilladelight:block/modular_stove/stove_arc",
   "styles": {

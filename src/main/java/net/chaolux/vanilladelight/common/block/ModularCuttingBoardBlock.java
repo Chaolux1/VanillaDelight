@@ -67,4 +67,9 @@ public class ModularCuttingBoardBlock extends CommonCuttingBoard implements Furn
         BlockEntity blockEntity=level.getBlockEntity(blockPos);
         if(blockEntity instanceof ModularCuttingBoardBlockEntity modularCuttingBoardBlockEntity) modularCuttingBoardBlockEntity.applyItemAppearance(itemStack);
     }
+
+    @Override
+    protected boolean showLegacy() {
+        return false;
+    }
 }

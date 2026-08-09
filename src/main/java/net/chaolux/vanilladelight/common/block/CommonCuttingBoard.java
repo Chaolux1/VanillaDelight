@@ -2,8 +2,10 @@ package net.chaolux.vanilladelight.common.block;
 
 
 import net.chaolux.vanilladelight.common.block.entity.CommonCuttingBoardBlockEntity;
+import net.chaolux.vanilladelight.common.utility.LegacyBlockInfo;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,6 +16,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,6 +29,9 @@ import vectorwing.farmersdelight.common.block.CuttingBoardBlock;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModSounds;
 import vectorwing.farmersdelight.common.tag.ModTags;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class CommonCuttingBoard extends CuttingBoardBlock {
     public CommonCuttingBoard(Properties properties) {
@@ -104,6 +110,16 @@ public class CommonCuttingBoard extends CuttingBoardBlock {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> componentList, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack,blockGetter,componentList,tooltipFlag);
+        if(this.showLegacy()) LegacyBlockInfo.appendLegacy(componentList);
+    }
+
+    protected boolean showLegacy() {
+        return true;
     }
 
     @Mod.EventBusSubscriber(modid = "vanilladelight", bus = Mod.EventBusSubscriber.Bus.FORGE)

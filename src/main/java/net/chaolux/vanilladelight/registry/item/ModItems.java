@@ -2,13 +2,11 @@ package net.chaolux.vanilladelight.registry.item;
 
 import net.chaolux.vanilladelight.common.block.CuttingBoardPattern;
 import net.chaolux.vanilladelight.common.item.*;
+import net.chaolux.vanilladelight.registry.sound.ModSounds;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -110,6 +108,7 @@ public class ModItems {
     public static final RegistryObject<Item> LINES_CUTTING_BOARD_PATTERN;
     public static final RegistryObject<Item> DIAMOND_CUTTING_BOARD_PATTERN;
     public static final RegistryObject<Item> MODULAR_STOVE;
+    public static final RegistryObject<Item> MUSIC_DISC_ANEW;
 
     public static RegistryObject<Item> registerWithTab(String name, Supplier<Item> supplier) {
         RegistryObject<Item> block = ITEMS.register(name, supplier);
@@ -237,6 +236,6 @@ public class ModItems {
         LINES_CUTTING_BOARD_PATTERN=registerWithTab("lines_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.LINES,basicItem()));
         DIAMOND_CUTTING_BOARD_PATTERN=registerWithTab("diamond_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.DIAMOND,basicItem()));
         MODULAR_STOVE=registerWithTab("modular_stove",() -> new BlockItem(ModBlocks.MODULAR_STOVE.get(),basicItem()));
-
+        MUSIC_DISC_ANEW=registerWithTab("music_disc_anew",() -> new RecordItem(12, ModSounds.MUSIC_DISC_ANEW,basicItem().stacksTo(1),20*180));
     }
 }

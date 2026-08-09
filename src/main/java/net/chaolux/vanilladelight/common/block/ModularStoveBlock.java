@@ -74,6 +74,11 @@ public class ModularStoveBlock extends CommonStoveBlock implements FurnitureDefi
         }
     }
 
+    @Override
+    protected boolean showLegacy() {
+        return false;
+    }
+
     private ArcParticle arcParticle(RandomSource randomSource) {
         double verticalPixel=1.0 + randomSource.nextDouble() * 7.2;
         double maxHorizontalPixel;

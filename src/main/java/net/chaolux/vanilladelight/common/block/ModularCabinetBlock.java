@@ -26,12 +26,6 @@ public class ModularCabinetBlock extends ModularContainerFurnitureBlock{
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> componentList, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack,blockGetter,componentList,tooltipFlag);
-        componentList.add(Component.translatable("tooltip.vanilladelight.modular_cabinet.wax").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return Shapes.block();
     }

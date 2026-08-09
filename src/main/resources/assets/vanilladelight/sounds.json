@@ -1,0 +1,11 @@
+{
+  "music_disc_anew": {
+    "subtitle": "subtitles.vanilladelight.music_disc_anew",
+    "sounds": [
+      {
+        "name": "vanilladelight:music_disc/anew",
+        "stream": true
+      }
+    ]
+  }
+}

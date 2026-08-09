@@ -1,8 +1,10 @@
 package net.chaolux.vanilladelight.common.block;
 
 import net.chaolux.vanilladelight.common.block.entity.CommonCabinetBlockEntity;
+import net.chaolux.vanilladelight.common.utility.LegacyBlockInfo;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -10,14 +12,16 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import vectorwing.farmersdelight.common.block.CabinetBlock;
-import vectorwing.farmersdelight.common.block.entity.CabinetBlockEntity;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class CommonCabinetBlock extends CabinetBlock {
     public CommonCabinetBlock(Properties properties) {
@@ -58,6 +62,11 @@ public class CommonCabinetBlock extends CabinetBlock {
                 ((CommonCabinetBlockEntity)tileEntity).setCustomName(stack.getHoverName());
             }
         }
+    }
 
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> componentList, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack,blockGetter,componentList,tooltipFlag);
+        LegacyBlockInfo.appendLegacy(componentList);
     }
 }

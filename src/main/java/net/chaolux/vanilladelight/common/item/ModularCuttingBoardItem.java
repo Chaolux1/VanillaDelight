@@ -81,16 +81,4 @@ public class ModularCuttingBoardItem extends FuelBlockItem {
         compoundTag.put("InstallMaterial",new CompoundTag());
         return compoundTag;
     }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> componentList, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack,level,componentList,tooltipFlag);
-        FurnitureDefintion furnitureDefintion=FurnitureRegistry.get(FurnitureDefinitions.MODULAR_CUTTING_BOARD);
-        FurnitureRenderData furnitureRenderData=readRenderData(itemStack);
-        MaterialState materialState=furnitureDefintion.defaultMaterialState().get(BODY_MATERIAL);
-        MaterialState state=furnitureRenderData.materialState(BODY_MATERIAL,materialState);
-        CuttingBoardPattern cuttingBoardPattern=CuttingBoardPattern.boardPattern(furnitureRenderData.style());
-        componentList.add(Component.translatable("tooltip.vanilladelight.modular_cutting_board.material",state.state().getBlock().getName()).withStyle(ChatFormatting.GRAY));
-        componentList.add(Component.translatable("tooltip.vanilladelight.modular_cutting_board.pattern",Component.translatable(cuttingBoardPattern.translationKey())).withStyle(ChatFormatting.GRAY));
-    }
 }

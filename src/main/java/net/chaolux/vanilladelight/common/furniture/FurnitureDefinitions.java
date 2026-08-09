@@ -43,7 +43,10 @@ public class FurnitureDefinitions {
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(6.0,6.0,0.0,10.0,10.0,1.0),Set.of("acacia"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(0.0,5.0,0.0,2.0,11.0,1.0),Set.of("acacia"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(14.0,5.0,0.0,16.0,11.0,1.0),Set.of("acacia"),40));
-        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(7.0,7.0,0.0,9.0,9.0,1.0),Set.of("bamboo"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(7.0,9.0,0.0,9.0,10.0,1.0),Set.of("bamboo"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(6.0,7.0,0.0,7.0,9.0,1.0),Set.of("bamboo"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(9.0,7.0,0.0,10.0,9.0,1.0),Set.of("bamboo"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(7.0,6.0,0.0,9.0,7.0,1.0),Set.of("bamboo"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(5.0,5.0,0.0,7.0,11.0,1.0),Set.of("birch"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(9.0,5.0,0.0,11.0,11.0,1.0),Set.of("birch"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(0.0,5.0,0.0,2.0,11.0,1.0),Set.of("birch"),40));
@@ -51,10 +54,10 @@ public class FurnitureDefinitions {
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(5.0,7.0,0.0,11.0,9.0,1.0),Set.of("cherry"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(0.0,5.0,0.0,2.0,11.0,1.0),Set.of("cherry"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(14.0,5.0,0.0,16.0,11.0,1.0),Set.of("cherry"),40));
-        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(4.0,11.0,0.0,7.0,14.0,1.0),Set.of("dark_oak"),40));
-        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(9.0,11.0,0.0,12.0,14.0,1.0),Set.of("dark_oak"),40));
-        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(2.0,11.0,0.0,6.0,13.0,1.0),Set.of("jungle"),40));
-        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(10.0,11.0,0.0,14.0,13.0,1.0),Set.of("jungle"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(3.0,2.0,0.0,6.0,3.0,1.0),Set.of("dark_oak"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(10.0,2.0,0.0,13.0,3.0,1.0),Set.of("dark_oak"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(2.0,2.0,0.0,6.0,4.0,1.0),Set.of("jungle"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(10.0,2.0,0.0,14.0,4.0,1.0),Set.of("jungle"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(5.0,5.0,0.0,7.0,10.0,1.0),Set.of("oak"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(9.0,5.0,0.0,11.0,10.0,1.0),Set.of("oak"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(5.0,7.0,0.0,7.0,10.0,1.0),Set.of("spruce"),40));
@@ -63,6 +66,10 @@ public class FurnitureDefinitions {
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(14.0,5.0,0.0,16.0,11.0,1.0),Set.of("spruce"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(2.0,12.0,0.0,6.0,14.0,1.0),Set.of("warped"),40));
         defintionBuilder.section(new FurnitureSection("accent","accent",aabb(10.0,12.0,0.0,14.0,14.0,1.0),Set.of("warped"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(6.0,6.0,0.0,7.0,10.0,1.0),Set.of("crimson"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(9.0,6.0,0.0,10.0,10.0,1.0),Set.of("crimson"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(5.0,7.0,0.0,6.0,9.0,1.0),Set.of("crimson"),40));
+        defintionBuilder.section(new FurnitureSection("accent","accent",aabb(10.0,7.0,0.0,11.0,9.0,1.0),Set.of("crimson"),40));
         defintionBuilder.section(new FurnitureSection("body","body",aabb(0.0,0.0,0.0,16.0,16.0,16.0),Set.of(),10));
         defintionBuilder.collision(aabb(0.0,0.0,0.0,16.0,16.0,16.0)).containerSize(27);
         FurnitureRegistry.register(defintionBuilder.build());

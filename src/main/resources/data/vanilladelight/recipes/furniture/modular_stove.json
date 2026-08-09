@@ -3,10 +3,13 @@
   "category": "misc",
   "key": {
     "B": {
-      "item": "minecraft:end_stone_bricks"
+      "item": "minecraft:bricks"
     },
     "C": {
       "item": "minecraft:campfire"
+    },
+    "A": {
+      "item": "minecraft:scaffolding"
     },
     "i": {
       "tag": "forge:ingots/iron"
@@ -14,11 +17,11 @@
   },
   "pattern": [
     "iii",
-    "B B",
+    "A A",
     "BCB"
   ],
   "result": {
-    "item": "vanilladelight:end_stone_bricks_stove"
+    "item": "vanilladelight:modular_stove"
   },
   "show_notification": true
 }
