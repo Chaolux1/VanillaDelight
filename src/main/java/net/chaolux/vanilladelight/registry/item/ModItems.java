@@ -236,6 +236,6 @@ public class ModItems {
         LINES_CUTTING_BOARD_PATTERN=registerWithTab("lines_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.LINES,basicItem()));
         DIAMOND_CUTTING_BOARD_PATTERN=registerWithTab("diamond_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.DIAMOND,basicItem()));
         MODULAR_STOVE=registerWithTab("modular_stove",() -> new BlockItem(ModBlocks.MODULAR_STOVE.get(),basicItem()));
-        MUSIC_DISC_ANEW=registerWithTab("music_disc_anew",() -> new RecordItem(12, ModSounds.MUSIC_DISC_ANEW,basicItem().stacksTo(1),20*180));
+        MUSIC_DISC_ANEW=registerWithTab("music_disc_anew",() -> new RecordItem(12, ModSounds.MUSIC_DISC_ANEW,basicItem().stacksTo(1),20*132));
     }
 }
