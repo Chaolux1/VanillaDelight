@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "minecraft:campfire"
+    },
+    "A": {
+      "item": "minecraft:scaffolding"
+    },
+    "i": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "iii",
+    "A A",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vanilladelight:modular_stove"
+  },
+  "show_notification": true
+}

@@ -26,6 +26,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -63,13 +64,18 @@ public class CommonCuttingBoardBlockEntity extends SyncedBlockEntity {
     private boolean isItemCarvingBoard = false;
 
     public CommonCuttingBoardBlockEntity (BlockPos pos, BlockState state) {
-        super((BlockEntityType) ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), pos, state);
-        this.quickCheck = RecipeManager.createCheck((RecipeType)ModRecipeTypes.CUTTING.get());
+        this(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), pos, state);
+    }
+
+    protected CommonCuttingBoardBlockEntity(BlockEntityType<?> blockEntityType,BlockPos blockPos,BlockState blockState) {
+        super((BlockEntityType) blockEntityType,blockPos,blockState);
+        this.quickCheck=RecipeManager.createCheck((RecipeType) ModRecipeTypes.CUTTING.get());
     }
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), (be, context) -> be.getInventory());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,ModBlockEntityTypes.MODULAR_CUTTING_BOARD.get(),(be,context) -> be.getInventory());
     }
 
     public void loadAdditional(CompoundTag compound, HolderLookup.Provider registries) {

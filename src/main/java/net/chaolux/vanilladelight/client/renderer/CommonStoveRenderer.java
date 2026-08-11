@@ -16,16 +16,17 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import vectorwing.farmersdelight.common.block.StoveBlock;
+import vectorwing.farmersdelight.common.block.entity.AbstractStoveBlockEntity;
 import vectorwing.farmersdelight.common.block.entity.StoveBlockEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class CommonStoveRenderer implements BlockEntityRenderer<CommonStoveBlockEntity> {
+public class CommonStoveRenderer<T extends AbstractStoveBlockEntity> implements BlockEntityRenderer<T> {
     public CommonStoveRenderer(BlockEntityRendererProvider.Context context) {
 
     }
 
     @Override
-    public void render(CommonStoveBlockEntity stoveEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLightIn, int combinedOverlayIn) {
+    public void render(T stoveEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLightIn, int combinedOverlayIn) {
         Direction direction = ((Direction) stoveEntity.getBlockState().getValue(StoveBlock.FACING)).getOpposite();
         net.neoforged.neoforge.items.ItemStackHandler inventory = stoveEntity.getItems();
         int posLong = (int) stoveEntity.getBlockPos().asLong();

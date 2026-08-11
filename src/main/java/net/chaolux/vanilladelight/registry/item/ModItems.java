@@ -1,19 +1,21 @@
 package net.chaolux.vanilladelight.registry.item;
 
+import net.chaolux.vanilladelight.common.block.CuttingBoardPattern;
 import net.chaolux.vanilladelight.common.item.*;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
+import net.chaolux.vanilladelight.registry.sound.ModSounds;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.JukeboxBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.KnifeItem;
+import vectorwing.farmersdelight.common.item.PlaceableItem;
 
 import java.util.function.Supplier;
 
@@ -103,6 +105,16 @@ public class ModItems {
     public static final Supplier<Item> RED_SANDSTONE_CABINET;
     public static final Supplier<Item> SANDSTONE_CABINET;
     public static final Supplier<Item> STONE_CABINET;
+    public static final Supplier<Item> MODULAR_CABINET;
+    public static final Supplier<Item> PATTERNED_CABINET;
+    public static final Supplier<Item> MODULAR_CUTTING_BOARD;
+    public static final Supplier<Item> SPIRAL_CUTTING_BOARD_PATTERN;
+    public static final Supplier<Item> FRAME_CUTTING_BOARD_PATTERN;
+    public static final Supplier<Item> TILES_CUTTING_BOARD_PATTERN;
+    public static final Supplier<Item> LINES_CUTTING_BOARD_PATTERN;
+    public static final Supplier<Item> DIAMOND_CUTTING_BOARD_PATTERN;
+    public static final Supplier<Item> MODULAR_STOVE;
+    public static final Supplier<Item> MUSIC_DISC_ANEW;
 
     public static Supplier<Item> registerWithTab(String name, Supplier<Item> supplier) {
         Supplier<Item> block = ITEMS.register(name, supplier);
@@ -178,8 +190,8 @@ public class ModItems {
 
         CARROT_CAKE = registerWithTab("carrot_cake", () -> new BlockItem((Block)ModBlocks.CARROT_CAKE.get(), basicItem()));
         HONEY_CAKE = registerWithTab("honey_cake", () -> new BlockItem((Block)ModBlocks.HONEY_CAKE.get(), basicItem()));
-        MELON_PIE = registerWithTab("melon_pie", () -> new BlockItem((Block)ModBlocks.MELON_PIE.get(), basicItem()));
-        CHORUS_PIE = registerWithTab("chorus_pie", () -> new BlockItem((Block)ModBlocks.CHORUS_PIE.get(), basicItem()));
+        MELON_PIE = registerWithTab("melon_pie", () -> new PlaceableItem((Block)ModBlocks.MELON_PIE.get(), basicItem()));
+        CHORUS_PIE = registerWithTab("chorus_pie", () -> new PlaceableItem((Block)ModBlocks.CHORUS_PIE.get(), basicItem()));
         MILKY_PUMPKIN_BLOCK = registerWithTab("milky_pumpkin_block", () -> new BlockItem((Block) ModBlocks.MILKY_PUMPKIN_BLOCK.get(), basicItem().stacksTo(1)));
 
         DEEPSLATE_BRICKS_STOVE = registerWithTab("deepslate_bricks_stove", () -> new BlockItem((Block) ModBlocks.DEEPSLATE_BRICKS_STOVE.get(), basicItem()));
@@ -220,5 +232,17 @@ public class ModItems {
         RED_SANDSTONE_CABINET = registerWithTab("red_sandstone_cabinet", () -> new BlockItem((Block) ModBlocks.RED_SANDSTONE_CABINET.get(), basicItem()));
         SANDSTONE_CABINET = registerWithTab("sandstone_cabinet", () -> new BlockItem((Block) ModBlocks.SANDSTONE_CABINET.get(), basicItem()));
         STONE_CABINET = registerWithTab("stone_cabinet", () -> new BlockItem((Block) ModBlocks.STONE_CABINET.get(), basicItem()));
+
+        MODULAR_CABINET=registerWithTab("modular_cabinet",() -> new BlockItem(ModBlocks.MODULAR_CABINET.get(),basicItem()));
+        PATTERNED_CABINET=registerWithTab("patterned_cabinet",() -> new BlockItem(ModBlocks.PATTERNED_CABINET.get(),basicItem()));
+        MODULAR_CUTTING_BOARD=registerWithTab("modular_cutting_board",() -> new ModularCuttingBoardItem(ModBlocks.MODULAR_CUTTING_BOARD.get(),basicItem()));
+        SPIRAL_CUTTING_BOARD_PATTERN=registerWithTab("spiral_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.SPIRAL,basicItem()));
+        FRAME_CUTTING_BOARD_PATTERN=registerWithTab("frame_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.FRAME,basicItem()));
+        TILES_CUTTING_BOARD_PATTERN=registerWithTab("tiles_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.TILES,basicItem()));
+        LINES_CUTTING_BOARD_PATTERN=registerWithTab("lines_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.LINES,basicItem()));
+        DIAMOND_CUTTING_BOARD_PATTERN=registerWithTab("diamond_pattern",() -> new CuttingBoardPatternItem(CuttingBoardPattern.DIAMOND,basicItem()));
+        MODULAR_STOVE=registerWithTab("modular_stove",() -> new BlockItem(ModBlocks.MODULAR_STOVE.get(),basicItem()));
+        ResourceKey<JukeboxSong> anewMusic=ResourceKey.create(Registries.JUKEBOX_SONG,ResourceLocation.fromNamespaceAndPath("vanilladelight","anew"));
+        MUSIC_DISC_ANEW=registerWithTab("music_disc_anew",() -> new Item(basicItem().stacksTo(1).jukeboxPlayable(anewMusic)));
     }
 }

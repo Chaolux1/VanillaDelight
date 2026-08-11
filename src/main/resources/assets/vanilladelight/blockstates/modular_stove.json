@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,lit=false": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=east,lit=false": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=south,lit=false": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=west,lit=false": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=north,lit=true": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=east,lit=true": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=south,lit=true": {
+      "model": "vanilladelight:block/modular_stove"
+    },
+    "facing=west,lit=true": {
+      "model": "vanilladelight:block/modular_stove"
+    }
+  }
+}

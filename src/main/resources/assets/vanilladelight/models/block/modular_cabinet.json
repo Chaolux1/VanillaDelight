@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "vanilladelight:modular_cabinet",
+  "definition": "vanilladelight:modular_cabinet",
+  "particle": "minecraft:block/oak_planks"
+}

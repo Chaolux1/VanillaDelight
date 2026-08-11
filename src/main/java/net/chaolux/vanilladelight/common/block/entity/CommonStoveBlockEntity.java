@@ -28,7 +28,11 @@ import java.util.Optional;
 
 public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
     public CommonStoveBlockEntity(BlockPos pos, BlockState state) {
-        super((BlockEntityType) ModBlockEntityTypes.COMMON_STOVE.get(), pos, state, RecipeType.CAMPFIRE_COOKING);
+        this(ModBlockEntityTypes.COMMON_STOVE.get(), pos, state);
+    }
+
+    protected CommonStoveBlockEntity(BlockEntityType<?> blockEntityType,BlockPos blockPos,BlockState blockState) {
+        super((BlockEntityType) blockEntityType,blockPos,blockState,RecipeType.CAMPFIRE_COOKING);
     }
 
     public static void particleTick(Level level, BlockPos pos, BlockState state, CommonStoveBlockEntity stoveEntity) {
@@ -38,7 +42,7 @@ public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
     }
 
     public void addSmokeParticles() {
-        assert this.level != null;
+        if(this.level == null) return;
 
         ItemStackHandler items = this.getItems();
 

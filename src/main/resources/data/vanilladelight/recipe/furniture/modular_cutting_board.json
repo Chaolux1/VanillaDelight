@@ -1,0 +1,22 @@
+{
+  "type": "vanilladelight:modular_cutting_board",
+  "category": "misc",
+  "group": "vanilladelight:modular_cutting_board",
+  "key": {
+    "#": {
+      "tag": "vanilladelight:modular_cutting_board_materials"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "/##",
+    "/##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vanilladelight:modular_cutting_board"
+  },
+  "show_notification": true
+}

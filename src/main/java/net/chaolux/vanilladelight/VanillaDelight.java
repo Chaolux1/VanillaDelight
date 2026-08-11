@@ -3,9 +3,14 @@ package net.chaolux.vanilladelight;
 import net.chaolux.vanilladelight.client.renderer.CommonCuttingBoardRenderer;
 import net.chaolux.vanilladelight.client.renderer.CommonStoveRenderer;
 import net.chaolux.vanilladelight.client.renderer.CookingPotRenderer;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefinitions;
+import net.chaolux.vanilladelight.common.furniture.FurnitureReloadEvents;
 import net.chaolux.vanilladelight.registry.block.ModBlockEntityTypes;
 import net.chaolux.vanilladelight.registry.block.ModBlocks;
+import net.chaolux.vanilladelight.registry.crafting.ModRecipeSerializers;
 import net.chaolux.vanilladelight.registry.item.ModItems;
+import net.chaolux.vanilladelight.registry.particle.ModParticleTypes;
+import net.chaolux.vanilladelight.registry.sound.ModSounds;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import org.slf4j.Logger;
 
@@ -49,12 +54,18 @@ public class VanillaDelight
 
     public VanillaDelight(IEventBus modEventBus, ModContainer modContainer)
     {
+        FurnitureDefinitions.registered();
         modEventBus.addListener(this::commonSetup);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntityTypes.TILES.register(modEventBus);
+        ModParticleTypes.PARTICLE_TYPES.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.addListener(FurnitureReloadEvents::addReloadListener);
+
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -151,9 +162,24 @@ public class VanillaDelight
             event.accept(ModItems.RED_SANDSTONE_CABINET.get());
             event.accept(ModItems.SANDSTONE_CABINET.get());
             event.accept(ModItems.STONE_CABINET.get());
+
+            event.accept(ModItems.MODULAR_CABINET.get());
+            event.accept(ModItems.PATTERNED_CABINET.get());
+            event.accept(ModItems.MODULAR_CUTTING_BOARD.get());
+            event.accept(ModItems.MODULAR_STOVE.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.COPPER_KNIFE.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.MUSIC_DISC_ANEW.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SPIRAL_CUTTING_BOARD_PATTERN.get());
+            event.accept(ModItems.FRAME_CUTTING_BOARD_PATTERN.get());
+            event.accept(ModItems.TILES_CUTTING_BOARD_PATTERN.get());
+            event.accept(ModItems.LINES_CUTTING_BOARD_PATTERN.get());
+            event.accept(ModItems.DIAMOND_CUTTING_BOARD_PATTERN.get());
         }
     }
 
@@ -173,6 +199,8 @@ public class VanillaDelight
                 BlockEntityRenderers.register(vectorwing.farmersdelight.common.registry.ModBlockEntityTypes.COOKING_POT.get(), CookingPotRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_STOVE.get(), CommonStoveRenderer::new);
                 BlockEntityRenderers.register(ModBlockEntityTypes.COMMON_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.MODULAR_CUTTING_BOARD.get(), CommonCuttingBoardRenderer::new);
+                BlockEntityRenderers.register(ModBlockEntityTypes.MODULAR_STOVE.get(),CommonStoveRenderer::new);
             });
         }
     }

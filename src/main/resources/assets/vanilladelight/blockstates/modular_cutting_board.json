@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vanilladelight:block/modular_cutting_board"
+    },
+    "facing=east": {
+      "model": "vanilladelight:block/modular_cutting_board"
+    },
+    "facing=south": {
+      "model": "vanilladelight:block/modular_cutting_board"
+    },
+    "facing=west": {
+      "model": "vanilladelight:block/modular_cutting_board"
+    }
+  }
+}

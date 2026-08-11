@@ -1,12 +1,12 @@
 package net.chaolux.vanilladelight.registry.block;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
-import net.chaolux.vanilladelight.common.block.CommonCabinetBlock;
-import net.chaolux.vanilladelight.common.block.CommonCuttingBoard;
-import net.chaolux.vanilladelight.common.block.CommonStoveBlock;
-import net.chaolux.vanilladelight.common.block.SoulCommonStoveBlock;
+import net.chaolux.vanilladelight.common.block.*;
+import net.chaolux.vanilladelight.common.furniture.FurnitureDefinitions;
 import net.chaolux.vanilladelight.registry.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -30,6 +30,8 @@ import vectorwing.farmersdelight.common.block.PieBlock;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS;
+
+    private static final List<Supplier<Block>> FURNITURE_BLOCKS=new ArrayList<>();
 
     public static final Supplier<Block> CARROT_CAKE;
     public static final Supplier<Block> HONEY_CAKE;
@@ -75,6 +77,22 @@ public class ModBlocks {
     public static final Supplier<Block> RED_SANDSTONE_CABINET;
     public static final Supplier<Block> SANDSTONE_CABINET;
     public static final Supplier<Block> STONE_CABINET;
+
+    public static final Supplier<Block> MODULAR_CABINET;
+    public static final Supplier<Block> PATTERNED_CABINET;
+    public static final Supplier<Block> MODULAR_CUTTING_BOARD;
+    public static final Supplier<Block> MODULAR_STOVE;
+
+
+    public static Block[] getFurnitureBlocks() {
+        return FURNITURE_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new);
+    }
+
+    public static Supplier<Block> resisterFurniture(String string, Supplier<? extends Block> supplier) {
+        Supplier<Block> blockRegistryObject=BLOCKS.register(string,supplier);
+        FURNITURE_BLOCKS.add(blockRegistryObject);
+        return blockRegistryObject;
+    }
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
@@ -129,5 +147,9 @@ public class ModBlocks {
         SANDSTONE_CABINET = BLOCKS.register("sandstone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
         STONE_CABINET = BLOCKS.register("stone_cabinet", () -> new CommonCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
 
+        MODULAR_CABINET=resisterFurniture("modular_cabinet", () -> new ModularCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL), FurnitureDefinitions.MODULAR_CABINET));
+        PATTERNED_CABINET=resisterFurniture("patterned_cabinet", () -> new PatternedCabinetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL),FurnitureDefinitions.PATTERNED_CABINET));
+        MODULAR_CUTTING_BOARD=BLOCKS.register("modular_cutting_board",() -> new ModularCuttingBoardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0f).sound(SoundType.WOOD).noOcclusion(),FurnitureDefinitions.MODULAR_CUTTING_BOARD));
+        MODULAR_STOVE=BLOCKS.register("modular_stove",() -> new ModularStoveBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).lightLevel(litBlockEmission(13)),FurnitureDefinitions.MODULAR_STOVE));
     }
 }

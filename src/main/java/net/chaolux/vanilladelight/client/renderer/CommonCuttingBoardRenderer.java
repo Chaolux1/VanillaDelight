@@ -18,14 +18,14 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Random;
 
-public class CommonCuttingBoardRenderer implements BlockEntityRenderer<CommonCuttingBoardBlockEntity> {
+public class CommonCuttingBoardRenderer<T extends CommonCuttingBoardBlockEntity> implements BlockEntityRenderer<T> {
     private final Random random = new Random();
 
     public CommonCuttingBoardRenderer(BlockEntityRendererProvider.Context pContext) {
     }
 
     @Override
-    public void render(CommonCuttingBoardBlockEntity cuttingBoard, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+    public void render(T cuttingBoard, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         ItemStack itemStack = cuttingBoard.getStoredItem();
         if (!itemStack.isEmpty()) {
             Direction direction = ((Direction)cuttingBoard.getBlockState().getValue(CuttingBoardBlock.FACING)).getOpposite();

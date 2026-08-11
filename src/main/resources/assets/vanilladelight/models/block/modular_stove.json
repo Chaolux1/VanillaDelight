@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "vanilladelight:modular_stove",
+  "definition": "vanilladelight:modular_stove",
+  "particle": "minecraft:block/bricks",
+  "fixed_side": "farmersdelight:block/stove_side",
+  "top_off": "farmersdelight:block/stove_top",
+  "arc": "vanilladelight:block/modular_stove/stove_arc",
+  "styles": {
+    "orange": {
+      "front": "vanilladelight:block/modular_stove/stove_front_on_orange",
+      "top": "farmersdelight:block/stove_top_on"
+    },
+    "blue": {
+      "front": "vanilladelight:block/modular_stove/stove_front_on_blue",
+      "top": "vanilladelight:block/modular_stove/stove_top_on_blue"
+    },
+    "purple": {
+      "front": "vanilladelight:block/modular_stove/stove_front_on_purple",
+      "top": "vanilladelight:block/modular_stove/stove_top_on_purple"
+    },
+    "green": {
+      "front": "vanilladelight:block/modular_stove/stove_front_on_green",
+      "top": "vanilladelight:block/modular_stove/stove_top_on_green"
+    },
+    "rainbow": {
+      "front": "vanilladelight:block/modular_stove/stove_front_on_rainbow",
+      "top": "vanilladelight:block/modular_stove/stove_top_on_rainbow"
+    }
+  }
+}
