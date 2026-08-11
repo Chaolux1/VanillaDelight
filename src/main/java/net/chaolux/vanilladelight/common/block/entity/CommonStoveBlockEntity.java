@@ -30,7 +30,6 @@ public class CommonStoveBlockEntity extends AbstractStoveBlockEntity {
     }
 
     public void addSmokeParticles() {
-//        assert this.level != null;
         if(this.level == null) return;
 
         ItemStackHandler items = this.getItems();

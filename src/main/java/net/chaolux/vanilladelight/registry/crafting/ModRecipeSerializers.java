@@ -8,10 +8,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModRecipeSerializers {
-    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS=DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, VanillaDelight.MOD_ID);
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS;
     public static final RegistryObject<RecipeSerializer<ModularCuttingBoardRecipe>> MODULAR_CUTTING_BOARD;
 
     static {
+        RECIPE_SERIALIZERS=DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, VanillaDelight.MOD_ID);
         MODULAR_CUTTING_BOARD=RECIPE_SERIALIZERS.register("modular_cutting_board",ModularCuttingBoardRecipe.Serializer::new);
     }
 }

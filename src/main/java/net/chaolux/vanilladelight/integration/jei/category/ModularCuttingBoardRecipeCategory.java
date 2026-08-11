@@ -26,11 +26,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class ModularCuttingBoardRecipeCategory implements ICraftingCategoryExtension {
-//    private static final String PRIMARY_MATERIAL_SLOT="vanilladelight_primary_material";
-//    private static final String MATERIAL_SLOT_2="vanilladelight_material_2";
-//    private static final String MATERIAL_SLOT_3="vanilladelight_material_3";
-//    private static final String MATERIAL_SLOT_4="vanilladelight_material_4";
-//    private static final String OUTPUT_SLOT="vanilladelight_modular_cutting_board_output";
     private final ModularCuttingBoardRecipe modularCuttingBoardRecipe;
     private final List<ItemStack> itemStackList;
     private final List<ItemStack> itemStacks;
@@ -56,21 +51,6 @@ public class ModularCuttingBoardRecipeCategory implements ICraftingCategoryExten
             iRecipeLayoutBuilder.createFocusLink(recipeSlotBuilderList.get(4),recipeSlotBuilderList.get(5),recipeSlotBuilderList.get(7),recipeSlotBuilderList.get(8),iRecipeSlotBuilder);
         }
     }
-
-//    @Override
-//    public void onDisplayedIngredientsUpdate(List<IRecipeSlotDrawable> iRecipeSlotDrawableList,IFocusGroup iFocusGroup) {
-//        IRecipeSlotDrawable iRecipeSlotDrawable=findSlot(iRecipeSlotDrawableList,PRIMARY_MATERIAL_SLOT);
-//        if(iRecipeSlotDrawable == null) return;
-//        Optional<ItemStack> optionalItemStack=iRecipeSlotDrawable.getDisplayedItemStack();
-//        if(optionalItemStack.isEmpty()) return;
-//        ItemStack itemStack=optionalItemStack.get();
-//        if(!(itemStack.getItem() instanceof BlockItem blockItem)) return;
-//        overrideSlot(iRecipeSlotDrawableList,MATERIAL_SLOT_2,itemStack);
-//        overrideSlot(iRecipeSlotDrawableList,MATERIAL_SLOT_3,itemStack);
-//        overrideSlot(iRecipeSlotDrawableList,MATERIAL_SLOT_4,itemStack);
-//        ItemStack result= ModularCuttingBoardItem.itemStack(blockItem.getBlock().defaultBlockState());
-//        overrideSlot(iRecipeSlotDrawableList,OUTPUT_SLOT,result);
-//    }
 
     @Override
     public int getWidth() {
@@ -113,19 +93,4 @@ public class ModularCuttingBoardRecipeCategory implements ICraftingCategoryExten
         if(list.isEmpty()) list.add(ModularCuttingBoardItem.itemStack(Blocks.OAK_PLANKS.defaultBlockState()));
         return List.copyOf(list);
     }
-
-//    private static void overrideSlot(List<IRecipeSlotDrawable> iRecipeSlotDrawableList,String string,ItemStack itemStack) {
-//        IRecipeSlotDrawable iRecipeSlotDrawable=findSlot(iRecipeSlotDrawableList,string);
-//        if(iRecipeSlotDrawable == null) return;
-//        iRecipeSlotDrawable.clearDisplayOverrides();
-//        iRecipeSlotDrawable.createDisplayOverrides().addItemStack(itemStack.copy());
-//    }
-//
-//    @Nullable
-//    private static IRecipeSlotDrawable findSlot(List<IRecipeSlotDrawable> iRecipeSlotDrawableList,String string) {
-//        for (IRecipeSlotDrawable iRecipeSlotDrawable : iRecipeSlotDrawableList) {
-//            if(iRecipeSlotDrawable.getSlotName().filter(string::equals).isPresent()) return iRecipeSlotDrawable;
-//        }
-//        return null;
-//    }
 }

@@ -33,7 +33,6 @@ import java.util.Random;
 public class DynamicModularCuttingBoardBakedModel implements IDynamicBakedModel {
     private static final float BOTTOM=0.0f;
     private static final float TOP=1.0f;
-//    private static final float PATTERN_LAYER=0.0001f;
     private static final float MATERIAL_LAYER=0.0002f;
     private static final float EPSILON=0.0001f;
     private final FurnitureModelCache CACHE=new FurnitureModelCache();
@@ -145,40 +144,12 @@ public class DynamicModularCuttingBoardBakedModel implements IDynamicBakedModel 
         this.addFace(bakedQuadList,renderType,furnitureRenderData,Direction.WEST,6.0f,BOTTOM,10.0f,TOP,13.0f,0.68f);
         this.addFace(bakedQuadList,renderType,furnitureRenderData,Direction.SOUTH,12.0f,BOTTOM,13.0f,TOP,6.0f,0.72f);
         this.addFace(bakedQuadList,renderType,furnitureRenderData,Direction.NORTH,12.0f,BOTTOM,13.0f,TOP,10.0f,0.72f);
-//        this.addTopPattern(bakedQuadList,renderType,furnitureRenderData);
         List<BakedQuad> rotate=new ArrayList<>(bakedQuadList.size());
         for (BakedQuad bakedQuad : bakedQuadList) {
             rotate.add(FurnitureQuadBuilder.rotate(bakedQuad,direction));
         }
         return List.copyOf(rotate);
     }
-
-//    private void addTopPattern(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,FurnitureRenderData furnitureRenderData) {
-//        ModularCuttingBoardPatternSet modularCuttingBoardPatternSet=this.stringModularCuttingBoardPatternSetMap.get(furnitureRenderData.style());
-//        if(modularCuttingBoardPatternSet == null) return;
-//        ResolvedFurnitureMaterial resolvedFurnitureMaterial=this.resolveBodyMaterial(furnitureRenderData,Direction.UP);
-//        for(PatternedCabinetControlMap.Region region : modularCuttingBoardPatternSet.modularCuttingBoardControlMap().regions()) {
-//            if(region.layer() != PatternedCabinetControlMap.Layer.BODY_SHADE) continue;
-//            float minX=region.minX();
-//            float maxX=region.maxX();
-//            float minZ=region.minY();
-//            float maxZ=region.maxY();
-//            if(maxX <= minX || maxZ <= minZ) continue;
-//            this.addPatterRegion(bakedQuadList,renderType,resolvedFurnitureMaterial,minX,minZ,maxX,maxZ,1.0f,1.0f,12.0f,15.0f,region.shade());
-//            this.addPatterRegion(bakedQuadList,renderType,resolvedFurnitureMaterial,minX,minZ,maxX,maxZ,13.0f,1.0f,15.0f,15.0f,region.shade());
-//            this.addPatterRegion(bakedQuadList,renderType,resolvedFurnitureMaterial,minX,minZ,maxX,maxZ,12.0f,1.0f,13.0f,6.0f,region.shade());
-//            this.addPatterRegion(bakedQuadList,renderType,resolvedFurnitureMaterial,minX,minZ,maxX,maxZ,12.0f,10.0f,13.0f,15.0f,region.shade());
-//        }
-//    }
-
-//    private void addPatterRegion(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,ResolvedFurnitureMaterial resolvedFurnitureMaterial,float sourceMinX,float sourceMinZ,float sourceMaxX,float sourceMaxZ,float clipMinX,float clipMinZ,float clipMaxX,float clipMaxZ,float shade) {
-//        float minX=Math.max(sourceMinX,clipMinX);
-//        float minZ=Math.max(sourceMinZ,clipMinZ);
-//        float maxX=Math.min(sourceMaxX,clipMaxX);
-//        float maxZ=Math.min(sourceMaxZ,clipMaxZ);
-//        if(maxX <= minX || maxZ <= minZ) return;
-//        this.addMaterialFace(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.UP,minX,minZ,maxX,maxZ,TOP,PATTERN_LAYER,shade);
-//    }
 
     private void addTopSurface(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,FurnitureRenderData furnitureRenderData) {
         ResolvedFurnitureMaterial resolvedFurnitureMaterial=this.resolveBodyMaterial(furnitureRenderData,Direction.UP);
