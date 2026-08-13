@@ -162,7 +162,7 @@
   "message.vanilladelight.modular_cabinet.style": "Style: %s",
   "message.vanilladelight.furniture.material": "%1$s material: %2$s",
   "message.vanilladelight.furniture.style": "Style: %s",
-  "message.vanilladelight.furniture.same_material": "This furniture is already install",
+  "message.vanilladelight.furniture.same_material": "This material is already install",
   "message.vanilladelight.furniture.invalid_material": "This material is not full block",
   "message.vanilladelight.modular_cutting_board.same_pattern": "This pattern is already applied",
   "message.vanilladelight.modular_cutting_board.pattern": "Pattern applied: %s",
