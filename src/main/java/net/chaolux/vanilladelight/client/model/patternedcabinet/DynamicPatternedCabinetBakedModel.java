@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.Map;
 
 public class DynamicPatternedCabinetBakedModel implements IDynamicBakedModel {
-    private static final float MATERIAL_LAYER=0.00035f;
-    private static final float BODY=0.00125f;
-    private static final float ACCENT=0.0025f;
-    private static final float CAVITY=0.00075f;
+    private static final float MATERIAL_LAYER=FurnitureRenderLayers.LAYER_1;
+    private static final float BODY=FurnitureRenderLayers.LAYER_3;
+    private static final float ACCENT=FurnitureRenderLayers.LAYER_4;
+    private static final float CAVITY=FurnitureRenderLayers.LAYER_2;
     private final FurnitureModelCache CACHE=new FurnitureModelCache();
     private final ResourceLocation resourceLocation;
     private final TextureAtlasSprite textureAtlasSprite;

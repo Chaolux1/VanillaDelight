@@ -3,10 +3,7 @@ package net.chaolux.vanilladelight.client.model.modularstove;
 import net.chaolux.vanilladelight.api.furniture.FurnitureDefintion;
 import net.chaolux.vanilladelight.api.furniture.FurnitureRegistry;
 import net.chaolux.vanilladelight.client.model.cabinet.CabinetQuadBuilder;
-import net.chaolux.vanilladelight.client.model.furniture.FurnitureMaterialResolverRegistry;
-import net.chaolux.vanilladelight.client.model.furniture.FurnitureQuadBuilder;
-import net.chaolux.vanilladelight.client.model.furniture.ResolvedFurnitureMaterial;
-import net.chaolux.vanilladelight.client.model.furniture.TextureFillPattern;
+import net.chaolux.vanilladelight.client.model.furniture.*;
 import net.chaolux.vanilladelight.common.block.entity.FurnitureBlockEntity;
 import net.chaolux.vanilladelight.common.furniture.FurnitureRenderData;
 import net.chaolux.vanilladelight.common.furniture.MaterialState;
@@ -33,9 +30,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DynamicModularStoveBakedModel implements IDynamicBakedModel {
-    private static final float FIRE_LAYER=0.00075f;
-    private static final float ARC_LAYER =0.00025f;
-    private static final float GLOW_LAYER=0.0005f;
+    private static final float FIRE_LAYER= FurnitureRenderLayers.STEP * 7.0f;
+    private static final float ARC_LAYER =FurnitureRenderLayers.LAYER_2;
+    private static final float GLOW_LAYER=FurnitureRenderLayers.STEP * 6.0f;
+    private static final float ARC_LAYER_FRAME=FurnitureRenderLayers.LAYER_4;
+    private static final float OFFSET=FurnitureRenderLayers.STEP;
     private final ResourceLocation resourceLocation;
     private final TextureAtlasSprite textureAtlasSprite;
     private final TextureAtlasSprite fixedSideSprite;
@@ -160,11 +159,11 @@ public class DynamicModularStoveBakedModel implements IDynamicBakedModel {
         this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,4.0f,0.0f,12.0f,6.0f, ARC_LAYER,lowShade,false);
         this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,5.0f,6.0f,11.0f,8.0f, ARC_LAYER,middleShade,false);
         this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,6.0f,8.0f,10.0f,9.0f, ARC_LAYER,shade,false);
-        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,4.0f,0.0f,5.0f,6.0f,ARC_LAYER + 0.00001f,frameShade,false);
-        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,11.0f,0.0f,12.0f,6.0f,ARC_LAYER + 0.00001f,frameShade,false);
-        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,5.0f,6.0f,6.0f,8.0f,ARC_LAYER + 0.00001f,frameShade,false);
-        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,10.0f,6.0f,11.0f,8.0f,ARC_LAYER + 0.00001f,frameShade,false);
-        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,6.0f,8.0f,10.0f,9.0f,ARC_LAYER + 0.00002f,frameShade,false);
+        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,4.0f,0.0f,5.0f,6.0f,ARC_LAYER_FRAME,frameShade,false);
+        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,11.0f,0.0f,12.0f,6.0f,ARC_LAYER_FRAME,frameShade,false);
+        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,5.0f,6.0f,6.0f,8.0f,ARC_LAYER_FRAME,frameShade,false);
+        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,10.0f,6.0f,11.0f,8.0f,ARC_LAYER_FRAME,frameShade,false);
+        this.addMaterialRect(bakedQuadList,renderType,resolvedFurnitureMaterial,Direction.NORTH,6.0f,8.0f,10.0f,9.0f,ARC_LAYER_FRAME,frameShade,false);
     }
 
     private void addFireArc(List<BakedQuad> bakedQuadList,@Nullable RenderType renderType,String string) {
@@ -221,7 +220,7 @@ public class DynamicModularStoveBakedModel implements IDynamicBakedModel {
             defaultRenderType=RenderType.cutout();
         }
         if(!this.matches(renderType,defaultRenderType)) return;
-        float offsetFillPattern=isFillPattern ? offset + 0.0000875f : offset;
+        float offsetFillPattern=isFillPattern ? offset + OFFSET : offset;
         bakedQuadList.add(CabinetQuadBuilder.create(direction,minA,minB,maxA,maxB,offsetFillPattern,resolvedFurnitureMaterial.atlasSprite(),resolvedFurnitureMaterial.tint(),shade,stretch));
     }
 

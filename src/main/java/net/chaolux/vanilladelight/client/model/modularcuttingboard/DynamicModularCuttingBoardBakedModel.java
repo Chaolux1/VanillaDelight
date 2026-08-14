@@ -30,7 +30,7 @@ import java.util.Map;
 public class DynamicModularCuttingBoardBakedModel implements IDynamicBakedModel {
     private static final float BOTTOM=0.0f;
     private static final float TOP=1.0f;
-    private static final float MATERIAL_LAYER=0.0002f;
+    private static final float MATERIAL_LAYER=FurnitureRenderLayers.LAYER_1;
     private static final float EPSILON=0.0001f;
     private final FurnitureModelCache CACHE=new FurnitureModelCache();
     private final ResourceLocation resourceLocation;

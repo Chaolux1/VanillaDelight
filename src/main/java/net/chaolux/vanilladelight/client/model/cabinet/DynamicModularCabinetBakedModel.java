@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DynamicModularCabinetBakedModel implements IDynamicBakedModel {
-    private static final float LAYER=0.00035f;
-    private static final float DETAIL_LAYER=0.00125f;
+    private static final float LAYER=FurnitureRenderLayers.LAYER_1;
+    private static final float DETAIL_LAYER=FurnitureRenderLayers.LAYER_2;
     private final ResourceLocation resourceLocation;
     private final TextureAtlasSprite textureAtlasSprite;
     private final FurnitureRenderData furnitureRenderData;
@@ -222,7 +222,7 @@ public class DynamicModularCabinetBakedModel implements IDynamicBakedModel {
         if(resolvedFurnitureMaterial.fillPattern() != null && this.matches(renderType,RenderType.solid())) this.addTiledFill(bakedQuadList,resolvedFurnitureMaterial.fillPattern(),direction,minA,minB,maxA,maxB,offset,resolvedFurnitureMaterial.tint(),shade);
         RenderType type=resolvedFurnitureMaterial.fillPattern() != null ? RenderType.cutout() : resolvedFurnitureMaterial.renderType();
         if(!this.matches(renderType,type)) return;
-        bakedQuadList.add(CabinetQuadBuilder.create(direction,minA,minB,maxA,maxB,offset + (resolvedFurnitureMaterial.gap() ? LAYER * 0.25f : 0.0f),resolvedFurnitureMaterial.atlasSprite(),resolvedFurnitureMaterial.tint(),shade,stretch));
+        bakedQuadList.add(CabinetQuadBuilder.create(direction,minA,minB,maxA,maxB,offset + (resolvedFurnitureMaterial.gap() ? LAYER : 0.0f),resolvedFurnitureMaterial.atlasSprite(),resolvedFurnitureMaterial.tint(),shade,stretch));
     }
 
     private boolean matches(@Nullable RenderType renderType,RenderType type) {
